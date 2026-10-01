@@ -57,18 +57,20 @@
   .shot { display: flex; justify-content: center; }
   .shot img { max-width: 100%; height: auto; }
   .shot.phone img { width: min(300px, 78vw); border-radius: 44px; box-shadow: 0 24px 60px rgba(0,0,0,.16), 0 0 0 10px #111; }
-  .shot.watch img { width: min(252px, 60vw); aspect-ratio: 1; border-radius: 50%;
-                    box-shadow: 0 22px 55px rgba(0,0,0,.2), 0 0 0 9px #111; object-fit: cover; }
+  .shot.watch img { width: min(268px, 64vw); border-radius: 19%;
+                    box-shadow: 0 0 0 9px #111, 0 22px 55px rgba(0,0,0,.22); }
 
-  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 36px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 44px; }
   @media (max-width: 820px) { .grid3 { grid-template-columns: 1fr; } }
   .card { background: var(--bg); border-radius: 20px; padding: 26px 22px;
           box-shadow: 0 10px 30px rgba(0,0,0,.07); }
   section:not(.alt) .card { background: var(--bg2); box-shadow: none; border: 1px solid rgba(0,0,0,.06); }
   .card h4 { margin: 0 0 6px; font-size: 1.02rem; }
   .card p { margin: 0; color: var(--ink2); font-size: .9rem; }
-  .card .shot { margin: -46px 0 14px; }
-  .card .shot.watch img { width: 150px; box-shadow: 0 12px 28px rgba(0,0,0,.18), 0 0 0 6px #111; }
+  .card .shot { margin: 0 0 16px; padding-top: 8px; }
+  .card .shot.phone img { width: min(210px, 56vw); border-radius: 32px;
+                          box-shadow: 0 0 0 7px #111, 0 14px 36px rgba(0,0,0,.16); }
+  .card .shot.watch img { width: 158px; box-shadow: 0 0 0 6px #111, 0 12px 28px rgba(0,0,0,.18); }
 
   .steps { counter-reset: s; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 30px; }
   @media (max-width: 820px) { .steps { grid-template-columns: 1fr; } }
@@ -205,17 +207,17 @@
 
     <div class="grid3">
       <div class="card">
-        <div class="shot phone"><img src="../assets/en/iphone69fb_angle.png" alt="Angle trace cloud"></div>
+        <div class="shot phone inset"><img src="../assets/en/iphone69fb_angle.png" alt="Angle trace cloud"></div>
         <h4>Angle θ · Your typical motion</h4>
         <p>Every hang's trace overlays into a cloud — the darkest paths are the movements you repeat most; the dashed line is the current detection tolerance.</p>
       </div>
       <div class="card">
-        <div class="shot phone"><img src="../assets/en/iphone69fb_xyz.png" alt="XYZ gravity components"></div>
+        <div class="shot phone inset"><img src="../assets/en/iphone69fb_xyz.png" alt="XYZ gravity components"></div>
         <h4>X·Y·Z · The moment you mount</h4>
         <p>The three gravity components flipping in real time <em>is</em> the grab-the-bar motion itself. Physics doesn't lie.</p>
       </div>
       <div class="card">
-        <div class="shot phone"><img src="../assets/en/iphone69fb_grip.png" alt="Grip energy"></div>
+        <div class="shot phone inset"><img src="../assets/en/iphone69fb_grip.png" alt="Grip energy"></div>
         <h4>Grip · Real hang vs. empty hand</h4>
         <p>Under real load, forearm physiological tremor (8–12 Hz) lifts the grip-energy curve — an empty-hand raise can't fake that signal.</p>
       </div>
