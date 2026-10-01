@@ -1,44 +1,28 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HangSpine 悬脊 — 支持</title>
+<title>HangSpine — Support</title>
+<script>
+// Language router: send visitors to the matching pure-language page.
+(function () {
+  var lang = (navigator.language || "en").toLowerCase();
+  var target = lang.indexOf("zh") === 0 ? "../support/zh/" : "../support/en/";
+  location.replace(target);
+})();
+</script>
+<noscript>
+<meta http-equiv="refresh" content="0;url=en/">
+</noscript>
 <style>
-  :root { color-scheme: light dark; }
-  body { font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
-         max-width: 680px; margin: 0 auto; padding: 32px 20px 64px;
-         line-height: 1.75; color: #1d1d1f; }
-  h1 { font-size: 1.6em; }
-  .en { color: #6e6e73; font-size: 0.92em; }
+  body { font-family: -apple-system, "Helvetica Neue", sans-serif;
+         max-width: 680px; margin: 0 auto; padding: 64px 20px; line-height: 1.8; }
   a { color: #0071e3; }
-  @media (prefers-color-scheme: dark) { body { color: #f5f5f7; } .en { color: #a1a1a6; } }
 </style>
 </head>
 <body>
-<h1>支持 / Support</h1>
-<p class="en">HangSpine 悬脊 — Apple Watch 悬垂训练计数与统计</p>
-
-<h2>联系我们</h2>
-<p class="en">Contact</p>
-<p>邮件：<a href="mailto:p.1403303507@qq.com">p.1403303507@qq.com</a></p>
-<p class="en">Email: p.1403303507@qq.com</p>
-
-<h2>常见问题</h2>
-<p class="en">FAQ</p>
-<p><strong>训练数据存在哪里？</strong><br>
-仅保存在你自己的 iPhone 与 Apple Watch 本地，无账号、无云端。详见
-<a href="../privacy/">隐私政策</a>。</p>
-<p class="en"><strong>Where is my data stored?</strong><br>
-Only on your own devices. See the <a href="../privacy/">Privacy Policy</a>.</p>
-
-<p><strong>手表没有自动计数？</strong><br>
-请在手表上开始训练后握紧单杠保持静止 1–2 秒，App 通过加速度计识别悬垂姿态；
-短暂换手（4 秒内）不会中断计数。</p>
-<p class="en"><strong>No auto-counting?</strong><br>
-Keep still on the bar for 1–2 seconds after starting a session; quick regrips
-(≤4s) won't reset the current rep.</p>
-
-<p><a href="../">← 返回首页 / Back</a></p>
+<p>HangSpine Support</p>
+<p><a href="en/">English</a> · <a href="zh/">中文</a></p>
 </body>
 </html>
