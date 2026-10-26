@@ -59,7 +59,7 @@ plan service takes no part in watch-phone sync.</p>
 <p><strong>发出的内容</strong>：你写的那句话，加上你的训练档案（项目、等级、板型、惯用手；追问某份计划的细节时，
 还包括当前计划和身高体重，若你填过）。</p>
 <p><strong>发送之前</strong>：链接、邮箱、手机号会在你的设备上去掉，然后才发出。</p>
-<p><strong>到达之后</strong>：原话不留存——计划服务只记请求编号与 HTTP 状态用于排错。
+<p><strong>到达之后</strong>：计划服务的 Cloudflare 日志会保留最多 7 天的脱敏请求文本、模型回复与请求编号，仅用于排错；不带账号标识、不带训练记录。
 计划的生成由第三方模型服务完成，传给它的只有上面这些脱敏后的内容，不带账号标识、不带训练记录。
 这些内容不用于广告，也不出售。</p>
 <p class="en">The app only goes online when you use the plan coach yourself.</p>
@@ -68,10 +68,11 @@ plan service takes no part in watch-phone sync.</p>
 height/weight if you entered them).</p>
 <p class="en"><strong>Before sending:</strong> links, emails and phone numbers are removed on your
 device, before it is sent.</p>
-<p class="en"><strong>After that:</strong> we do not keep what you wrote — the plan service records
-only a request id and HTTP status for debugging. Plan generation is handled by a
-third-party model service, which receives only the redacted content above — no account
-identifier and no training records. It is never used for advertising and never sold.</p>
+<p class="en"><strong>After that:</strong> the plan service's Cloudflare logs keep the redacted request
+text, the model reply and a request id for up to 7 days, for debugging only. They carry no
+account identifier and no training records. Plan generation is handled by a third-party
+model service, which receives only the redacted content above. It is never used for
+advertising and never sold.</p>
 
 <h2>5. 无追踪</h2>
 <p class="en">5. No tracking</p>
