@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a0a">
+<title>Grip Strength Calculator — How Strong Is Your Grip for Your Age?</title>
+<meta name="description" content="Enter your dynamometer reading and see how your grip strength compares to average and above-average values for your age and sex. Free, no signup, sources cited.">
+<link rel="icon" href="/assets/app-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Grip Strength Calculator — How Strong Is Your Grip?">
+<meta property="og:description" content="Compare your grip strength to age and sex reference values. Free, cited, no signup.">
+<meta property="og:url" content="https://hangspine.com/tools/grip-strength-calculator/">
+<meta property="og:image" content="https://hangspine.com/assets/app-icon.png">
+<link rel="canonical" href="https://hangspine.com/tools/grip-strength-calculator/">
+<script>
+(function () {
+  var saved = null;
+  try { saved = localStorage.getItem("hs-theme"); } catch (e) {}
+  var theme = saved || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+  document.documentElement.dataset.theme = theme;
+})();
+</script>
+<link rel="stylesheet" href="/assets/pages.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Grip Strength Calculator",
+"url":"https://hangspine.com/tools/grip-strength-calculator/","applicationCategory":"HealthApplication",
+"operatingSystem":"Any (web browser)","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+"description":"Compare your dynamometer grip strength to age and sex reference values.",
+"publisher":{"@type":"Organization","name":"HangSpine","url":"https://hangspine.com/"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I measure grip strength without a dynamometer?","acceptedAnswer":{"@type":"Answer","text":"A bar hang is a practical proxy for grip endurance: your max dead hang time reflects grip strength carried at bodyweight. Use our dead hang calculator to benchmark that instead — just remember dynamometer readings and hang times are related but different numbers."}},
+{"@type":"Question","name":"What grip strength is considered weak?","acceptedAnswer":{"@type":"Answer","text":"As a rough orientation for adults under 40: below about 40 kg (men) or 24 kg (women) on a handheld dynamometer sits well under group averages. A single reading isn't a diagnosis — what clinicians watch is your personal trend over time, especially a persistent drop."}},
+{"@type":"Question","name":"Which hand should I test?","acceptedAnswer":{"@type":"Answer","text":"Both. Your dominant hand normally runs about 10% stronger; a much wider sudden gap is the pattern worth mentioning to a clinician. Always test in the same order, same posture, so your trend is comparable."}}]}
+</script>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="/en/"><img class="brand-icon" src="/assets/app-icon.png" alt="HangSpine">HangSpine</a>
+    <div class="navlinks">
+      <a href="/tools/" aria-current="page">Free Tools</a>
+      <a href="/scoliosis/">Scoliosis Guide</a>
+      <a href="/blog/dead-hangs-scoliosis-evidence/">Evidence</a>
+      <a href="/en/">App</a>
+      <a class="keep" href="/zh/">中文</a>
+      <button id="themeToggle" class="theme-toggle" aria-label="Switch theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="/tools/">Free Tools</a> › Grip Strength Calculator</div>
+    <div class="kicker">FREE TOOL · NO SIGNUP · NO ADS</div>
+    <h1>Grip Strength Calculator</h1>
+    <p class="sub">Enter your handheld dynamometer reading (best of 2–3 tries, same hand each time) and see where it lands against average and top-quartile reference values for your age and sex.</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="tool-box">
+      <div class="frow">
+        <label>Sex
+          <select id="sex">
+            <option value="m">Male</option>
+            <option value="f">Female</option>
+          </select>
+        </label>
+        <label>Age
+          <input type="number" id="age" min="12" max="99" value="35" inputmode="numeric">
+        </label>
+        <label>Your grip (kg)
+          <input type="number" id="grip" min="5" max="200" placeholder="e.g. 48" inputmode="numeric">
+        </label>
+      </div>
+      <button class="btn" id="go" type="button">See where I stand</button>
+      <div class="err" id="err" hidden>Enter your grip in kilograms (roughly 5–200). No dynamometer? Use our <a href="/tools/hang-calculator/">dead hang calculator</a> instead.</div>
+      <div class="result" id="out" hidden>
+        <div class="level" id="lvl"></div>
+        <p class="meta" id="meta"></p>
+        <div class="kv" id="kv"></div>
+        <p class="meta" style="margin-top:14px;">Want the full picture — norms tables, why grip predicts health, and how to improve it? <a href="/blog/grip-strength-standards/" style="font-weight:600;">Read the grip standards guide →</a></p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h2>How to test properly</h2>
+      <ol>
+        <li>Handheld dynamometer, comfortable handle setting, elbow bent about 90°, arm at your side.</li>
+        <li>Squeeze maximally for 3–5 seconds. Rest 30 seconds. Do 2–3 tries per hand.</li>
+        <li>Use your best (or average — just be consistent) reading, and record both hands.</li>
+      </ol>
+      <div class="note"><strong>Reading the result honestly:</strong> these bands come from rounded normative dynamometer data (Bohannon et&nbsp;al. reference values) and vary by device and protocol. Your own trend over months matters more than any single reading, and one low number is not a diagnosis — persistent changes belong with a clinician.</div>
+
+      <h2>Frequently asked questions</h2>
+      <details open><summary>No dynamometer — can I still benchmark?</summary><p>Yes: max <a href="/tools/hang-calculator/">dead hang time</a> is a solid grip-endurance proxy at bodyweight. Different number, same trend-line value.</p></details>
+      <details><summary>What counts as weak?</summary><p>Rough orientation, adults under 40: well under ~40 kg (men) / ~24 kg (women). A sudden drop or a growing left-right gap is the pattern clinicians actually watch — dominant hands normally run ~10% stronger.</p></details>
+      <details><summary>Which hand?</summary><p>Both, always in the same order. Compare each hand to its own history.</p></details>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="brand" style="color:#fff"><img class="footer-icon" src="/assets/app-icon.png" alt="">HangSpine</div>
+      <p style="margin:10px 0 0;">Free tools &amp; evidence-based spine resources.</p>
+    </div>
+    <div>
+      <p style="margin:0 0 6px;"><a href="/en/">HangSpine App</a></p>
+      <p style="margin:0 0 6px;"><a href="/scoliosis/">Scoliosis Guide</a></p>
+      <p style="margin:0 0 6px;"><a href="/support/en/">Support</a></p>
+      <p style="margin:0;"><a href="/privacy/">Privacy Policy</a></p>
+    </div>
+    <div style="max-width:420px;">
+      <p style="margin:0;">© 2026 HangSpine. All rights reserved.</p>
+      <p class="disclaimer" style="max-width:none;">Reference values are for general fitness education only; not medical advice, diagnosis, or treatment. For health concerns, please consult a qualified clinician.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  function apply(t) {
+    document.documentElement.dataset.theme = t;
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", t === "light" ? "#ffffff" : "#0a0a0a");
+    var btn = document.getElementById("themeToggle");
+    if (btn) btn.textContent = t === "light" ? "\u{1F319}" : "\u2600\uFE0F";
+    try { localStorage.setItem("hs-theme", t); } catch (e) {}
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    var btn = document.getElementById("themeToggle");
+    if (btn) btn.addEventListener("click", function () {
+      apply(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
+    });
+    apply(document.documentElement.dataset.theme);
+  });
+
+  // Approximate group averages (kg) from rounded normative dynamometer data
+  // (Bohannon et al. reference values). Brackets: 20-29 ... 70-79.
+  var GRIP = { m: [50, 50, 49, 46, 41, 35], f: [32, 33, 32, 30, 26, 22] };
+  function gripIndex(a) { return Math.min(5, Math.max(0, Math.floor(a / 10) - 2)); }
+
+  function calc() {
+    var sex = document.getElementById("sex").value;
+    var age = parseInt(document.getElementById("age").value, 10);
+    var grip = parseFloat(document.getElementById("grip").value);
+    var err = document.getElementById("err"), out = document.getElementById("out");
+    if (!grip || grip < 5 || grip > 200) { err.hidden = false; out.hidden = true; return; }
+    err.hidden = true;
+    var a = isNaN(age) ? 35 : age;
+    var avg = GRIP[sex][gripIndex(a)];
+    var top = Math.round(avg * 1.2);
+    var r = grip / avg;
+    var lvl, note;
+    if (r < 0.9) { lvl = "Below average"; note = "about " + Math.round(avg - grip) + " kg under your group's average — grip responds quickly to consistent training"; }
+    else if (r < 1.1) { lvl = "Average band"; note = "right around the group average — a solid baseline to build from"; }
+    else if (r < 1.2) { lvl = "Above average"; note = Math.round(grip - avg) + " kg over the group average"; }
+    else { lvl = "Well above average"; note = "top-quartile territory for your age and sex (≈ average × 1.2)"; }
+    document.getElementById("lvl").textContent = lvl;
+    document.getElementById("meta").textContent = "based on a " + grip + " kg reading vs reference values for " +
+      (sex === "m" ? "men" : "women") + " aged " + a + " — " + note + ".";
+    document.getElementById("kv").innerHTML =
+      "<div><b>" + grip + " kg</b>your reading</div>" +
+      "<div><b>" + avg + " kg</b>group average</div>" +
+      "<div><b>" + top + " kg</b>top quartile ≈</div>" +
+      "<div><b>" + Math.round(r * 100) + "%</b>of average</div>";
+    out.hidden = false;
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("go").addEventListener("click", calc);
+    document.getElementById("grip").addEventListener("keydown", function (e) { if (e.key === "Enter") calc(); });
+  });
+})();
+</script>
+
+</body>
+</html>
