@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a0a">
+<title>About HangSpine — Who Makes This &amp; Our Editorial Standards</title>
+<meta name="description" content="HangSpine is a tiny independent studio making an Apple Watch dead-hang tracker and free, evidence-first spine resources. Meet the maker and our editorial rules.">
+<link rel="icon" href="/assets/app-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About HangSpine">
+<meta property="og:description" content="A tiny independent studio making an Apple Watch dead-hang tracker and free, cited, evidence-first spine resources.">
+<meta property="og:url" content="https://hangspine.com/about/">
+<link rel="canonical" href="https://hangspine.com/about/">
+<script>
+(function () {
+  var saved = null;
+  try { saved = localStorage.getItem("hs-theme"); } catch (e) {}
+  var theme = saved || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+  document.documentElement.dataset.theme = theme;
+})();
+</script>
+<link rel="stylesheet" href="/assets/pages.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="/en/"><img class="brand-icon" src="/assets/app-icon.png" alt="HangSpine">HangSpine</a>
+    <div class="navlinks">
+      <a href="/tools/">Free Tools</a>
+      <a href="/scoliosis/">Scoliosis Guide</a>
+      <a href="/blog/dead-hangs-scoliosis-evidence/">Evidence</a>
+      <a href="/en/">App</a>
+      <a class="keep" href="/zh/">中文</a>
+      <button id="themeToggle" class="theme-toggle" aria-label="Switch theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <div class="kicker">ABOUT</div>
+    <h1>Hi — I'm William, and I hang from a bar most days</h1>
+    <p class="sub">HangSpine is a one-person studio. I build an Apple Watch app that counts dead hangs, and free tools and guides like the ones you're browsing — because good information about spines is rarer than it should be.</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap prose">
+    <h2>Why this exists</h2>
+    <p>A few years ago, hanging became part of my own daily spine-care routine — a minute on the bar, shoulders opened, spine unloaded after long days at the desk. It's the cheapest “gym” there is. What I lacked was a way to keep the habit honest: something that counted the hangs for me instead of asking me to tap a timer with numb fingers. So I built HangSpine: mount the bar and the count starts, let go and it stops.</p>
+    <p>Along the way I read a lot of scoliosis research — partly out of personal interest, partly because hanging kept getting recommended to people with curved spines with wildly different confidence levels. The guides on this site are my attempt to organize that reading honestly: cited, hedged where the science is thin, and free of miracle language.</p>
+
+    <h2>What we make</h2>
+    <ul>
+      <li><strong><a href="https://apps.apple.com/app/id6817156558">HangSpine for Apple Watch</a></strong> — an automatic dead-hang counter and streak tracker. One-time purchase, no subscription, no account.</li>
+      <li><strong><a href="/tools/">Free web tools</a></strong> — starting with the dead hang time calculator. No signup, no ads, no tracking.</li>
+      <li><strong><a href="/scoliosis/">Evidence-first guides</a></strong> — primers and reviews with their sources attached.</li>
+    </ul>
+
+    <h2>Editorial standards for health content</h2>
+    <ol>
+      <li><strong>Claims carry citations.</strong> Health statements link to the study or guideline behind them. When the evidence is thin, we say so in the same sentence.</li>
+      <li><strong>No treatment language.</strong> We don't claim anything here treats, cures or corrects scoliosis. Hanging is framed as an adjunct habit; the evidence-based backbone of scoliosis care is clinician-delivered.</li>
+      <li><strong>Commercial disclosure.</strong> When a page relates to something we sell (the app), the connection is stated on the page. The guides are written to be fair whether you buy anything or not.</li>
+      <li><strong>Corrections welcome.</strong> If a source is misrepresented or a study has been superseded, tell us and we'll fix it.</li>
+    </ol>
+
+    <h2>Contact &amp; transparency</h2>
+    <p>Questions, corrections, or just want to compare hang times: reach out via <a href="/support/en/">the support page</a>. On Reddit, the studio operates one official account (u/HangSpineTeam) — every post from it is posted as the developer, never disguised.</p>
+
+    <div class="note">HangSpine's content is written by its developer, not by physicians, and reviewed against published sources. It is general education — not medical advice, diagnosis, or treatment. For spine concerns, please see a qualified clinician.</div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="brand" style="color:#fff"><img class="footer-icon" src="/assets/app-icon.png" alt="">HangSpine</div>
+      <p style="margin:10px 0 0;">Free tools &amp; evidence-based spine resources.</p>
+    </div>
+    <div>
+      <p style="margin:0 0 6px;"><a href="/en/">HangSpine App</a></p>
+      <p style="margin:0 0 6px;"><a href="/tools/">Free Tools</a></p>
+      <p style="margin:0 0 6px;"><a href="/support/en/">Support</a></p>
+      <p style="margin:0;"><a href="/privacy/">Privacy Policy</a></p>
+    </div>
+    <div style="max-width:420px;">
+      <p style="margin:0;">© 2026 HangSpine. All rights reserved.</p>
+      <p class="disclaimer" style="max-width:none;">All content is provided for general education and reference purposes only. It is not medical advice, diagnosis, or treatment. For spine-related concerns such as scoliosis, please follow the guidance of a qualified physician or therapist.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  function apply(t) {
+    document.documentElement.dataset.theme = t;
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", t === "light" ? "#ffffff" : "#0a0a0a");
+    var btn = document.getElementById("themeToggle");
+    if (btn) btn.textContent = t === "light" ? "\u{1F319}" : "\u2600\uFE0F";
+    try { localStorage.setItem("hs-theme", t); } catch (e) {}
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    var btn = document.getElementById("themeToggle");
+    if (btn) btn.addEventListener("click", function () {
+      apply(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
+    });
+    apply(document.documentElement.dataset.theme);
+  });
+})();
+</script>
+
+</body>
+</html>

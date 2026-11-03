@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a0a">
+<title>Free Fitness &amp; Spine Tools — No Signup, No Ads</title>
+<meta name="description" content="Free web tools from HangSpine: dead hang time calculator with age/sex benchmarks, grip strength reference values, and evidence-based scoliosis guides. No account, no ads, no tracking.">
+<link rel="icon" href="/assets/app-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Fitness &amp; Spine Tools — HangSpine">
+<meta property="og:description" content="Dead hang standards calculator and spine-health resources. Free, no signup, no ads.">
+<meta property="og:url" content="https://hangspine.com/tools/">
+<link rel="canonical" href="https://hangspine.com/tools/">
+<script>
+(function () {
+  var saved = null;
+  try { saved = localStorage.getItem("hs-theme"); } catch (e) {}
+  var theme = saved || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+  document.documentElement.dataset.theme = theme;
+})();
+</script>
+<link rel="stylesheet" href="/assets/pages.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="/en/"><img class="brand-icon" src="/assets/app-icon.png" alt="HangSpine">HangSpine</a>
+    <div class="navlinks">
+      <a href="/tools/" aria-current="page">Free Tools</a>
+      <a href="/scoliosis/">Scoliosis Guide</a>
+      <a href="/blog/dead-hangs-scoliosis-evidence/">Evidence</a>
+      <a href="/en/">App</a>
+      <a class="keep" href="/zh/">中文</a>
+      <button id="themeToggle" class="theme-toggle" aria-label="Switch theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <div class="kicker">FREE TOOLS · NO SIGNUP · NO ADS · NO TRACKING</div>
+    <h1>Small tools, honest numbers</h1>
+    <p class="sub">We build these because we needed them ourselves. Everything runs in your browser, works offline once loaded, and never asks for an email.</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="grid2">
+      <div class="card">
+        <span class="chip edu">Calculator</span>
+        <h4 style="margin-top:4px;">Dead Hang Time Calculator</h4>
+        <p>Enter your max hang and see your level — beginner to elite — with benchmarks by age and sex, plus grip-strength reference values and a proper testing protocol.</p>
+        <a class="more" href="/tools/hang-calculator/">Open calculator →</a>
+      </div>
+      <div class="card">
+        <span class="chip com">Coming soon</span>
+        <h4 style="margin-top:4px;">Hang Progression Planner</h4>
+        <p>Give it your current max hang; get a sensible 4–8 week progression toward your next milestone. In the meantime, the calculator page includes testing how-tos and FAQ.</p>
+        <a class="more" href="/tools/hang-calculator/#faq">See the FAQ meanwhile →</a>
+      </div>
+    </div>
+
+    <div class="prose" style="margin-top:20px;">
+      <h2>Also from us</h2>
+      <ul>
+        <li><a href="/scoliosis/">Scoliosis guide</a> — plain-English primers with sources, no miracle claims</li>
+        <li><a href="/blog/dead-hangs-scoliosis-evidence/">Dead hangs &amp; scoliosis: the evidence review</a></li>
+        <li><a href="https://apps.apple.com/app/id6817156558">HangSpine for Apple Watch</a> — a dead-hang counter that starts the moment you grab the bar</li>
+      </ul>
+      <div class="note">These tools are educational. Benchmarks are descriptive fitness references, not clinical standards — see each page for its sources and disclaimers.</div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="brand" style="color:#fff"><img class="footer-icon" src="/assets/app-icon.png" alt="">HangSpine</div>
+      <p style="margin:10px 0 0;">Free tools &amp; evidence-based spine resources.</p>
+    </div>
+    <div>
+      <p style="margin:0 0 6px;"><a href="/en/">HangSpine App</a></p>
+      <p style="margin:0 0 6px;"><a href="/scoliosis/">Scoliosis Guide</a></p>
+      <p style="margin:0 0 6px;"><a href="/support/en/">Support</a></p>
+      <p style="margin:0;"><a href="/privacy/">Privacy Policy</a></p>
+    </div>
+    <div style="max-width:420px;">
+      <p style="margin:0;">© 2026 HangSpine. All rights reserved.</p>
+      <p class="disclaimer" style="max-width:none;">All content is provided for general fitness education and reference purposes only. It is not medical advice, diagnosis, or treatment. For spine-related concerns such as scoliosis, please follow the guidance of a qualified physician or therapist.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  function apply(t) {
+    document.documentElement.dataset.theme = t;
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", t === "light" ? "#ffffff" : "#0a0a0a");
+    var btn = document.getElementById("themeToggle");
+    if (btn) btn.textContent = t === "light" ? "\u{1F319}" : "\u2600\uFE0F";
+    try { localStorage.setItem("hs-theme", t); } catch (e) {}
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    var btn = document.getElementById("themeToggle");
+    if (btn) btn.addEventListener("click", function () {
+      apply(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
+    });
+    apply(document.documentElement.dataset.theme);
+  });
+})();
+</script>
+
+</body>
+</html>

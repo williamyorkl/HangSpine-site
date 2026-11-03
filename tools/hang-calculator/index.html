@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a0a">
+<title>Dead Hang Time Calculator — How Long Should You Be Able to Hang?</title>
+<meta name="description" content="Free dead hang standards calculator: enter your age and max hang time to see where you rank from beginner to elite, plus grip-strength reference values by age and sex. No signup, no ads.">
+<link rel="icon" href="/assets/app-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dead Hang Time Calculator — How Long Should You Be Able to Hang?">
+<meta property="og:description" content="See where your max dead hang ranks, with benchmarks by age and sex, plus grip-strength reference values. Free, no signup.">
+<meta property="og:url" content="https://hangspine.com/tools/hang-calculator/">
+<meta property="og:image" content="https://hangspine.com/assets/app-icon.png">
+<link rel="canonical" href="https://hangspine.com/tools/hang-calculator/">
+<script>
+(function () {
+  var saved = null;
+  try { saved = localStorage.getItem("hs-theme"); } catch (e) {}
+  var theme = saved || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+  document.documentElement.dataset.theme = theme;
+})();
+</script>
+<link rel="stylesheet" href="/assets/pages.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Dead Hang Time Calculator",
+"url":"https://hangspine.com/tools/hang-calculator/","applicationCategory":"HealthApplication",
+"operatingSystem":"Any (web browser)","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+"description":"Free dead hang standards calculator with age and sex benchmarks and grip-strength reference values.",
+"publisher":{"@type":"Organization","name":"HangSpine","url":"https://hangspine.com/"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How long should a beginner be able to dead hang?","acceptedAnswer":{"@type":"Answer","text":"Most healthy adults who are new to hanging manage somewhere between 10 and 30 seconds on their first attempts. Anything from about 20 seconds (men under 40) or 15 seconds (women under 40) is a normal starting point. Consistent practice typically doubles that within 4–8 weeks."}},
+{"@type":"Question","name":"What is a good dead hang time?","acceptedAnswer":{"@type":"Answer","text":"As a general fitness benchmark: 45–90 seconds is a solid intermediate level for men under 40 (35–70 seconds for women), and 90 seconds or more is considered advanced. These are community fitness benchmarks, not clinical standards."}},
+{"@type":"Question","name":"Do dead hangs help with scoliosis?","acceptedAnswer":{"@type":"Answer","text":"Dead hangs provide temporary spinal decompression and shoulder stretch, and they can be a low-barrier addition to a spine-care routine, but there is no solid evidence that hanging alone reduces a scoliosis curve. Evidence-based scoliosis care centers on physiotherapeutic scoliosis-specific exercises (PSSE) such as the Schroth method, guided by a clinician. See our full evidence review linked from this page."}},
+{"@type":"Question","name":"Are long dead hangs bad for your shoulders?","acceptedAnswer":{"@type":"Answer","text":"For most healthy shoulders, passive hanging is safe. People with shoulder hypermobility or instability should be cautious and may benefit from an active hang (keeping slight shoulder engagement) — if hanging causes pain, stop and consult a physical therapist."}}]}
+</script>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="/en/"><img class="brand-icon" src="/assets/app-icon.png" alt="HangSpine">HangSpine</a>
+    <div class="navlinks">
+      <a href="/tools/" aria-current="page">Free Tools</a>
+      <a href="/scoliosis/">Scoliosis Guide</a>
+      <a href="/blog/dead-hangs-scoliosis-evidence/">Evidence</a>
+      <a href="/en/">App</a>
+      <a class="keep" href="/zh/">中文</a>
+      <button id="themeToggle" class="theme-toggle" aria-label="Switch theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="/tools/">Free Tools</a> › Dead Hang Calculator</div>
+    <div class="kicker">FREE TOOL · NO SIGNUP · NO ADS</div>
+    <h1>Dead Hang Time Calculator</h1>
+    <p class="sub">Enter your longest unbroken dead hang to see where you land — from beginner to elite — with reference benchmarks by age and sex, plus average grip-strength values for your group.</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="tool-box">
+      <div class="frow">
+        <label>Sex
+          <select id="sex">
+            <option value="m">Male</option>
+            <option value="f">Female</option>
+          </select>
+        </label>
+        <label>Age
+          <input type="number" id="age" min="12" max="99" value="35" inputmode="numeric">
+        </label>
+        <label>Your longest dead hang (seconds)
+          <input type="number" id="hang" min="1" max="1200" placeholder="e.g. 45" inputmode="numeric">
+        </label>
+      </div>
+      <button class="btn" id="go" type="button">See my level</button>
+      <div class="err" id="err" hidden>Please enter your max hang time in seconds (a rough recent best is fine).</div>
+      <div class="result" id="out" hidden>
+        <div class="level" id="lvl"></div>
+        <p class="meta" id="meta"></p>
+        <div class="kv" id="kv"></div>
+        <p class="meta" style="margin-top:14px;">Want to actually get better at this? HangSpine for Apple Watch counts your hangs automatically — mount the bar and it starts, let go and it stops.
+        <a href="https://apps.apple.com/app/id6817156558" style="font-weight:600;">Get HangSpine →</a></p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h2>Benchmarks by age &amp; sex</h2>
+      <p>These are descriptive <strong>fitness-community benchmarks</strong> for a passive dead hang (full grip, feet off the ground, straight arms) — a way to orient yourself, not clinical norms. Individual variation is large, and your own trend matters far more than any table.</p>
+
+      <table>
+        <caption>Max passive hang, men (seconds)</caption>
+        <thead><tr><th>Age</th><th>Beginner</th><th>Novice</th><th>Intermediate</th><th>Advanced</th><th>Elite</th></tr></thead>
+        <tbody>
+          <tr><td>Under 40</td><td>&lt;20</td><td>20–45</td><td>45–90</td><td>90–180</td><td><strong>180+</strong></td></tr>
+          <tr><td>40–59</td><td>&lt;15</td><td>15–35</td><td>35–70</td><td>70–140</td><td><strong>140+</strong></td></tr>
+          <tr><td>60+</td><td>&lt;10</td><td>10–25</td><td>25–50</td><td>50–100</td><td><strong>100+</strong></td></tr>
+        </tbody>
+      </table>
+
+      <table>
+        <caption>Max passive hang, women (seconds)</caption>
+        <thead><tr><th>Age</th><th>Beginner</th><th>Novice</th><th>Intermediate</th><th>Advanced</th><th>Elite</th></tr></thead>
+        <tbody>
+          <tr><td>Under 40</td><td>&lt;15</td><td>15–35</td><td>35–70</td><td>70–140</td><td><strong>140+</strong></td></tr>
+          <tr><td>40–59</td><td>&lt;12</td><td>12–28</td><td>28–55</td><td>55–110</td><td><strong>110+</strong></td></tr>
+          <tr><td>60+</td><td>&lt;8</td><td>8–20</td><td>20–40</td><td>40–80</td><td><strong>80+</strong></td></tr>
+        </tbody>
+      </table>
+
+      <h2>Average grip strength for reference</h2>
+      <p>Grip strength is one of the best-studied pieces of the hanging puzzle — and a widely used overall health marker. Approximate averages from dynamometer studies of healthy adults (rounded values, Bohannon et&nbsp;al. 2019 reference data):</p>
+      <table>
+        <caption>Grip strength, approximate group averages (kg, dynamometer)</caption>
+        <thead><tr><th>Age</th><th>Men avg</th><th>Men “above avg” ≈</th><th>Women avg</th><th>Women “above avg” ≈</th></tr></thead>
+        <tbody>
+          <tr><td>20–29</td><td>50</td><td>60</td><td>32</td><td>38</td></tr>
+          <tr><td>30–39</td><td>50</td><td>60</td><td>33</td><td>40</td></tr>
+          <tr><td>40–49</td><td>49</td><td>59</td><td>32</td><td>38</td></tr>
+          <tr><td>50–59</td><td>46</td><td>55</td><td>30</td><td>36</td></tr>
+          <tr><td>60–69</td><td>41</td><td>49</td><td>26</td><td>31</td></tr>
+          <tr><td>70–79</td><td>35</td><td>42</td><td>22</td><td>26</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:.88rem;color:var(--ink2);">“Above average” here is roughly the top quartile (≈ average × 1.2). Handheld dynamometer values are usually a bit higher than what a bar hang reflects, since hang time also depends on body weight, grip endurance and shoulder stability.</p>
+
+      <h2>How to test your max hang properly</h2>
+      <ol>
+        <li>Use a bar you can grip fully, at a height you can reach without jumping.</li>
+        <li>Grab with an overhand (pronated) grip, roughly shoulder-width.</li>
+        <li>Feet off the ground, arms straight, shoulders relaxed — no kipping, no swinging.</li>
+        <li>Time from feet-up to let-go. One honest attempt after warm-up is enough; don't test to failure repeatedly.</li>
+      </ol>
+      <div class="note"><strong>Safety:</strong> stop if you feel sharp shoulder or elbow pain. If you have shoulder hypermobility or a diagnosed spine condition, ask a physical therapist first — and see our <a href="/blog/dead-hangs-scoliosis-evidence/">evidence review on dead hangs &amp; scoliosis</a> before adding hanging to a spine-care routine.</div>
+
+      <h2>Frequently asked questions</h2>
+      <details open><summary>How long should a beginner be able to hang?</summary>
+        <p>Most healthy newcomers manage 10–30 seconds on their first tries. Around 20&nbsp;s (men under 40) / 15&nbsp;s (women under 40) is a normal starting point, and consistent practice usually doubles it within 4–8 weeks.</p></details>
+      <details><summary>What is a good dead hang time?</summary>
+        <p>45–90 seconds is a solid intermediate level for men under 40 (35–70&nbsp;s for women); 90+ seconds is advanced. Remember these are fitness benchmarks, not medical standards.</p></details>
+      <details><summary>Do dead hangs help scoliosis?</summary>
+        <p>Hanging gives temporary decompression and stretch, and can be a useful, low-barrier habit — but current evidence does not show that hanging alone reduces a scoliosis curve. First-line conservative care is clinician-guided scoliosis-specific exercise (e.g. Schroth/PSSE). Read the full <a href="/blog/dead-hangs-scoliosis-evidence/">evidence review</a>.</p></details>
+      <details><summary>Are long dead hangs bad for shoulders?</summary>
+        <p>For most healthy shoulders, no. With hypermobility or instability, keep light shoulder engagement (an “active” hang) and stop if it hurts. When in doubt, ask a PT.</p></details>
+
+      <h2>Where this data comes from</h2>
+      <p class="refs-wrap" style="font-size:.9rem;color:var(--ink2);">Hang-time bands are descriptive fitness benchmarks synthesized from calisthenics coaching practice; grip values are rounded from published normative dynamometer data (<a href="https://pubmed.ncbi.nlm.nih.gov/?term=bohannon+grip+strength+normative" target="_blank" rel="noopener">Bohannon et al., reference values for grip strength</a>). This tool is educational, not medical advice.</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="brand" style="color:#fff"><img class="footer-icon" src="/assets/app-icon.png" alt="">HangSpine</div>
+      <p style="margin:10px 0 0;">Free tools &amp; evidence-based spine resources.</p>
+    </div>
+    <div>
+      <p style="margin:0 0 6px;"><a href="/en/">HangSpine App</a></p>
+      <p style="margin:0 0 6px;"><a href="/scoliosis/">Scoliosis Guide</a></p>
+      <p style="margin:0 0 6px;"><a href="/support/en/">Support</a></p>
+      <p style="margin:0;"><a href="/privacy/">Privacy Policy</a></p>
+    </div>
+    <div style="max-width:420px;">
+      <p style="margin:0;">© 2026 HangSpine. All rights reserved.</p>
+      <p class="disclaimer" style="max-width:none;">Benchmarks and reference values on this page are for general fitness education only; they are not medical advice, diagnosis, or treatment. For spine-related concerns such as scoliosis, please follow the guidance of a qualified physician or therapist.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Theme toggle (kept in sync with the homepage behavior).
+  function apply(t) {
+    document.documentElement.dataset.theme = t;
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", t === "light" ? "#ffffff" : "#0a0a0a");
+    var btn = document.getElementById("themeToggle");
+    if (btn) btn.textContent = t === "light" ? "\u{1F319}" : "\u2600\uFE0F";
+    try { localStorage.setItem("hs-theme", t); } catch (e) {}
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    var btn = document.getElementById("themeToggle");
+    if (btn) btn.addEventListener("click", function () {
+      apply(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
+    });
+    apply(document.documentElement.dataset.theme);
+  });
+
+  // Benchmarks: first threshold = novice start, last = elite start. Descriptive,
+  // not clinical. Bands derived from common calisthenics coaching practice.
+  var BENCH = {
+    m: { y: [20, 45, 90, 180], m: [15, 35, 70, 140], s: [10, 25, 50, 100] },   // men: <40, 40-59, 60+
+    f: { y: [15, 35, 70, 140], m: [12, 28, 55, 110], s: [8, 20, 40, 80] }      // women: <40, 40-59, 60+
+  };
+  var LEVELS = ["Beginner", "Novice", "Intermediate", "Advanced", "Elite"];
+  // Grip averages (kg) by age bracket: 20-29,30-39,40-49,50-59,60-69,70-79 (rounded,
+  // from Bohannon et al. 2019-style normative dynamometer data).
+  var GRIP = { m: [50, 50, 49, 46, 41, 35], f: [32, 33, 32, 30, 26, 22] };
+  function ageBracket(a) { return a < 40 ? "y" : (a < 60 ? "m" : "s"); }
+  function gripIndex(a) { return Math.min(5, Math.max(0, Math.floor(a / 10) - 2)); }
+
+  function fmt(s) { var m = Math.floor(s / 60); var r = s % 60; return m > 0 ? m + "m " + r + "s" : r + "s"; }
+
+  function calc() {
+    var sex = document.getElementById("sex").value;
+    var age = parseInt(document.getElementById("age").value, 10);
+    var secs = parseInt(document.getElementById("hang").value, 10);
+    var err = document.getElementById("err"), out = document.getElementById("out");
+    if (!secs || secs < 1) { err.hidden = false; out.hidden = true; return; }
+    err.hidden = true;
+    var th = BENCH[sex][ageBracket(isNaN(age) ? 35 : age)];
+    var lvlIdx = 0;
+    for (var i = 0; i < th.length; i++) { if (secs >= th[i]) lvlIdx = i + 1; }
+    var next = lvlIdx < 4 ? th[lvlIdx] : null;
+    var gAge = isNaN(age) ? 35 : age;
+    var g = GRIP[sex][gripIndex(gAge)];
+
+    document.getElementById("lvl").textContent = LEVELS[lvlIdx];
+    var grp = (sex === "m" ? "males" : "females") + ", " +
+      (ageBracket(gAge) === "y" ? "under 40" : (ageBracket(gAge) === "m" ? "40–59" : "60+"));
+    var metaTxt = "based on a " + secs + "s max passive hang — benchmarks for " + grp + ". ";
+    if (next) metaTxt += "About " + (next - secs) + "s more reaches " + LEVELS[lvlIdx + 1] + ".";
+    else metaTxt += "That's the top band — from here it's about total weekly hang volume, not one max.";
+    document.getElementById("meta").textContent = metaTxt;
+
+    document.getElementById("kv").innerHTML =
+      "<div><b>" + fmt(secs) + "</b>your max hang</div>" +
+      "<div><b>" + fmt(next ? next : secs) + "</b>" + (next ? "next level starts" : "top band reached") + "</div>" +
+      "<div><b>" + g + " kg</b>avg grip, your age group</div>" +
+      "<div><b>" + Math.round(g * 1.2) + " kg</b>“above average” ≈</div>";
+
+    out.hidden = false;
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("go").addEventListener("click", calc);
+    document.getElementById("hang").addEventListener("keydown", function (e) {
+      if (e.key === "Enter") calc();
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
