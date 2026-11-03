@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a0a">
+<title>Dead Hang Progression Planner — Free 4–8 Week Plan Generator</title>
+<meta name="description" content="Enter your current max dead hang and get a printable 4–8 week progression plan: three sessions a week, weekly targets, a built-in deload, and safety rules. Free, no signup.">
+<link rel="icon" href="/assets/app-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dead Hang Progression Planner — Free 4–8 Week Plan">
+<meta property="og:description" content="Turn your max hang into a sensible 4–8 week training plan with weekly targets and a deload. Free, no signup, no ads.">
+<meta property="og:url" content="https://hangspine.com/tools/hang-progression-planner/">
+<meta property="og:image" content="https://hangspine.com/assets/app-icon.png">
+<link rel="canonical" href="https://hangspine.com/tools/hang-progression-planner/">
+<script>
+(function () {
+  var saved = null;
+  try { saved = localStorage.getItem("hs-theme"); } catch (e) {}
+  var theme = saved || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+  document.documentElement.dataset.theme = theme;
+})();
+</script>
+<link rel="stylesheet" href="/assets/pages.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Dead Hang Progression Planner",
+"url":"https://hangspine.com/tools/hang-progression-planner/","applicationCategory":"HealthApplication",
+"operatingSystem":"Any (web browser)","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+"description":"Generate a 4–8 week dead hang progression plan from your current max hang time.",
+"publisher":{"@type":"Organization","name":"HangSpine","url":"https://hangspine.com/"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How fast can I improve my dead hang time?","acceptedAnswer":{"@type":"Answer","text":"Beginners commonly double their max hang within 4–8 weeks of consistent training (3 short sessions a week). This planner assumes roughly 8% improvement per week — deliberately conservative — and builds in a deload so grip and connective tissue recover."}},
+{"@type":"Question","name":"How often should I train dead hangs?","acceptedAnswer":{"@type":"Answer","text":"Three sessions a week with full rest days between them works for most people. Grip and forearm tissue recover slower than you feel, so daily max attempts are the fastest way to stall."}},
+{"@type":"Question","name":"What is a deload week and why does the plan include one?","acceptedAnswer":{"@type":"Answer","text":"A deload is a planned easier week — lighter sets, no max test — that lets tendons and grip recover while you keep the habit. Plans of 6+ weeks include one around week 4."}}]}
+</script>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="/en/"><img class="brand-icon" src="/assets/app-icon.png" alt="HangSpine">HangSpine</a>
+    <div class="navlinks">
+      <a href="/tools/" aria-current="page">Free Tools</a>
+      <a href="/scoliosis/">Scoliosis Guide</a>
+      <a href="/blog/dead-hangs-scoliosis-evidence/">Evidence</a>
+      <a href="/en/">App</a>
+      <a class="keep" href="/zh/">中文</a>
+      <button id="themeToggle" class="theme-toggle" aria-label="Switch theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="/tools/">Free Tools</a> › Hang Progression Planner</div>
+    <div class="kicker">FREE TOOL · NO SIGNUP · NO ADS</div>
+    <h1>Dead Hang Progression Planner</h1>
+    <p class="sub">Tell us your longest dead hang; get a printable 4–8 week plan — three sessions a week, weekly targets at a conservative ~8%/week, and a built-in deload week so your grip and tendons keep up.</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="tool-box">
+      <div class="frow">
+        <label>Current max dead hang (seconds)
+          <input type="number" id="max" min="5" max="600" placeholder="e.g. 35" inputmode="numeric">
+        </label>
+        <label>Plan length
+          <select id="weeks">
+            <option value="4">4 weeks</option>
+            <option value="6" selected>6 weeks</option>
+            <option value="8">8 weeks</option>
+          </select>
+        </label>
+      </div>
+      <button class="btn" id="go" type="button">Generate my plan</button>
+      <div class="err" id="err" hidden>Enter your current max hang (at least 5 seconds — if you can't hang 5s yet, start with 2–3 supported hangs holding a towel over the bar, and retest in a week).</div>
+      <div class="result" id="out" hidden>
+        <p class="meta" id="meta" style="margin-top:0;"></p>
+        <div style="overflow-x:auto;"><table id="plan"></table></div>
+        <p class="meta" style="margin-top:12px;">Want the counting done for you? HangSpine for Apple Watch starts timing the moment you mount the bar and pauses when you let go — no buttons with numb fingers.
+        <a href="https://apps.apple.com/app/id6817156558" style="font-weight:600;">Get HangSpine →</a></p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h2>How to run the plan</h2>
+      <ul>
+        <li><strong>Three sessions a week</strong>, at least one rest day between them (e.g. Mon / Wed / Sat).</li>
+        <li><strong>Session A — volume:</strong> four sets at rising percentages of this week's target. Rest 2 minutes between sets.</li>
+        <li><strong>Session B — repeatable work:</strong> three comfortable sets at ~70% of target. These should feel easy; easy is the point.</li>
+        <li><strong>Session C — test:</strong> one max attempt at the week's target, then two back-off sets at 60%.</li>
+        <li><strong>Deload week</strong> (6–8 week plans): lighter sets, no max test. Boring on purpose — tendons adapt slower than muscles.</li>
+        <li><strong>Rules that keep it working:</strong> full grip, no swinging; stop the set when form goes, not when grip screams; if you miss a week's target twice, repeat the week instead of forcing it.</li>
+      </ul>
+      <div class="note"><strong>Safety:</strong> this is a general fitness template, not medical or physical-therapy advice. Shoulder pain, tingling, or a diagnosed spine condition (including scoliosis) means checking with a clinician first — and reading our <a href="/blog/dead-hangs-scoliosis-evidence/">dead hangs &amp; scoliosis evidence review</a>. Not sure where you stand? <a href="/tools/hang-calculator/">Test and benchmark your max hang first →</a></div>
+
+      <h2>Why ~8% a week?</h2>
+      <p>Beginners often double their hang in the first two months, so 8%/week is deliberately on the conservative side — the plan's job is to keep you training <em>next</em> week, not to flatter you this week. Grip endurance responds quickly, but the forearm tendons that make hanging comfortable adapt on their own slower schedule; a modest weekly target plus one deload keeps both curves pointed the right way. If you blow past a target, celebrate, jump ahead a week, and let Session B stay easy.</p>
+
+      <h2>Frequently asked questions</h2>
+      <details open><summary>How fast can I improve my dead hang?</summary><p>Most beginners double their max in 4–8 weeks of three easy sessions a week. The gains then slow — that's normal, and it's when plan and consistency matter more than effort.</p></details>
+      <details><summary>How often should I train hangs?</summary><p>Three sessions a week with rest days between. Daily max attempts are the classic way to stall and pick up elbow niggles.</p></details>
+      <details><summary>What's a deload week?</summary><p>A planned easier week — lighter sets, no test — letting grip and connective tissue catch up while you keep the habit alive. Plans of 6+ weeks include one around week 4.</p></details>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="brand" style="color:#fff"><img class="footer-icon" src="/assets/app-icon.png" alt="">HangSpine</div>
+      <p style="margin:10px 0 0;">Free tools &amp; evidence-based spine resources.</p>
+    </div>
+    <div>
+      <p style="margin:0 0 6px;"><a href="/en/">HangSpine App</a></p>
+      <p style="margin:0 0 6px;"><a href="/scoliosis/">Scoliosis Guide</a></p>
+      <p style="margin:0 0 6px;"><a href="/support/en/">Support</a></p>
+      <p style="margin:0;"><a href="/privacy/">Privacy Policy</a></p>
+    </div>
+    <div style="max-width:420px;">
+      <p style="margin:0;">© 2026 HangSpine. All rights reserved.</p>
+      <p class="disclaimer" style="max-width:none;">This planner is a general fitness template for education; it is not medical advice, diagnosis, or treatment. Stop if you feel pain, and consult a qualified clinician for spine or shoulder concerns.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  function apply(t) {
+    document.documentElement.dataset.theme = t;
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", t === "light" ? "#ffffff" : "#0a0a0a");
+    var btn = document.getElementById("themeToggle");
+    if (btn) btn.textContent = t === "light" ? "\u{1F319}" : "\u2600\uFE0F";
+    try { localStorage.setItem("hs-theme", t); } catch (e) {}
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    var btn = document.getElementById("themeToggle");
+    if (btn) btn.addEventListener("click", function () {
+      apply(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
+    });
+    apply(document.documentElement.dataset.theme);
+  });
+
+  var round5 = function (s) { return Math.round(s / 5) * 5; };
+  var pct = function (target, p) { return round5(target * p) + "s"; };
+
+  function build(max, weeks) {
+    var deloadWeek = weeks >= 6 ? 4 : -1;
+    var rows = [];
+    for (var w = 1; w <= weeks; w++) {
+      var target = round5(max * Math.pow(1.08, w));
+      var r = { week: w, target: target + "s" };
+      if (w === deloadWeek) {
+        r.a = pct(target, .4) + " · " + pct(target, .5);
+        r.b = "3 × " + pct(target, .5);
+        r.c = "Deload — no max test";
+      } else {
+        r.a = pct(target, .5) + " · " + pct(target, .6) + " · " + pct(target, .7) + " · " + pct(target, .8);
+        r.b = "3 × " + pct(target, .7);
+        r.c = "Max " + target + "s, then 2 × " + pct(target, .6);
+      }
+      rows.push(r);
+    }
+    return rows;
+  }
+
+  function generate() {
+    var max = parseInt(document.getElementById("max").value, 10);
+    var weeks = parseInt(document.getElementById("weeks").value, 10);
+    var err = document.getElementById("err"), out = document.getElementById("out");
+    if (!max || max < 5 || max > 600) { err.hidden = false; out.hidden = true; return; }
+    err.hidden = true;
+    var rows = build(max, weeks);
+    document.getElementById("meta").textContent =
+      "Starting from a " + max + "s max hang · 3 sessions/week · weekly targets at ~8% progression" +
+      (weeks >= 6 ? " · deload on week 4" : "") + " · final target " + rows[rows.length - 1].target;
+    var t = document.getElementById("plan");
+    t.innerHTML = "<thead><tr><th>Week</th><th>Target</th><th>Session A · volume</th><th>Session B · easy</th><th>Session C · test</th></tr></thead><tbody>" +
+      rows.map(function (r) {
+        return "<tr><td><strong>" + r.week + "</strong></td><td><strong>" + r.target + "</strong></td><td>" + r.a + "</td><td>" + r.b + "</td><td>" + r.c + "</td></tr>";
+      }).join("") + "</tbody>";
+    out.hidden = false;
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("go").addEventListener("click", generate);
+    document.getElementById("max").addEventListener("keydown", function (e) { if (e.key === "Enter") generate(); });
+  });
+})();
+</script>
+
+</body>
+</html>
