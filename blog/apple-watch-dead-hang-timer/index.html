@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a0a">
+<title>Timing Dead Hangs on Apple Watch: Why Built-in Apps Fall Short</title>
+<meta name="description" content="Apple Watch's Workout app can't comfortably time dead hangs: skipped timers, vanishing interval counters, silent alerts — and both hands are on the bar. What actually works, from a hang-app developer.">
+<link rel="icon" href="/assets/app-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Timing Dead Hangs on Apple Watch: Why Built-in Apps Fall Short">
+<meta property="og:description" content="The real, documented limitations — and what hang people actually use instead.">
+<meta property="og:url" content="https://hangspine.com/blog/apple-watch-dead-hang-timer/">
+<meta property="og:image" content="https://hangspine.com/assets/app-icon.png">
+<link rel="canonical" href="https://hangspine.com/blog/apple-watch-dead-hang-timer/">
+<script>
+(function () {
+  var saved = null;
+  try { saved = localStorage.getItem("hs-theme"); } catch (e) {}
+  var theme = saved || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+  document.documentElement.dataset.theme = theme;
+})();
+</script>
+<link rel="stylesheet" href="/assets/pages.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Timing Dead Hangs on Apple Watch: Why Built-in Apps Fall Short",
+"description":"The documented limitations of timing dead hangs with built-in Apple Watch features, and what hang trainers use instead.",
+"datePublished":"2026-11-05","dateModified":"2026-11-05",
+"author":{"@type":"Person","name":"William","url":"https://hangspine.com/about/"},
+"publisher":{"@type":"Organization","name":"HangSpine","url":"https://hangspine.com/"},
+"mainEntityOfPage":"https://hangspine.com/blog/apple-watch-dead-hang-timer/"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Can the Apple Watch Workout app time dead hangs?","acceptedAnswer":{"@type":"Answer","text":"Technically it starts a workout and counts time — but it wasn't designed for hangs: you can't tap the screen mid-hang with both hands on the bar, interval features have well-documented quirks (skipping timers, disappearing interval counters, missed haptics across watchOS versions), and there's no concept of 'one hang = one rep'. People who train hangs seriously end up using either the built-in Timer app (worked, but you can't start it hands-full) or a dedicated hang app with auto-detection."}},
+{"@type":"Question","name":"What is the most reliable way to time hangs on Apple Watch?","acceptedAnswer":{"@type":"Answer","text":"Auto-detection — the watch sensing when you mount the bar and when you let go, so no buttons exist in the workflow. That's the approach HangSpine (our app) takes with the gyroscope. The free alternative that always works: a wall clock and honest eyes, logged in our web planner."}},
+{"@type":"Question","name":"Why do interval workouts misbehave on Apple Watch?","acceptedAnswer":{"@type":"Answer","text":"Multiple users have reported skipping workout timers after watchOS updates, interval counters disappearing from the Workout app, custom interval workouts getting stuck, and timer haptics failing — across various watchOS versions. None of these are officially acknowledged as a single bug; collectively they're why interval-reliant trainees keep third-party timers installed."}}]}
+</script>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="/en/"><img class="brand-icon" src="/assets/app-icon.png" alt="HangSpine">HangSpine</a>
+    <div class="navlinks">
+      <a href="/tools/">Free Tools</a>
+      <a href="/scoliosis/">Scoliosis Guide</a>
+      <a href="/blog/dead-hangs-scoliosis-evidence/">Evidence</a>
+      <a href="/en/">App</a>
+      <a class="keep" href="/zh/">中文</a>
+      <button id="themeToggle" class="theme-toggle" aria-label="Switch theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="/en/">HangSpine</a> › Blog</div>
+    <div class="kicker">APPLE WATCH GUIDE · 7 MIN READ</div>
+    <h1>Timing dead hangs on Apple Watch</h1>
+    <p class="sub">The Workout app is a marvel for runs and rides. Then you try to hang from a bar with it. What follows is the honest field report on why built-in features fight hang training — every complaint below is a real, linked report from Watch owners — and what actually works.</p>
+    <div class="byline">
+      <img src="/assets/app-icon.png" alt="HangSpine">
+      <div>By <a href="/about/">William</a>, developer of HangSpine (a hang-timing app, disclosed throughout) · Nov 5, 2026</div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap prose">
+
+    <div class="tldr">
+      <div class="t">TL;DR + DISCLOSURE</div>
+      <p style="margin:8px 0 0;">Yes, we make a hang-timing app — so we'll be extra careful to separate <strong>documented problems</strong> (linked threads) from our opinions. Summary: the built-in stack can time a hang but wasn't built for one. <strong>Four frictions:</strong> no free hands for buttons mid-hang; workout timers with a record of skipping after updates; interval counters that vanish or get stuck; silent haptic failures that ruin set structure. The fix spectrum: wall clock (free, works) → Timer app (hands problem) → auto-detecting watch apps (no buttons at all). Benchmarks and planning live in our <a href="/tools/hang-calculator/">calculator</a> and <a href="/tools/hang-progression-planner/">planner</a>, app or no app.</p>
+    </div>
+
+    <h2>Problem 1: The hands problem — the one Apple can't patch</h2>
+    <p>Every built-in timing path assumes you can touch the screen or crown at the start and end of an effort. A dead hang is defined by both hands being occupied, overhead, gripping your entire bodyweight, with forearms you're actively trying to exhaust. Tapping a 44mm screen with your nose is technically possible; recommend it to no one. Any honest hang-timing solution has to remove the interaction, not polish it — which is why auto-detection (the watch sensing mount and release via motion sensors) exists at all.</p>
+
+    <h2>Problem 2: Workout-app timers with a skipping habit</h2>
+    <p>The Workout app's timer display has a documented history of misbehaving after OS updates: a Series 9 owner's workout timer visibly skipping and jumping on watchOS 11 <a href="https://www.reddit.com/r/AppleWatch/comments/1fszpco/workout_timer_skipping" target="_blank" rel="noopener">[1]</a>, and gym-goers reporting that interval timers changed behavior post-update and became unusable for their split structure <a href="https://www.reddit.com/r/AppleWatch/comments/1idssrl/hate_update_timer" target="_blank" rel="noopener">[2]</a>. For hang training the stakes are modest — you lose clean seconds, not safety — but a timer you re-verify against a wall clock isn't a timer, it's a suggestion.</p>
+
+    <h2>Problem 3: Intervals that vanish or get stuck</h2>
+    <p>Interval workouts are the closest built-in analog to "hang 15, rest 90, repeat" — and the part users report breaking in creative ways: the interval counter disappearing from the Workout app mid-session <a href="https://www.reddit.com/r/AppleWatchFitness/comments/16hh1iq/interval_counter_has_disappeared_in_the_workout" target="_blank" rel="noopener">[3]</a>, and custom interval workouts getting stuck undeletable in the Fitness app <a href="https://www.reddit.com/r/AppleWatchFitness/comments/1x3f8d1/stuck_custom_interval_run_in_your_workouts_that" target="_blank" rel="noopener">[4]</a>. HIIT notification quirks across watchOS versions add to the pattern <a href="https://www.reddit.com/r/AppleWatch/comments/1nlqw2d/apple_watch_workout_notification_split_hiit" target="_blank" rel="noopener">[5]</a>. To be fair to Apple: none of this is one acknowledged bug, several threads end in workarounds, and some reports may be user error or watch-face settings. The pattern that matters for hang people: <em>interval machinery is the fragile part of the built-in stack, and hanging leans on exactly that machinery.</em></p>
+
+    <h2>Problem 4: The silent-haptic failure</h2>
+    <p>Hanging sets are short and rest-bounded; the haptic at zero IS the program. So when timers fire with no vibration <a href="https://www.reddit.com/r/AppleWatch/comments/1tfe08o/why_are_timers_not_working" target="_blank" rel="noopener">[6]</a>, a hang session quietly loses its structure — you find out at the end of a set that the signal never came. Do-not-disturb, Theater Mode, and haptic settings are usually the culprit and worth checking first; the failure mode is rare but session-wrecking when it hits.</p>
+
+    <h2>What actually works: the honest spectrum</h2>
+    <table>
+      <thead><tr><th>Method</th><th>Cost</th><th>Best for</th><th>The catch</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Wall clock / gym timer</strong></td><td>$0</td><td>Everyone, honestly</td><td>You read it; no log, no streak</td></tr>
+        <tr><td><strong>Timer app, pre-started</strong></td><td>$0</td><td>Single max hangs</td><td>Start/stop still needs hands; fumbly for sets</td></tr>
+        <tr><td><strong>Workout app intervals</strong></td><td>$0</td><td>Structured hang/rest sets</td><td>The documented quirks above + hands problem</td></tr>
+        <tr><td><strong>Web timers (Just Hold etc.)</strong></td><td>$0</td><td>Home setup, any device</td><td>Phone must be visible; no auto-detect</td></tr>
+        <tr><td><strong>Auto-detect watch apps</strong> (HangSpine, ours; others emerging)</td><td>one-time</td><td>Sets, streaks, real data</td><td>The watch must be worn correctly; detection quality varies by app</td></tr>
+      </tbody>
+    </table>
+    <p>One category note: dedicated hang apps are proliferating fast — a sign the category agrees on the diagnosis. We compared the field honestly in our <a href="/blog/dead-hang-tracker-guide/">tracker buyer's guide</a>, including apps we don't make. Whichever route you choose, the training logic stays the same one our <a href="/tools/hang-progression-planner/">progression planner</a> prints: easy volume, weekly targets, honest tests.</p>
+
+    <h2>Settings worth checking before blaming the watch</h2>
+    <ul>
+      <li>Haptics: Settings → Sounds &amp; Haptics → check Prominent/reminder haptics; confirm Theater Mode and Focus/DND aren't silencing interval alerts.</li>
+      <li>Workout app: Settings → Workout → verify "Auto Pause" behavior for non-run activities (auto-pause has surprised more than one trainer mid-set).</li>
+      <li>After any watchOS update: run one throwaway interval session before your real session — most "broken timer" reports cluster right after updates <a href="https://www.reddit.com/r/AppleWatch/comments/1fszpco/workout_timer_skipping" target="_blank" rel="noopener">[1]</a>.</li>
+    </ul>
+
+    <h2>A worked example: why a normal hang session breaks the built-ins</h2>
+    <p>Take a standard session from our <a href="/tools/hang-progression-planner/">planner</a> — nothing exotic: <em>warm-up 20s easy hang; then 4 sets of 30s at target with 90s rest; finish with one 15s active-hang; log total time.</em> Now run it on the built-in stack. The Workout app wants a workout type — pick "Functional Strength," fine — but "4 sets × 30s" has to become a custom interval workout you build beforehand and pray doesn't hit the stuck-or-vanishing behaviors above <a href="https://www.reddit.com/r/AppleWatchFitness/comments/16hh1iq/interval_counter_has_disappeared_in_the_workout" target="_blank" rel="noopener">[3]</a> <a href="https://www.reddit.com/r/AppleWatchFitness/comments/1x3f8d1/stuck_custom_interval_run_in_your_workouts_that" target="_blank" rel="noopener">[4]</a>. The 15s active hang isn't an interval anyone configured — it's a manual lap... tapped with what, exactly? And the single number the session actually produced — total hang time across sets — is nowhere in the summary, because "time in workout" includes 90-second rests. By the end you've spent more attention administering the timers than the timers spent timing you. That administration tax, times every session, times every week, is the real reason hang-specific apps exist: not because Apple's software is bad, but because the shape of the task — short efforts, no free hands, one meaningful aggregate — is exactly the shape built-in fitness tooling doesn't have. The wall clock handles it fine, for the record. So does anything that starts and stops itself — which is, very simply and without exaggeration, the entire engineering brief for auto-detection.</p>
+
+    <h2>FAQ</h2>
+    <details open><summary>Can the Workout app time dead hangs?</summary><p>It can run, but it wasn't built for hangs: no free hands, no hang-as-rep concept, and interval quirks documented above. Fine for "did I roughly do my minutes"; frustrating for structured sets.</p></details>
+    <details><summary>Most reliable method?</summary><p>Auto-detection — timing that starts and stops itself from motion (our approach; others are emerging). Free and bulletproof: the wall clock, logged in our <a href="/tools/hang-progression-planner/">planner</a>.</p></details>
+    <details><summary>Are these Watch bugs or my settings?</summary><p>Start with settings (haptics, Focus, auto-pause) — see the checklist above. The linked threads show genuine post-update misbehavior too; a one-session shakedown after updates catches it early <a href="https://www.reddit.com/r/AppleWatch/comments/1fszpco/workout_timer_skipping" target="_blank" rel="noopener">[1]</a> <a href="https://www.reddit.com/r/AppleWatch/comments/1tfe08o/why_are_timers_not_working" target="_blank" rel="noopener">[6]</a>.</p></details>
+
+    <h2>Sources (all real, linked reports)</h2>
+    <ol class="refs">
+      <li>r/AppleWatch — Workout timer "skipping" (watchOS 11): <a href="https://www.reddit.com/r/AppleWatch/comments/1fszpco/workout_timer_skipping" target="_blank" rel="noopener">reddit.com</a></li>
+      <li>r/AppleWatch — interval timers changed after update: <a href="https://www.reddit.com/r/AppleWatch/comments/1idssrl/hate_update_timer" target="_blank" rel="noopener">reddit.com</a></li>
+      <li>r/AppleWatchFitness — interval counter disappeared: <a href="https://www.reddit.com/r/AppleWatchFitness/comments/16hh1iq/interval_counter_has_disappeared_in_the_workout" target="_blank" rel="noopener">reddit.com</a></li>
+      <li>r/AppleWatchFitness — stuck custom interval workout: <a href="https://www.reddit.com/r/AppleWatchFitness/comments/1x3f8d1/stuck_custom_interval_run_in_your_workouts_that" target="_blank" rel="noopener">reddit.com</a></li>
+      <li>r/AppleWatch — HIIT notification quirks: <a href="https://www.reddit.com/r/AppleWatch/comments/1nlqw2d/apple_watch_workout_notification_split_hiit" target="_blank" rel="noopener">reddit.com</a></li>
+      <li>r/AppleWatch — timers without haptic feedback: <a href="https://www.reddit.com/r/AppleWatch/comments/1tfe08o/why_are_timers_not_working" target="_blank" rel="noopener">reddit.com</a></li>
+      <li>Related: <a href="/blog/dead-hang-tracker-guide/">Dead hang tracker guide</a> · <a href="/blog/dead-hang-muscles/">What muscles dead hangs work</a> · <a href="/tools/hang-progression-planner/">Progression planner</a></li>
+    </ol>
+
+    <div class="note"><strong>Disclosure:</strong> HangSpine is our product — a paid Apple Watch app that auto-detects hangs. Every limitation above is a linked user report or clearly marked as our opinion, and the free wall-clock method is listed first because it's true. <strong>Note on claims:</strong> we deliberately avoid repeating unverified "watchOS X broke Y" summaries; only threads you can click are cited.</div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="brand" style="color:#fff"><img class="footer-icon" src="/assets/app-icon.png" alt="">HangSpine</div>
+      <p style="margin:10px 0 0;">Free tools &amp; evidence-based spine resources.</p>
+    </div>
+    <div>
+      <p style="margin:0 0 6px;"><a href="/en/">HangSpine App</a></p>
+      <p style="margin:0 0 6px;"><a href="/tools/">Free Tools</a></p>
+      <p style="margin:0 0 6px;"><a href="/support/en/">Support</a></p>
+      <p style="margin:0;"><a href="/privacy/">Privacy Policy</a></p>
+    </div>
+    <div style="max-width:420px;">
+      <p style="margin:0;">© 2026 HangSpine. All rights reserved.</p>
+      <p class="disclaimer" style="max-width:none;">All content is provided for general education and reference purposes only. Product names and trademarks belong to their owners; this article is independent commentary, not affiliated with or endorsed by Apple.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  function apply(t) {
+    document.documentElement.dataset.theme = t;
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", t === "light" ? "#ffffff" : "#0a0a0a");
+    var btn = document.getElementById("themeToggle");
+    if (btn) btn.textContent = t === "light" ? "\u{1F319}" : "\u2600\uFE0F";
+    try { localStorage.setItem("hs-theme", t); } catch (e) {}
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    var btn = document.getElementById("themeToggle");
+    if (btn) btn.addEventListener("click", function () {
+      apply(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
+    });
+    apply(document.documentElement.dataset.theme);
+  });
+})();
+</script>
+
+</body>
+</html>
