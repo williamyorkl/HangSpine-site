@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0a0a0a">
-<title>Auto-Start Dead Hang Timers: How Hands-Free Hang Detection Works (2026)</title>
-<meta name="description" content="Auto-start dead hang timers detect when you grab the bar and start timing by themselves. How the detection works, which apps actually do it, and what it changes about your training.">
-<link rel="icon" href="/assets/app-icon.png">
+<title>Auto-Start Dead Hang Timer: How Hands-Free Detection Works</title>
+<meta name="description" content="Auto-start dead hang timers begin counting when you grab the bar. How watch motion detection works, which apps do it, and what it changes.">
+<link rel="icon" href="/assets/app-icon-64.png">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Auto-Start Dead Hang Timers: How Hands-Free Hang Detection Works">
-<meta property="og:description" content="The timer that starts itself: how auto-detection works, which apps have it, and why it matters.">
+<meta property="og:title" content="Auto-Start Dead Hang Timer: How Hands-Free Detection Works">
+<meta property="og:description" content="Auto-start dead hang timers begin counting when you grab the bar. How watch motion detection works, which apps do it, and what it changes.">
 <meta property="og:url" content="https://hangspine.com/blog/auto-start-dead-hang-timer/">
-<meta property="og:image" content="https://hangspine.com/assets/app-icon.png">
+<meta property="og:image" content="https://hangspine.com/assets/og/auto-start-dead-hang-timer.png">
 <link rel="canonical" href="https://hangspine.com/blog/auto-start-dead-hang-timer/">
 <script>
 (function () {
@@ -23,12 +23,7 @@
 </script>
 <link rel="stylesheet" href="/assets/pages.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"Auto-Start Dead Hang Timers: How Hands-Free Hang Detection Works (2026)",
-"description":"How auto-start hang detection works, which apps have it, and what it changes.",
-"datePublished":"2026-11-05","dateModified":"2026-11-05",
-"author":{"@type":"Person","name":"William","url":"https://hangspine.com/about/"},
-"publisher":{"@type":"Organization","name":"HangSpine","url":"https://hangspine.com/"},
-"mainEntityOfPage":"https://hangspine.com/blog/auto-start-dead-hang-timer/"}
+{"@context":"https://schema.org","@type":"Article","headline":"Auto-Start Dead Hang Timer: How Hands-Free Detection Works","description":"Auto-start dead hang timers begin counting when you grab the bar. How watch motion detection works, which apps do it, and what it changes.","datePublished":"2026-11-05","dateModified":"2026-11-05","author":{"@type":"Person","name":"William","url":"https://hangspine.com/about/"},"publisher":{"@type":"Organization","name":"HangSpine","url":"https://hangspine.com/"},"mainEntityOfPage":"https://hangspine.com/blog/auto-start-dead-hang-timer/","image":"https://hangspine.com/assets/og/auto-start-dead-hang-timer.png"}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -37,13 +32,19 @@
 {"@type":"Question","name":"How does a watch know I'm hanging?","acceptedAnswer":{"@type":"Answer","text":"Wrist orientation and motion signatures: raising your arm overhead under load produces a distinctive gyroscope and gravity-vector pattern, and real grip adds muscular tremor that an empty-hand raise can't fake. Apps learn this signature — HangSpine even adapts to your personal mount pattern over time, on-device."}},
 {"@type":"Question","name":"Does auto-start matter, or is it a gimmick?","acceptedAnswer":{"@type":"Answer","text":"It matters at the moment that decides everything: the start. Manual timers add a tap between you and the rep, which is exactly the friction that kills 'one more hang' habits. Auto-start removes it — and as a side effect, every hang gets logged, so your data is complete without any bookkeeping."}}]}
 </script>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Auto-Start Dead Hang Timer: How Hands-Free Detection Works">
+<meta name="twitter:description" content="Auto-start dead hang timers begin counting when you grab the bar. How watch motion detection works, which apps do it, and what it changes.">
+<meta name="twitter:image" content="https://hangspine.com/assets/og/auto-start-dead-hang-timer.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://hangspine.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://hangspine.com/blog/"},{"@type":"ListItem","position":3,"name":"Auto-Start Dead Hang Timer: How Hands-Free Detection Works","item":"https://hangspine.com/blog/auto-start-dead-hang-timer/"}]}</script>
 </head>
 <body>
 
 <nav>
   <div class="wrap">
-    <a class="brand" href="/en/"><img class="brand-icon" src="/assets/app-icon.png" alt="HangSpine">HangSpine</a>
+    <a class="brand" href="/en/"><img class="brand-icon" src="/assets/app-icon-64.png" alt="HangSpine">HangSpine</a>
     <div class="navlinks">
+      <a href="/blog/">Blog</a>
       <a href="/tools/">Free Tools</a>
       <a href="/scoliosis/">Scoliosis Guide</a>
       <a href="/blog/dead-hangs-scoliosis-evidence/">Evidence</a>
@@ -56,12 +57,12 @@
 
 <header class="page-head">
   <div class="wrap">
-    <div class="breadcrumb"><a href="/en/">HangSpine</a> › Blog</div>
+    <div class="breadcrumb"><a href="/en/">HangSpine</a> › <a href="https://hangspine.com/blog/">Blog</a></div>
     <div class="kicker">FEATURE GUIDE · 7 MIN READ · DISCLOSED</div>
     <h1>Auto-start dead hang timers</h1>
     <p class="sub">You grab the bar; the timer is already running. You let go; it stops and logs the set. Auto-start sounds like a small luxury until you remember that hanging is the one exercise where your hands are — by definition — unavailable. Here's how the detection actually works, who does it well, and what it quietly changes about your training.</p>
     <div class="byline">
-      <img src="/assets/app-icon.png" alt="HangSpine">
+      <img src="/assets/app-icon-64.png" alt="HangSpine">
       <div>By <a href="/about/">William</a>, developer of HangSpine (one of the apps below — disclosed throughout) · Nov 5, 2026</div>
     </div>
   </div>
@@ -75,7 +76,14 @@
       <p style="margin:8px 0 0;">Auto-start hang timers use the Apple Watch's motion sensors to detect mounting the bar and begin timing with <strong>zero taps</strong> — the feature category is new, small, and genuinely useful. On watchOS, the honest field: <strong>HangSpine</strong> (ours — gyroscope mount/dismount detection, on-device learning), <strong>Hang Habit</strong> (tap-to-arm + motion detection), and <strong>hangtime</strong> ("No buttons. Just hang."), plus manual-timer apps for everyone else. We make one of these, so every claim below is sourced or marked as ours. If you're new to hanging itself, start with the <a href="/tools/hang-calculator/">benchmarks calculator</a> and the <a href="/tools/hang-progression-planner/">progression planner</a>.</p>
     </div>
 
-    <h2>The problem auto-start actually solves</h2>
+        <div class="cta-box">
+      <div><strong>HangSpine</strong> turns your Apple Watch into a dead-hang counter — it starts when you grab the bar and stops when you let go. No buttons mid-set.</div>
+      <a class="btn" href="https://apps.apple.com/app/id6817156558?ct=blog_auto-start-dead-hang-timer">See HangSpine →</a>
+    </div>
+
+    <p class="note">Comparing apps? Read the <a href="/blog/best-dead-hang-app/">honest 2026 comparison</a> — including the cases where a competitor is the better buy.</p>
+
+<h2>The problem auto-start actually solves</h2>
     <p>Every manual timing path fails at the same moment: <strong>the start</strong>. Phone on the floor, timer on the wrist — either way, firing it demands a tap, and hanging is the one exercise where both hands are committed, overhead, under your full bodyweight, with forearms you are actively exhausting. People solve this creatively (chin-to-screen taps, pre-started stopwatches, asking the dog), and every workaround adds the same thing: a little friction between deciding to hang and hanging. Enough of those little frictions and the daily habit quietly dies — which is the real stakes here, because <a href="/blog/dead-hang-muscles/">hanging's benefits</a> compound on consistency, not heroics.</p>
     <p>Auto-start deletes the moment entirely. Motion sensors notice the mount; timing begins; sensors notice the release; timing stops and the set is logged. No buttons exist in the workflow. That last part — logged — matters more than people expect: <strong>complete data without bookkeeping</strong>, which is what makes streaks, totals and trends real instead of approximate.</p>
 
@@ -123,7 +131,7 @@
 
     <h2>Sources</h2>
     <ol class="refs">
-      <li>HangSpine — auto start/stop detection &amp; on-device trace learning (our app, disclosed): <a href="https://hangspine.com" target="_blank" rel="noopener">hangspine.com</a> · <a href="https://apps.apple.com/app/id6817156558" target="_blank" rel="noopener">App Store</a></li>
+      <li>HangSpine — auto start/stop detection &amp; on-device trace learning (our app, disclosed): <a href="https://hangspine.com" target="_blank" rel="noopener">hangspine.com</a> · <a href="https://apps.apple.com/app/id6817156558?ct=blog_auto-start-dead-hang-timer" target="_blank" rel="noopener">App Store</a></li>
       <li>Hang Habit: Dead Hang Timer — motion-based auto detection: <a href="https://apps.apple.com/us/app/hang-habit-dead-hang-timer/id6756476871" target="_blank" rel="noopener">App Store</a></li>
       <li>hangtime / Hang Tracker listings: <a href="https://apps.apple.com/us/app/hang-tracker-dead-hang-timer/id6762627977" target="_blank" rel="noopener">App Store</a></li>
       <li>Related on this site: <a href="/blog/apple-watch-dead-hang-timer/">Why built-in Watch apps fall short</a> · <a href="/blog/dead-hang-tracker-guide/">Tracker buyer's guide</a> · <a href="/blog/dead-hang-muscles/">What muscles hangs work</a> · <a href="/tools/hang-calculator/">Dead hang calculator</a></li>
@@ -131,16 +139,29 @@
 
     <div class="note"><strong>Disclosure:</strong> HangSpine is our product — a paid, one-time-purchase Apple Watch app. This guide names competitors accurately and links free alternatives because the reader we help today is the reader who trusts us tomorrow. <strong>Medical disclaimer:</strong> educational content only; not medical advice, diagnosis, or treatment.</div>
   </div>
+    <div class="wrap prose">
+    <section class="related">
+      <h2>Related reading</h2>
+      <ul class="related-list">
+        <li><a href="/blog/best-dead-hang-app/">Best Dead Hang App for Apple Watch (2026): Honest Comparison</a> — HangSpine vs Hang Habit vs hangtime vs manual timers: which dead hang app fits how you train? An honest, disclosed…</li>
+        <li><a href="/blog/apple-watch-dead-hang-timer/">Dead Hang Timer on Apple Watch: What Works</a> — Why Apple Watch's built-in Workout app struggles to time dead hangs — skipped timers, vanished intervals, both hands on…</li>
+        <li><a href="/blog/dead-hang-tracker-guide/">Dead Hang Tracker Guide: What Matters in a Timer App</a> — Shopping for a dead hang timer? The five features that actually matter — auto-detection, friction, streaks, data…</li>
+      </ul>
+      <p class="note" style="margin-top:14px;"><a href="/blog/">Browse all guides →</a></p>
+    </section>
+    </div>
+
 </main>
 
 <footer>
   <div class="wrap">
     <div>
-      <div class="brand" style="color:#fff"><img class="footer-icon" src="/assets/app-icon.png" alt="">HangSpine</div>
+      <div class="brand" style="color:#fff"><img class="footer-icon" src="/assets/app-icon-64.png" alt="">HangSpine</div>
       <p style="margin:10px 0 0;">Free tools &amp; evidence-based spine resources.</p>
     </div>
     <div>
       <p style="margin:0 0 6px;"><a href="/en/">HangSpine App</a></p>
+      <p style="margin:0 0 6px;"><a href="/blog/">Blog</a></p>
       <p style="margin:0 0 6px;"><a href="/tools/">Free Tools</a></p>
       <p style="margin:0 0 6px;"><a href="/support/en/">Support</a></p>
       <p style="margin:0;"><a href="/privacy/">Privacy Policy</a></p>

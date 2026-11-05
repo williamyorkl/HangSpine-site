@@ -144,3 +144,19 @@ footer a { color: #d2d2d7; }
 .footer-icon { width: 26px; height: 26px; border-radius: 22%; vertical-align: -7px; margin-right: 8px; }
 .disclaimer { border-top: 1px solid rgba(255,255,255,.12); margin-top: 26px; padding-top: 18px;
               font-size: .74rem; color: #86868b; max-width: 760px; }
+
+
+/* ---- related + CTA + hub (2026-11-05) ---- */
+.related { margin-top: 52px; border-top: 1px solid var(--table-line); padding-top: 6px; }
+.related h2 { margin-top: 28px; }
+.related-list { list-style: none; padding: 0; margin: 12px 0 0; }
+.related-list li { margin: 12px 0; font-size: .95rem; color: var(--ink2); }
+.related-list a { font-weight: 600; color: var(--accent2); }
+.cta-box { display: flex; gap: 18px; align-items: center; justify-content: space-between;
+           flex-wrap: wrap; background: var(--card); border: 1px solid var(--card-border);
+           border-radius: 18px; padding: 18px 22px; margin: 26px 0; }
+.cta-box div { flex: 1 1 320px; font-size: .95rem; color: var(--ink2); }
+.cta-box strong { color: var(--ink); }
+.cta-box .btn { margin: 0; padding: 10px 22px; font-size: .92rem; }
+.card h4 a { color: var(--ink); }
+.card h4 a:hover { color: var(--accent2); text-decoration: none; }

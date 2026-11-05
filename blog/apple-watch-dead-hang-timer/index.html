@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0a0a0a">
-<title>Timing Dead Hangs on Apple Watch: Why Built-in Apps Fall Short</title>
-<meta name="description" content="Apple Watch's Workout app can't comfortably time dead hangs: skipped timers, vanishing interval counters, silent alerts — and both hands are on the bar. What actually works, from a hang-app developer.">
-<link rel="icon" href="/assets/app-icon.png">
+<title>Dead Hang Timer on Apple Watch: What Works</title>
+<meta name="description" content="Why Apple Watch&#x27;s built-in Workout app struggles to time dead hangs — skipped timers, vanished intervals, both hands on the bar — and what works instead.">
+<link rel="icon" href="/assets/app-icon-64.png">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Timing Dead Hangs on Apple Watch: Why Built-in Apps Fall Short">
-<meta property="og:description" content="The real, documented limitations — and what hang people actually use instead.">
+<meta property="og:title" content="Dead Hang Timer on Apple Watch: What Works">
+<meta property="og:description" content="Why Apple Watch&#x27;s built-in Workout app struggles to time dead hangs — skipped timers, vanished intervals, both hands on the bar — and what works instead.">
 <meta property="og:url" content="https://hangspine.com/blog/apple-watch-dead-hang-timer/">
-<meta property="og:image" content="https://hangspine.com/assets/app-icon.png">
+<meta property="og:image" content="https://hangspine.com/assets/og/apple-watch-dead-hang-timer.png">
 <link rel="canonical" href="https://hangspine.com/blog/apple-watch-dead-hang-timer/">
 <script>
 (function () {
@@ -23,12 +23,7 @@
 </script>
 <link rel="stylesheet" href="/assets/pages.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"Timing Dead Hangs on Apple Watch: Why Built-in Apps Fall Short",
-"description":"The documented limitations of timing dead hangs with built-in Apple Watch features, and what hang trainers use instead.",
-"datePublished":"2026-11-05","dateModified":"2026-11-05",
-"author":{"@type":"Person","name":"William","url":"https://hangspine.com/about/"},
-"publisher":{"@type":"Organization","name":"HangSpine","url":"https://hangspine.com/"},
-"mainEntityOfPage":"https://hangspine.com/blog/apple-watch-dead-hang-timer/"}
+{"@context":"https://schema.org","@type":"Article","headline":"Dead Hang Timer on Apple Watch: What Works","description":"Why Apple Watch's built-in Workout app struggles to time dead hangs — skipped timers, vanished intervals, both hands on the bar — and what works instead.","datePublished":"2026-11-05","dateModified":"2026-11-05","author":{"@type":"Person","name":"William","url":"https://hangspine.com/about/"},"publisher":{"@type":"Organization","name":"HangSpine","url":"https://hangspine.com/"},"mainEntityOfPage":"https://hangspine.com/blog/apple-watch-dead-hang-timer/","image":"https://hangspine.com/assets/og/apple-watch-dead-hang-timer.png"}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -36,13 +31,19 @@
 {"@type":"Question","name":"What is the most reliable way to time hangs on Apple Watch?","acceptedAnswer":{"@type":"Answer","text":"Auto-detection — the watch sensing when you mount the bar and when you let go, so no buttons exist in the workflow. That's the approach HangSpine (our app) takes with the gyroscope. The free alternative that always works: a wall clock and honest eyes, logged in our web planner."}},
 {"@type":"Question","name":"Why do interval workouts misbehave on Apple Watch?","acceptedAnswer":{"@type":"Answer","text":"Multiple users have reported skipping workout timers after watchOS updates, interval counters disappearing from the Workout app, custom interval workouts getting stuck, and timer haptics failing — across various watchOS versions. None of these are officially acknowledged as a single bug; collectively they're why interval-reliant trainees keep third-party timers installed."}}]}
 </script>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dead Hang Timer on Apple Watch: What Works">
+<meta name="twitter:description" content="Why Apple Watch&#x27;s built-in Workout app struggles to time dead hangs — skipped timers, vanished intervals, both hands on the bar — and what works instead.">
+<meta name="twitter:image" content="https://hangspine.com/assets/og/apple-watch-dead-hang-timer.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://hangspine.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://hangspine.com/blog/"},{"@type":"ListItem","position":3,"name":"Dead Hang Timer on Apple Watch: What Works","item":"https://hangspine.com/blog/apple-watch-dead-hang-timer/"}]}</script>
 </head>
 <body>
 
 <nav>
   <div class="wrap">
-    <a class="brand" href="/en/"><img class="brand-icon" src="/assets/app-icon.png" alt="HangSpine">HangSpine</a>
+    <a class="brand" href="/en/"><img class="brand-icon" src="/assets/app-icon-64.png" alt="HangSpine">HangSpine</a>
     <div class="navlinks">
+      <a href="/blog/">Blog</a>
       <a href="/tools/">Free Tools</a>
       <a href="/scoliosis/">Scoliosis Guide</a>
       <a href="/blog/dead-hangs-scoliosis-evidence/">Evidence</a>
@@ -55,12 +56,12 @@
 
 <header class="page-head">
   <div class="wrap">
-    <div class="breadcrumb"><a href="/en/">HangSpine</a> › Blog</div>
+    <div class="breadcrumb"><a href="/en/">HangSpine</a> › <a href="https://hangspine.com/blog/">Blog</a></div>
     <div class="kicker">APPLE WATCH GUIDE · 7 MIN READ</div>
     <h1>Timing dead hangs on Apple Watch</h1>
     <p class="sub">The Workout app is a marvel for runs and rides. Then you try to hang from a bar with it. What follows is the honest field report on why built-in features fight hang training — every complaint below is a real, linked report from Watch owners — and what actually works.</p>
     <div class="byline">
-      <img src="/assets/app-icon.png" alt="HangSpine">
+      <img src="/assets/app-icon-64.png" alt="HangSpine">
       <div>By <a href="/about/">William</a>, developer of HangSpine (a hang-timing app, disclosed throughout) · Nov 5, 2026</div>
     </div>
   </div>
@@ -74,7 +75,14 @@
       <p style="margin:8px 0 0;">Yes, we make a hang-timing app — so we'll be extra careful to separate <strong>documented problems</strong> (linked threads) from our opinions. Summary: the built-in stack can time a hang but wasn't built for one. <strong>Four frictions:</strong> no free hands for buttons mid-hang; workout timers with a record of skipping after updates; interval counters that vanish or get stuck; silent haptic failures that ruin set structure. The fix spectrum: wall clock (free, works) → Timer app (hands problem) → auto-detecting watch apps (no buttons at all). Benchmarks and planning live in our <a href="/tools/hang-calculator/">calculator</a> and <a href="/tools/hang-progression-planner/">planner</a>, app or no app.</p>
     </div>
 
-    <h2>Problem 1: The hands problem — the one Apple can't patch</h2>
+        <div class="cta-box">
+      <div><strong>HangSpine</strong> turns your Apple Watch into a dead-hang counter — it starts when you grab the bar and stops when you let go. No buttons mid-set.</div>
+      <a class="btn" href="https://apps.apple.com/app/id6817156558?ct=blog_apple-watch-dead-hang-timer">See HangSpine →</a>
+    </div>
+
+    <p class="note">Comparing apps? Read the <a href="/blog/best-dead-hang-app/">honest 2026 comparison</a> — including the cases where a competitor is the better buy.</p>
+
+<h2>Problem 1: The hands problem — the one Apple can't patch</h2>
     <p>Every built-in timing path assumes you can touch the screen or crown at the start and end of an effort. A dead hang is defined by both hands being occupied, overhead, gripping your entire bodyweight, with forearms you're actively trying to exhaust. Tapping a 44mm screen with your nose is technically possible; recommend it to no one. Any honest hang-timing solution has to remove the interaction, not polish it — which is why auto-detection (the watch sensing mount and release via motion sensors) exists at all.</p>
 
     <h2>Problem 2: Workout-app timers with a skipping habit</h2>
@@ -125,18 +133,33 @@
       <li>Related: <a href="/blog/dead-hang-tracker-guide/">Dead hang tracker guide</a> · <a href="/blog/dead-hang-muscles/">What muscles dead hangs work</a> · <a href="/tools/hang-progression-planner/">Progression planner</a></li>
     </ol>
 
+    <div class="note"><strong>Medical note:</strong> this article is about workout timing, not diagnosis or treatment. This is not medical advice; if you have shoulder or spine symptoms, talk to a clinician before changing your training.</div>
+
     <div class="note"><strong>Disclosure:</strong> HangSpine is our product — a paid Apple Watch app that auto-detects hangs. Every limitation above is a linked user report or clearly marked as our opinion, and the free wall-clock method is listed first because it's true. <strong>Note on claims:</strong> we deliberately avoid repeating unverified "watchOS X broke Y" summaries; only threads you can click are cited.</div>
   </div>
+    <div class="wrap prose">
+    <section class="related">
+      <h2>Related reading</h2>
+      <ul class="related-list">
+        <li><a href="/blog/best-dead-hang-app/">Best Dead Hang App for Apple Watch (2026): Honest Comparison</a> — HangSpine vs Hang Habit vs hangtime vs manual timers: which dead hang app fits how you train? An honest, disclosed…</li>
+        <li><a href="/blog/auto-start-dead-hang-timer/">Auto-Start Dead Hang Timer: How Hands-Free Detection Works</a> — Auto-start dead hang timers begin counting when you grab the bar. How watch motion detection works, which apps do it,…</li>
+        <li><a href="/blog/dead-hang-tracker-guide/">Dead Hang Tracker Guide: What Matters in a Timer App</a> — Shopping for a dead hang timer? The five features that actually matter — auto-detection, friction, streaks, data…</li>
+      </ul>
+      <p class="note" style="margin-top:14px;"><a href="/blog/">Browse all guides →</a></p>
+    </section>
+    </div>
+
 </main>
 
 <footer>
   <div class="wrap">
     <div>
-      <div class="brand" style="color:#fff"><img class="footer-icon" src="/assets/app-icon.png" alt="">HangSpine</div>
+      <div class="brand" style="color:#fff"><img class="footer-icon" src="/assets/app-icon-64.png" alt="">HangSpine</div>
       <p style="margin:10px 0 0;">Free tools &amp; evidence-based spine resources.</p>
     </div>
     <div>
       <p style="margin:0 0 6px;"><a href="/en/">HangSpine App</a></p>
+      <p style="margin:0 0 6px;"><a href="/blog/">Blog</a></p>
       <p style="margin:0 0 6px;"><a href="/tools/">Free Tools</a></p>
       <p style="margin:0 0 6px;"><a href="/support/en/">Support</a></p>
       <p style="margin:0;"><a href="/privacy/">Privacy Policy</a></p>

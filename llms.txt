@@ -1,0 +1,26 @@
+# HangSpine
+
+> HangSpine is an Apple Watch dead-hang counter that starts when you grab the bar and stops when you let go. The site also publishes cited, practical guides on dead hangs, grip strength, posture, and spine health, plus free browser tools.
+
+## Start here
+- [Auto-start dead hang detection](https://hangspine.com/blog/auto-start-dead-hang-timer/): how hands-free mount/dismount detection works.
+- [Dead hang time calculator](https://hangspine.com/tools/hang-calculator/): benchmark by age and sex.
+- [Dead hangs and scoliosis: the evidence](https://hangspine.com/blog/dead-hangs-scoliosis-evidence/): what the research does and does not show.
+
+## Guides
+- [Blog hub](https://hangspine.com/blog/)
+- [Technique](https://hangspine.com/blog/topic/technique/)
+- [Spine health](https://hangspine.com/blog/topic/spine-health/)
+- [App & tools](https://hangspine.com/blog/topic/app/)
+
+## Tools
+- [Free tools hub](https://hangspine.com/tools/)
+- [Hang progression planner](https://hangspine.com/tools/hang-progression-planner/)
+- [Grip strength calculator](https://hangspine.com/tools/grip-strength-calculator/)
+- [Scoliosis appointment checklist](https://hangspine.com/tools/scoliosis-appointment-checklist/)
+
+## About
+- [About HangSpine and editorial standards](https://hangspine.com/about/)
+- [App Store](https://apps.apple.com/app/id6817156558)
+
+Content is educational, not medical advice. Medical topics use an "adjunct + evidence" framing and cite primary sources where possible.
