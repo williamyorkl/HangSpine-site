@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a0a">
+<title>Dead Hang Benchmarks: What 'Good' Actually Means</title>
+<meta name="description" content="What is a good dead hang time? Age- and sex-based benchmarks, how to test properly, and why a single number is not a verdict on your health.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/app-icon-48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/app-icon-96.png">
+<link rel="icon" type="image/png" sizes="144x144" href="/assets/app-icon-144.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dead Hang Benchmarks: What &#x27;Good&#x27; Actually Means">
+<meta property="og:description" content="What is a good dead hang time? Age- and sex-based benchmarks, how to test properly, and why a single number is not a verdict on your health.">
+<meta property="og:url" content="https://hangspine.com/blog/dead-hang-benchmarks/">
+<meta property="og:image" content="https://hangspine.com/assets/og/dead-hang-benchmarks.png">
+<link rel="canonical" href="https://hangspine.com/blog/dead-hang-benchmarks/">
+<script>
+(function () {
+  var saved = null;
+  try { saved = localStorage.getItem("hs-theme"); } catch (e) {}
+  var theme = saved || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+  document.documentElement.dataset.theme = theme;
+})();
+</script>
+<link rel="stylesheet" href="/assets/pages.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Dead Hang Benchmarks: What 'Good' Actually Means","description":"What is a good dead hang time? Age- and sex-based benchmarks, how to test properly, and why a single number is not a verdict on your health.","datePublished":"2026-11-20","dateModified":"2026-11-20","author":{"@type":"Person","name":"William","url":"https://hangspine.com/about/"},"publisher":{"@type":"Organization","name":"HangSpine","url":"https://hangspine.com/"},"mainEntityOfPage":"https://hangspine.com/blog/dead-hang-benchmarks/","image":"https://hangspine.com/assets/og/dead-hang-benchmarks.png"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a good dead hang time?","acceptedAnswer":{"@type":"Answer","text":"As a general fitness benchmark, 45–90 seconds is intermediate for men under 40 and 35–70 seconds for women under 40. These are community ranges, not clinical standards; your trend and consistency matter more than a single number."}},{"@type":"Question","name":"How should I test my dead hang?","acceptedAnswer":{"@type":"Answer","text":"Warm up for 90 seconds, use a full grip, hang fully relaxed without kipping, and stop at the first sign of pain. One max attempt is enough; a second attempt after 3–5 minutes is optional. Test under the same conditions each time."}},{"@type":"Question","name":"Why are there separate male and female benchmarks?","acceptedAnswer":{"@type":"Answer","text":"Grip strength and body composition differ on average between sexes, so the distributions differ. The ranges are useful for context, not for judging an individual's health or worth."}},{"@type":"Question","name":"Do dead hang benchmarks predict health?","acceptedAnswer":{"@type":"Answer","text":"No. Grip strength is associated with health outcomes in large cohort studies, but a dead hang time is not a diagnostic test. Use it to track training progress, not to self-diagnose."}},{"@type":"Question","name":"How often should I re-test?","acceptedAnswer":{"@type":"Answer","text":"Every 4–6 weeks, not every session. Max testing is a stressor; daily max attempts can leave you sore and flatten progress. Train in between, then test under the same conditions."}}]}
+</script>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dead Hang Benchmarks: What &#x27;Good&#x27; Actually Means">
+<meta name="twitter:description" content="What is a good dead hang time? Age- and sex-based benchmarks, how to test properly, and why a single number is not a verdict on your health.">
+<meta name="twitter:image" content="https://hangspine.com/assets/og/dead-hang-benchmarks.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://hangspine.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://hangspine.com/blog/"},{"@type":"ListItem","position":3,"name":"Dead Hang Benchmarks: What 'Good' Actually Means","item":"https://hangspine.com/blog/dead-hang-benchmarks/"}]}</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "9e7d7b5f22f94ac59e86b715b9cada7c"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="/en/"><img class="brand-icon" src="/assets/app-icon-64.png" alt="HangSpine">HangSpine</a>
+    <div class="navlinks">
+      <a href="/blog/">Blog</a>
+      <a href="/tools/">Free Tools</a>
+      <a href="/scoliosis/">Scoliosis Guide</a>
+      <a href="/blog/dead-hangs-scoliosis-evidence/">Evidence</a>
+      <a href="/en/">App</a>
+      <a class="keep" href="/zh/">中文</a>
+      <button id="themeToggle" class="theme-toggle" aria-label="Switch theme">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="/en/">HangSpine</a> › <a href="https://hangspine.com/blog/">Blog</a></div>
+    <div class="kicker">BENCHMARK GUIDE · 8 MIN READ</div>
+    <h1>Dead Hang Benchmarks: What 'Good' Actually Means</h1>
+    <p class="sub">A 45-second hang means something different at 25, 45, and 65 — and an average is not a diagnosis. Here is how to read the numbers honestly, test yourself properly, and use a benchmark without letting it use you.</p>
+    <div class="byline">
+      <img src="/assets/app-icon-64.png" alt="HangSpine">
+      <div>By <a href="/about/">William</a>, developer of HangSpine · Sources at the end · Nov 20, 2026</div>
+    </div>
+  </div>
+</header>
+
+
+
+<main>
+  <div class="wrap prose">
+    <div class="tldr">
+      <div class="t">TL;DR</div>
+      <p style="margin:8px 0 0;">“Good” depends on age, sex, bodyweight, training history and the test itself. For a rough fitness read: <strong>45–90 seconds is intermediate for men under 40, 35–70 seconds for women under 40</strong>; older groups run lower. These are community benchmarks, not clinical standards. Test once every 4–6 weeks under the same conditions, compare your own trend, and use the <a href="/tools/hang-calculator/">calculator</a> for a quick read — not a diagnosis.</p>
+    </div>
+    <div class="cta-box">
+      <div><strong>HangSpine</strong> turns your Apple Watch into a dead-hang counter — it starts when you grab the bar and stops when you let go. No buttons mid-set.</div>
+      <a class="btn" href="https://apps.apple.com/app/id6817156558?ct=blog_dead-hang-benchmarks">See HangSpine →</a>
+    </div>
+    <h2>What “good” actually means</h2>
+    <p>A dead hang benchmark is a <strong>distribution</strong>, not a pass/fail line. It answers one narrow question: “how does this hold compare with other people in roughly my group?” It does not answer “is my grip healthy?”, “is my shoulder safe?”, or “am I fit?” Those need different tests and, when symptoms are involved, a clinician.</p>
+    <p>The ranges below come from community fitness standards and the reference values used in our <a href="/tools/hang-calculator/">dead hang calculator</a>. They are deliberately broad because bodyweight, limb length, grip style, pain and motivation all move the number. Treat them as a map, not a verdict.</p>
+    <h2>Dead hang benchmarks by age and sex</h2>
+    <table><caption>Max passive hang, men (seconds)</caption><thead><tr><th>Age</th><th>Beginner</th><th>Novice</th><th>Intermediate</th><th>Advanced</th><th>Elite</th></tr></thead><tbody>
+      <tr><td>Under 40</td><td>&lt;20</td><td>20–45</td><td>45–90</td><td>90–180</td><td><strong>180+</strong></td></tr>
+      <tr><td>40–59</td><td>&lt;15</td><td>15–35</td><td>35–70</td><td>70–140</td><td><strong>140+</strong></td></tr>
+      <tr><td>60+</td><td>&lt;10</td><td>10–25</td><td>25–50</td><td>50–100</td><td><strong>100+</strong></td></tr>
+    </tbody></table>
+    <table><caption>Max passive hang, women (seconds)</caption><thead><tr><th>Age</th><th>Beginner</th><th>Novice</th><th>Intermediate</th><th>Advanced</th><th>Elite</th></tr></thead><tbody>
+      <tr><td>Under 40</td><td>&lt;15</td><td>15–35</td><td>35–70</td><td>70–140</td><td><strong>140+</strong></td></tr>
+      <tr><td>40–59</td><td>&lt;12</td><td>12–28</td><td>28–55</td><td>55–110</td><td><strong>110+</strong></td></tr>
+      <tr><td>60+</td><td>&lt;8</td><td>8–20</td><td>20–40</td><td>40–80</td><td><strong>80+</strong></td></tr>
+    </tbody></table>
+    <p>Two practical notes. First, these are <strong>passive hang</strong> numbers — relaxed shoulders, no active scapular pull. An active hang is a different test. Second, the gaps between groups are large; a 40-year-old at 60 seconds is not “worse” than a 25-year-old at 60 seconds, and a 60-year-old at 45 seconds may be further along relative to their group.</p>
+    <h2>How to read the table without overfitting</h2>
+    <p>Age bands are coarse by design. A 39-year-old and a 41-year-old land in different rows even though their physiology is nearly identical; a 25-year-old who has never trained can sit below a 55-year-old who has. The table is a rough population map, not a prediction of what you should do next. Use it to locate a starting point, then let your own 4–6 week trend become the real benchmark.</p>
+    <p>Sex is also a blunt proxy. Average body composition and grip strength differ between men and women, which is why the distributions differ, but an individual’s training history, bodyweight and technique can swamp the group difference. If you are non-binary or the binary rows do not fit, use the row that best matches your body and training context, or ignore the label and track your own change. The number is not a gender test.</p>
+    <p>Bodyweight matters more than most tables admit. A 90 kg athlete hanging for 60 seconds is doing more absolute work than a 60 kg athlete hanging for 60 seconds, even if the stopwatch says otherwise. If you want a fairer performance marker, look at <strong>relative</strong> progress — seconds added at the same bodyweight, or the same hold with added load — rather than comparing raw times across body sizes. And if your goal is health rather than performance, a dynamometer reading is a better-studied marker than a hang time.</p>
+
+    <h2>How to test without fooling yourself</h2>
+    <ol>
+      <li><strong>Warm up for 90 seconds.</strong> Arm circles, scapular pulls and one easy 10-second hang. Cold shoulders produce cold numbers; our <a href="/tools/hanging-warmup-checklist/">warm-up checklist</a> is a free walkthrough.</li>
+      <li><strong>Use the same grip every time.</strong> Full grip, thumbs around the bar if possible. Straps, chalk and a different bar diameter all change the result; pick one setup and keep it.</li>
+      <li><strong>Hang relaxed, no kipping.</strong> Start the timer when your feet leave the floor; stop when your grip opens or your shoulders shrug up uncontrollably. Stop earlier if you feel sharp pain.</li>
+      <li><strong>One max attempt is enough.</strong> A second attempt after 3–5 minutes is fine if you want a best-of-two; more than that is testing fatigue, not strength.</li>
+      <li><strong>Test every 4–6 weeks.</strong> Daily max attempts are a stressor, not a training plan. Between tests, train at submaximal effort; our <a href="/blog/how-often-should-you-dead-hang/">dose guide</a> covers frequency.</li>
+    </ol>
+    <h2>Three common testing mistakes</h2>
+    <ul>
+      <li><strong>Testing cold.</strong> A cold shoulder and a cold grip produce a lower number that says nothing about your training. The 90-second warm-up is part of the test, not an optional extra.</li>
+      <li><strong>Testing too often.</strong> A true max hang is a high-effort event. Doing it daily turns a benchmark into a fatigue test and makes the trend unreadable. Once every 4–6 weeks is enough; train submaximally in between.</li>
+      <li><strong>Changing the setup.</strong> A different bar, straps, chalk, or a half-second difference in when you start the clock can move the result by several seconds. Write down the setup and repeat it exactly; otherwise you are measuring the setup, not your grip.</li>
+    </ul>
+
+    <h2>What moves your number (and what doesn’t)</h2>
+    <p>Bodyweight is the obvious one: a heavier athlete is lifting more, so absolute time can be lower even with excellent relative strength. Grip style, bar diameter, shoulder tolerance, sleep and motivation all matter. What does <em>not</em> make a number meaningful: a single heroic test on a good day, a video angle that shortens the clock, or comparing yourself to a 20-year-old elite gymnast on the internet.</p>
+    <p>If your number is stuck, the fix is rarely “hang longer every day.” It is usually more submaximal volume, better shoulder positioning, and patience; our <a href="/blog/dead-hang-benefits/">benefits guide</a> separates the real adaptations from the marketing.</p>
+    <h2>Benchmark vs. grip strength: don’t confuse them</h2>
+    <p>A dead hang measures <strong>time under bodyweight tension</strong>; a dynamometer measures <strong>peak force</strong>. They correlate loosely, but they are different tests. Grip strength has large normative datasets and is associated with long-term health outcomes in cohort studies <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Leong+grip+strength+PURE+lancet" target="_blank" rel="noopener">[1]</a>; a dead hang time does not have the same clinical literature. If you care about the health marker, use a dynamometer and our <a href="/tools/grip-strength-calculator/">grip strength calculator</a>; if you care about hanging performance, use the hang test.</p>
+    <h2>How to use a benchmark without letting it use you</h2>
+    <p>Pick one target that is 10–15 seconds above your current level, train for 4–6 weeks, then re-test. That is a complete feedback loop. A benchmark should reduce uncertainty, not add another reason to feel behind; if a number makes you train worse, it is the wrong number.</p> Do not chase “elite” because a table says so; elite ranges are descriptive, not prescribed. And do not use a hang test to self-diagnose a spine or shoulder problem — pain, numbness or weakness deserve a clinician, not a benchmark.</p>
+    <p>If you are over 50, read our <a href="/blog/dead-hang-over-50/">over-50 guide</a> first; if you are working toward a pull-up, the <a href="/blog/dead-hang-to-first-pullup/">first pull-up progression</a> is the better next step. A benchmark is a starting line, not the finish.</p>
+    <h2>FAQ</h2>
+    <details open><summary>What is a good dead hang time?</summary><p>As a general fitness benchmark, 45–90 seconds is intermediate for men under 40 and 35–70 seconds for women under 40. These are community ranges, not clinical standards; your trend matters more than one number.</p></details>
+    <details><summary>How should I test my dead hang?</summary><p>Warm up for 90 seconds, use a full grip, hang relaxed without kipping, and stop at the first sign of pain. One max attempt is enough; a second after 3–5 minutes is optional.</p></details>
+    <details><summary>Why separate male and female benchmarks?</summary><p>Grip strength and body composition differ on average between sexes, so the distributions differ. The ranges are context, not a judgment of health or worth.</p></details>
+    <details><summary>Do dead hang benchmarks predict health?</summary><p>No. Grip strength is associated with health outcomes in cohort studies, but a dead hang time is not a diagnostic test. Use it for training progress, not self-diagnosis.</p></details>
+    <details><summary>How often should I re-test?</summary><p>Every 4–6 weeks, not every session. Max testing is a stressor; train in between and test under the same conditions.</p></details>
+    <h2>Sources</h2>
+    <ol class="refs">
+      <li>Bohannon RW, et al. Normative reference values for grip strength (systematic reviews &amp; meta-analyses). <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Bohannon+grip+strength+normative+meta-analysis" target="_blank" rel="noopener">PubMed: Bohannon grip normative meta-analysis</a></li>
+      <li>Leong DP, et al. Prognostic value of grip strength (PURE study, ~140,000 participants, 17 countries). <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Leong+grip+strength+PURE+lancet" target="_blank" rel="noopener">PubMed: Leong grip strength PURE Lancet</a></li>
+      <li>HangSpine reference data and test protocol: <a href="/tools/hang-calculator/">dead hang calculator</a> · <a href="/blog/grip-strength-standards/">grip strength standards</a> · <a href="/blog/dead-hangs-scoliosis-evidence/">evidence review</a></li>
+    </ol>
+    <div class="note"><strong>Disclosure:</strong> we make HangSpine, a paid Apple Watch dead-hang app, and the free tools linked above. Fair whether you buy anything or not. <strong>Medical disclaimer:</strong> educational content only; not medical advice, diagnosis, or treatment. A benchmark is not a clinical assessment.</div>
+  </div>
+    <div class="wrap prose">
+    <section class="related">
+      <h2>Related reading</h2>
+      <ul class="related-list">
+        <li><a href="/tools/hang-calculator/">Dead Hang Time Calculator</a> — enter your max hold and see where it lands by age and sex.</li>
+        <li><a href="/blog/dead-hang-benefits/">Benefits of Dead Hangs: Evidence, Dose, and Who It's For</a> — what hanging actually adapts, and what it doesn't.</li>
+        <li><a href="/blog/how-often-should-you-dead-hang/">How Often Should You Dead Hang? 3–6 Days a Week</a> — dose tables by goal and the deload rule.</li>
+        <li><a href="/blog/dead-hang-over-50/">Dead Hangs Over 50: Benchmarks and How to Start</a> — age-adjusted starting points and clearance notes.</li>
+      </ul>
+      <p class="note" style="margin-top:14px;"><a href="/blog/">Browse all guides →</a></p>
+    </section>
+    </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="brand" style="color:#fff"><img class="footer-icon" src="/assets/app-icon-64.png" alt="">HangSpine</div>
+      <p style="margin:10px 0 0;">Free tools &amp; evidence-based spine resources.</p>
+    </div>
+    <div>
+      <p style="margin:0 0 6px;"><a href="/en/">HangSpine App</a></p>
+      <p style="margin:0 0 6px;"><a href="/blog/">Blog</a></p>
+      <p style="margin:0 0 6px;"><a href="/tools/">Free Tools</a></p>
+      <p style="margin:0 0 6px;"><a href="/support/en/">Support</a></p>
+      <p style="margin:0;"><a href="/privacy/">Privacy Policy</a></p>
+    </div>
+    <div style="max-width:420px;">
+      <p style="margin:0;">© 2026 HangSpine. All rights reserved.</p>
+      <p class="disclaimer" style="max-width:none;">All content is provided for general education and reference purposes only. It is not medical advice, diagnosis, or treatment. For spine or sleep concerns, please follow the guidance of a qualified clinician.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  function apply(t) {
+    document.documentElement.dataset.theme = t;
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", t === "light" ? "#ffffff" : "#0a0a0a");
+    var btn = document.getElementById("themeToggle");
+    if (btn) btn.textContent = t === "light" ? "\u{1F319}" : "\u2600\uFE0F";
+    try { localStorage.setItem("hs-theme", t); } catch (e) {}
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    var btn = document.getElementById("themeToggle");
+    if (btn) btn.addEventListener("click", function () {
+      apply(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
+    });
+    apply(document.documentElement.dataset.theme);
+  });
+})();
+</script>
+
+</body>
+</html>
