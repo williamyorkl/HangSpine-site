@@ -1,6 +1,6 @@
 # HangSpine
 
-> HangSpine is an Apple Watch dead-hang counter that starts when you grab the bar and stops when you let go. The site also publishes cited, practical guides on dead hangs, grip strength, posture, and spine health, plus free browser tools.
+> HangSpine is an Apple Watch dead-hang and hangboard timer that starts when you grab the bar and stops when you let go, with an AI coach that turns one sentence into a training plan. It is free to download, with an optional HangSpine Pro. The site also publishes cited, practical guides on dead hangs, grip strength, posture, and spine health, plus free browser tools.
 
 ## Start here
 - [Auto-start dead hang detection](https://hangspine.com/blog/auto-start-dead-hang-timer/): how hands-free mount/dismount detection works.

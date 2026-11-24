@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0a0a0a">
 <title>HangSpine 悬脊 — 抬手即开始的吊杠训练</title>
-<meta name="description" content="Apple Watch 吊杠悬垂计数器：抬手自动开始、放手自动停止。零负担记录每一次训练，本地轨迹学习越用越懂你。脊柱健康动作训练即将推出。">
+<meta name="description" content="Apple Watch 吊杠与指力板计时器：抬手自动开始、放手自动停止。免费下载，Pro 可选；AI 教练一句话排计划。">
 <script>
 // Theme bootstrap (pre-paint): saved choice > system preference.
 (function () {
@@ -24,10 +24,6 @@
     --card: #1c1c1e; --card-border: rgba(255,255,255,.05); --move: #161618;
     --hero-glow1: rgba(100,210,255,.16); --hero-glow2: rgba(191,90,242,.13);
     --icon-glow: rgba(94,92,230,.35); --cta-glow: rgba(94,92,230,.4);
-    /* 设备壳：黑底上用钛灰金属圈，让手表/手机外框清晰可辨 */
-    --ring-shell: #545456; --ring-shell-thin: #3a3a3c;
-    --ring-inset: rgba(255,255,255,.16);
-    --device-shadow: rgba(0,0,0,.6);
     --footer-bg: #000;
     --theme-btn-color: #d2d2d7;
   }
@@ -37,10 +33,6 @@
     --card: #ffffff; --card-border: rgba(0,0,0,.06); --move: #f0f0f2;
     --hero-glow1: rgba(100,210,255,.28); --hero-glow2: rgba(191,90,242,.18);
     --icon-glow: rgba(94,92,230,.28); --cta-glow: rgba(94,92,230,.3);
-    /* 白底上用浅铝壳 + 柔和投影 */
-    --ring-shell: #e3e3e8; --ring-shell-thin: #ecECf0;
-    --ring-inset: rgba(0,0,0,.12);
-    --device-shadow: rgba(0,0,0,.28);
     --footer-bg: #111;
     --theme-btn-color: #55555c;
   }
@@ -99,29 +91,20 @@
   .feature p { color: var(--ink2); margin: 8px 0; }
   .why { display: inline-block; font-size: .78rem; font-weight: 600; color: var(--accent);
          background: rgba(0,204,255,.1); border-radius: 999px; padding: 3px 12px; margin-bottom: 10px; }
-  .shot { display: flex; justify-content: center; }
-  .shot img { max-width: 100%; height: auto; }
-
-  /* 设备壳：外层金属壳 + 内层细描边 + 投影，黑底白底都清晰 */
-  .shot.phone img { width: min(300px, 78vw); border-radius: 44px;
-                    box-shadow: 0 0 0 2px var(--ring-inset), 0 0 0 12px var(--ring-shell),
-                                0 30px 60px var(--device-shadow); }
-  .shot.watch img { width: min(268px, 64vw); border-radius: 7%;
-                    box-shadow: 0 0 0 2px var(--ring-inset), 0 0 0 11px var(--ring-shell),
-                                0 26px 55px var(--device-shadow); }
+  /* 截图自带设备外壳（透明 PNG），不再用 CSS 画边框；width/height 属性预留位置。
+     柔和光晕让深色外壳在深色主题下仍然清晰。 */
+  .shot { display: flex; justify-content: center; align-items: center; gap: 14px; flex-wrap: wrap;
+          background: radial-gradient(58% 58% at 50% 50%, var(--hero-glow1) 0%, transparent 100%); }
+  .shot img { display: block; max-width: 100%; height: auto; }
+  .shot.phone img { width: min(300px, 78vw); }
+  .shot.watch img { width: min(268px, 64vw); }
+  .shot.pair img { width: min(150px, 38vw); }
 
   .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 44px; }
   @media (max-width: 820px) { .grid3 { grid-template-columns: 1fr; } }
   .card { background: var(--card); border: 1px solid var(--card-border); border-radius: 20px; padding: 26px 22px; }
   .card h4 { margin: 0 0 6px; font-size: 1.02rem; }
   .card p { margin: 0; color: var(--ink2); font-size: .9rem; }
-  .card .shot { margin: 0 0 16px; padding-top: 8px; }
-  .card .shot.phone img { width: min(210px, 56vw); border-radius: 32px;
-                          box-shadow: 0 0 0 2px var(--ring-inset), 0 0 0 8px var(--ring-shell-thin),
-                                      0 18px 36px var(--device-shadow); }
-  .card .shot.watch img { width: 158px; border-radius: 7%;
-                          box-shadow: 0 0 0 2px var(--ring-inset), 0 0 0 8px var(--ring-shell-thin),
-                                      0 16px 28px var(--device-shadow); }
 
   .steps { counter-reset: s; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 30px; }
   @media (max-width: 820px) { .steps { grid-template-columns: 1fr; } }
@@ -136,13 +119,13 @@
            background: rgba(249,115,22,.12); border: 1px solid rgba(249,115,22,.4); border-radius: 999px; padding: 2px 10px; }
   :root[data-theme="dark"] .badge { color: #ffb340; }
 
-  .roadmap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin: 34px 0 10px; }
-  @media (max-width: 860px) { .roadmap { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 520px) { .roadmap { grid-template-columns: 1fr; } }
-  .move { background: var(--move); border: 1px solid var(--card-border); border-radius: 18px; padding: 20px; text-align: center; }
-  .move .emoji { font-size: 1.9rem; }
-  .move h4 { margin: 8px 0 4px; font-size: .98rem; }
-  .move p { margin: 0; font-size: .8rem; color: var(--ink2); }
+  .whatsnew { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin: 34px 0 10px; }
+  @media (max-width: 860px) { .whatsnew { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .whatsnew { grid-template-columns: 1fr; } }
+  .point { background: var(--move); border: 1px solid var(--card-border); border-radius: 18px; padding: 20px; text-align: center; }
+  .point .emoji { font-size: 1.9rem; }
+  .point h4 { margin: 8px 0 4px; font-size: .98rem; }
+  .point p { margin: 0; font-size: .8rem; color: var(--ink2); }
 
   .quote { font-size: clamp(1.15rem, 3vw, 1.5rem); font-weight: 700; text-align: center;
            max-width: 720px; margin: 0 auto 10px; }
@@ -180,17 +163,17 @@
 <link rel="alternate" hreflang="en" href="https://hangspine.com/en/">
 <link rel="alternate" hreflang="zh-Hans" href="https://hangspine.com/zh/">
 <link rel="alternate" hreflang="x-default" href="https://hangspine.com/en/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"HangSpine","operatingSystem":"watchOS","applicationCategory":"HealthApplication","description":"An Apple Watch dead-hang counter that starts when you grab the bar and stops when you let go.","url":"https://hangspine.com/zh/","downloadUrl":"https://apps.apple.com/app/id6817156558?ct=site_zh","offers":{"@type":"Offer","price":"5.99","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"HangSpine","url":"https://hangspine.com/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"HangSpine","operatingSystem":"iOS, watchOS","applicationCategory":"HealthApplication","description":"An Apple Watch dead-hang counter that starts when you grab the bar and stops when you let go.","url":"https://hangspine.com/zh/","downloadUrl":"https://apps.apple.com/app/id6817156558?ct=site_zh","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"HangSpine","url":"https://hangspine.com/"}}</script>
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://hangspine.com/assets/og/app.png">
 <link rel="canonical" href="https://hangspine.com/zh/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="HangSpine 悬脊 — 抬手即开始的吊杠训练">
-<meta property="og:description" content="Apple Watch 吊杠悬垂计数器：抬手自动开始、放手自动停止。零负担记录每一次训练，本地轨迹学习越用越懂你。脊柱健康动作训练即将推出。">
+<meta property="og:description" content="Apple Watch 吊杠与指力板计时器：抬手自动开始、放手自动停止。免费下载，Pro 可选；AI 教练一句话排计划。">
 <meta property="og:url" content="https://hangspine.com/zh/">
 <meta property="og:image" content="https://hangspine.com/assets/og/app.png">
 <meta name="twitter:title" content="HangSpine 悬脊 — 抬手即开始的吊杠训练">
-<meta name="twitter:description" content="Apple Watch 吊杠悬垂计数器：抬手自动开始、放手自动停止。零负担记录每一次训练，本地轨迹学习越用越懂你。脊柱健康动作训练即将推出。">
+<meta name="twitter:description" content="Apple Watch 吊杠与指力板计时器：抬手自动开始、放手自动停止。免费下载，Pro 可选；AI 教练一句话排计划。">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "9e7d7b5f22f94ac59e86b715b9cada7c"}'></script><!-- End Cloudflare Web Analytics -->
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="48x48" href="/assets/app-icon-48.png">
@@ -206,8 +189,8 @@
     <div class="navlinks">
       <a href="#features">功能</a>
       <a href="#learning">轨迹学习</a>
-      <a href="#roadmap">即将推出</a>
-      <a href="./105.html">1.0.5 预览</a>
+      <a href="#pro">免费与 Pro</a>
+      <a href="./105.html">1.0.5 更新内容</a>
       <a class="lang" href="../en/">English</a>
       <button id="themeToggle" class="theme-toggle" aria-label="切换主题">☀️</button>
     </div>
@@ -221,7 +204,7 @@
     <h1>抬手即开始<br>放手即停止</h1>
     <p class="sub">吊单杠，从未如此没有负担。手表自动识别你的悬垂：手抬起来，计数开始；手放下来，自动暂停。不用摸索，不用点按——吊完手再麻，也不需要碰任何按钮。</p>
     <a class="cta" href="https://apps.apple.com/app/id6817156558?ct=site_zh">下载 HangSpine
-      <small>App Store · 一次性买断，无订阅</small></a>
+      <small>App Store · 免费下载 · Pro 可选</small></a>
     <p class="cta-note">已上架 App Store · iPhone + Apple Watch</p>
   </div>
 </header>
@@ -234,16 +217,19 @@
     </div>
 
     <div class="feature">
-      <figure class="shot watch"><img src="../assets/zh/watch46zh_idle.png" alt="手表开始页"></figure>
+      <figure class="shot pair">
+        <img src="../assets/zh/dev_watch_ready.png" width="581" height="638" decoding="async" alt="Apple Watch 准备页：每次目标和开始按钮">
+        <img src="../assets/zh/dev_watch_plans.png" width="581" height="638" loading="lazy" decoding="async" alt="手表的下一页，在这里选计划：自由悬垂、间歇组、最大悬垂基线">
+      </figure>
       <div>
         <span class="why">设计理由 · 一屏一按钮</span>
         <h3>上杠前，你只需要做一个决定</h3>
-        <p>开始页面只有今日进度和一枚开始按钮。训练前的最后 3 秒不该用来找功能——tap 开始，3-2-1 倒计时后直接上杠。</p>
+        <p>准备页只有每次目标和一枚开始按钮——转动表冠就能改目标，翻到下一页可以直接选计划。训练前的最后 3 秒不该用来找功能——点开始，3-2-1 倒计时后直接上杠。</p>
       </div>
     </div>
 
     <div class="feature">
-      <figure class="shot watch"><img src="../assets/zh/watch46zh_holding.png" alt="悬垂计数环"></figure>
+      <figure class="shot watch"><img src="../assets/zh/dev_watch_holding.png" width="581" height="638" loading="lazy" decoding="async" alt="悬垂中的 Apple Watch：已经挂了多少秒、离目标还有多远，外面一圈进度环"></figure>
       <div>
         <span class="why">核心概念 · 全自动识别</span>
         <h3>抬手自动开始，放手自动暂停</h3>
@@ -252,38 +238,68 @@
     </div>
 
     <div class="feature">
-      <figure class="shot watch"><img src="../assets/zh/watch46zh_goal.png" alt="达标满环"></figure>
+      <figure class="shot phone"><img src="../assets/zh/dev_session_detail.png" width="888" height="1816" loading="lazy" decoding="async" alt="iPhone 的一场指力板训练详情：握法、边条和配重，完成度，以及每一次悬垂一根柱子"></figure>
       <div>
         <span class="why">即时反馈</span>
-        <h3>每 10 秒，都是一次小达成</h3>
-        <p>每坚持满 10 秒（可调 10/12/15 秒）记为一次，手表轻震确认，圆环走满、亮起绿色。悬垂是和时间对抗的运动——把长目标切成 10 秒的小胜利，坚持的心理成本直线下降。</p>
+        <h3>一次悬垂，就是一次</h3>
+        <p>一次连续悬垂记为一次，按真实时长记录：60 秒就是一次 60 秒，不会被切成四段 15 秒。单次悬垂目标可在 5–180 秒之间设置（最长 3 分钟），达标时手表轻震提示。</p>
       </div>
     </div>
 
     <div class="feature">
-      <figure class="shot watch"><img src="../assets/zh/watch46zh_summary.png" alt="训练总结页"></figure>
+      <figure class="shot watch"><img src="../assets/zh/dev_watch_summary.png" width="581" height="638" loading="lazy" decoding="async" alt="Apple Watch 训练总结页：总悬垂时长、每一次悬垂一根柱子、平均和最长，下面是再练一场和完成"></figure>
       <div>
         <span class="why">训练之后</span>
         <h3>下来看一眼，成果都在</h3>
-        <p>结束即出总结：总次数、总时长、每一组的明细。想连着练？"再来"一键回到倒计时。没有账单式的复杂报表——练完就看，看完就走。</p>
+        <p>结束即出总结：总悬垂时长、每一次悬垂一根柱子、平均和最长。想连着练？"再练一场"一键回到倒计时。没有账单式的复杂报表——练完就看，看完就走。</p>
       </div>
     </div>
 
     <div class="feature">
-      <figure class="shot phone"><img src="../assets/zh/iphone69zh_day.png" alt="手机今日统计"></figure>
+      <figure class="shot phone"><img src="../assets/zh/dev_free_today.png" width="888" height="1816" loading="lazy" decoding="async" alt="iPhone「今天」页面：免费方案卡片显示还剩多少次自动检测"></figure>
       <div>
         <span class="why">统计的意义 · 让坚持可见</span>
         <h3>连续天数，是你最不想打断的东西</h3>
-        <p>手机端的首页只有一屏：今日目标圆环、连续打卡火焰、周/月/年趋势和半年热力图。统计不是给你研究的数据面板，而是把"我坚持了多久"变成一眼可见的成就感——很多人是舍不得断掉那团火焰才每天都挂一会儿的。</p>
+        <p>「今天」一屏看清本周安排和日/周图表，「看板」放趋势和 26 周热力图。三个标签页：今天、看板、我的。统计不是给你研究的数据面板，而是把"我坚持了多久"变成一眼可见的成就感——很多人是舍不得断掉那团火焰才每天都挂一会儿的。</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="learning" class="alt">
+<section id="hangboard" class="alt">
   <div class="wrap">
     <div class="center">
-      <span class="badge">实验功能 · 默认关闭</span>
+      <h2>指力板训练，也认真计时</h2>
+      <p class="lead">大多数人从吊杠开始。换到指力板，同一块手表会替你跑完整套方案——练、歇、次数、组数——并记下关键数据。</p>
+    </div>
+
+    <div class="feature">
+      <figure class="shot pair">
+        <img src="../assets/zh/dev_watch_guided.png" width="581" height="638" loading="lazy" decoding="async" alt="引导训练中的 Apple Watch：当前这次悬垂的秒数，以及第几组、第几次">
+        <img src="../assets/zh/dev_watch_rest.png" width="581" height="638" loading="lazy" decoding="async" alt="Apple Watch 正在倒数两次悬垂之间的休息">
+      </figure>
+      <div>
+        <span class="why">指力板 · 引导训练</span>
+        <h3>间歇组、最大悬垂，或自定义训练段，带休息提示</h3>
+        <p>在手表上选一份方案，屏幕替你记进度：第几组、第几次、该挂多久，每次休息都有倒计时。免费方案的 100 次自动检测用完后，手表仍会提供手动模式：由你自己结束每一次悬垂，记录进的是同一份历史。</p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <figure class="shot phone"><img src="../assets/zh/dev_history.png" width="888" height="1816" loading="lazy" decoding="async" alt="iPhone 最近 30 天的指力板训练列表，每场都带握法、边条和配重"></figure>
+      <div>
+        <span class="why">指力板 · 复盘</span>
+        <h3>每一场训练，都有握法、边条和配重</h3>
+        <p>每场指力板训练都会记录握法、边条（毫米）和配重（公斤/磅）。点开一场能看到完成度和每一次悬垂的柱状图；指力板训练列表把最近 30 天放在一起。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="learning">
+  <div class="wrap">
+    <div class="center">
+      <span class="badge">实验功能 · 默认开启</span>
       <h2>轨迹学习：越用越懂你 <span aria-hidden="true">🧠</span></h2>
       <p class="lead">每个人的身高、臂展、单杠环境都不一样，固定的阈值不可能适合所有人。HangSpine 记录每次训练的完整动作轨迹，在设备本地持续学习你的上杠与放下特征——练得越多，识别越准。</p>
     </div>
@@ -299,52 +315,93 @@
       </div>
       <div class="step">
         <h4>自适应</h4>
-        <p>检测参数定期在本地重算，逐渐贴合你的专属动作模式。所有学习都在设备上完成，绝不上传云端训练。</p>
+        <p>检测参数定期在本地重算，逐渐贴合你的专属动作模式。所有学习都在设备上完成，绝不上传云端训练。App 发给我们的，只有你发给 AI 教练的那句话和训练档案，且只在你主动使用时。</p>
       </div>
     </div>
 
     <div class="grid3">
       <div class="card">
-        <div class="shot phone inset"><img src="../assets/zh/iphone69zhfb_angle.png" alt="角度轨迹云图"></div>
         <h4>角度 θ · 你的典型动作</h4>
         <p>每次吊杠的轨迹叠加成云团——颜色越深的路径，就是你重复最多的标准动作；虚线是当前检测容差。</p>
       </div>
       <div class="card">
-        <div class="shot phone inset"><img src="../assets/zh/iphone69zhfb_xyz.png" alt="三轴重力分量"></div>
         <h4>X·Y·Z · 上杠的瞬间</h4>
         <p>三轴重力分量实时翻转的过程，就是"抬手抓杠"这个动作本身。物理信号不会说谎。</p>
       </div>
       <div class="card">
-        <div class="shot phone inset"><img src="../assets/zh/iphone69zhfb_grip.png" alt="握力能量"></div>
         <h4>握力 · 真挂还是空手</h4>
-        <p>真正承重时前臂的生理震颤（8–12Hz）会顶起握力能量曲线——空手举臂模仿不了这个信号。</p>
+        <p>握力能量是去除重力后手表高频振动的强度。真正握紧承重时，这个值通常比空手举臂高——它只是检测用到的腕部运动信号之一。</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="roadmap">
+<section id="coach" class="alt">
   <div class="wrap">
     <div class="center">
-      <h2>下一步：会"看"你动作的训练 <span aria-hidden="true">🧭</span></h2>
-      <p class="lead">市面上的健康 App 只能让你看着视频模仿：做没做对、幅度够不够，它不知道，你也不知道。HangSpine 的方向恰恰相反——用 Apple Watch 的三轴重力感应，获取你在物理世界里真实发生的动作，1:1 判断是否标准。悬垂计数，只是这套能力的第一个应用。</p>
+      <h2>先排计划，再上杠 <span aria-hidden="true">✦</span></h2>
+      <p class="lead">计时器记下你练了什么，计划决定接下来练什么。HangSpine 把两者放在一起：攀岩档案、每周训练安排，以及一句话就能交代需求的 AI 教练。</p>
     </div>
 
-    <div class="roadmap">
-      <div class="move"><div class="emoji">🐱</div><h4>猫式呼吸</h4><p>脊柱节段活动 · 呼吸配合</p></div>
-      <div class="move"><div class="emoji">🐛</div><h4>虫式训练</h4><p>核心稳定 · 屈伸控制</p></div>
-      <div class="move"><div class="emoji">🦎</div><h4>爬行</h4><p>交叉协调 · 肩带稳定</p></div>
-      <div class="move"><div class="emoji">🐦</div><h4>鸟狗式</h4><p>对侧伸展 · 腰椎稳定</p></div>
+    <div class="feature">
+      <figure class="shot phone"><img src="../assets/zh/dev_coach.png" width="888" height="1816" loading="lazy" decoding="async" alt="本地模式下的 iPhone AI 教练：本地教练的回答，以及一个可以直接排进看板的 4 周训练周期"></figure>
+      <div>
+        <span class="why">AI 教练 · 一句话</span>
+        <h3>一句话说说这周的想法，拿回一份计划</h3>
+        <p>AI 教练会给出一份计划或一个多周的训练周期，数字都能改；可以直接应用，也可以在编辑器里微调。它默认是本地模式，用设备上的规则作答；不打开云端 AI，什么都不会发出。</p>
+      </div>
     </div>
-    <p class="center" style="color:var(--ink2); font-size:.92rem;">首批预设动作即将随下个版本推出，此后会持续更新动作库，并计划支持录入你自己喜欢的训练动作（如普拉提、脊柱康复方向的练习）。</p>
+
+    <div class="feature">
+      <figure class="shot phone"><img src="../assets/zh/dev_block.png" width="888" height="1816" loading="lazy" decoding="async" alt="iPhone「看板」页面：本周的指力板数据，以及一个五周的训练周期，当前周高亮显示"></figure>
+      <div>
+        <span class="why">攀岩档案 · 每周训练安排</span>
+        <h3>跟着一个周期练，而不只是追一个数字</h3>
+        <p>填好攀岩档案——项目、难度（Ewbank、YDS、V 难度或 Font 难度）、板型和训练重点——「看板」就会排出多周的训练安排：现在在第几周、接下来练哪种握法、哪些已经完成。</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="alt">
+<section id="whats-new">
+  <div class="wrap">
+    <div class="center">
+      <h2>1.0.5 更新内容 <span aria-hidden="true">🧭</span></h2>
+      <p class="lead">这一版有四处变化。细节和更多截图见 <a href="./105.html">1.0.5 更新内容</a>。</p>
+    </div>
+
+    <div class="whatsnew">
+      <div class="point"><div class="emoji">🧗</div><h4>指力板训练</h4><p>间歇组、最大悬垂和自定义方案，每场记录握法、边条和配重。</p></div>
+      <div class="point"><div class="emoji">🗓️</div><h4>档案、安排与 AI 教练</h4><p>攀岩档案、每周训练安排，以及一句话就能交代需求的 AI 教练。</p></div>
+      <div class="point"><div class="emoji">📊</div><h4>全新「今天」页面</h4><p>日/周图表，「看板」上的 26 周热力图，支持 Ewbank 难度。</p></div>
+      <div class="point"><div class="emoji">⏱️</div><h4>更诚实的计数</h4><p>一次连续悬垂按真实时长记为 1 次。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="pro" class="alt">
+  <div class="wrap">
+    <div class="center">
+      <h2>免费与 Pro</h2>
+    </div>
+
+    <div class="feature">
+      <figure class="shot phone"><img src="../assets/zh/dev_pro_today.png" width="888" height="1816" loading="lazy" decoding="async" alt="iPhone「今天」页面的 HangSpine Pro 卡片：不限次自动检测，以及更高的 AI 教练额度"></figure>
+      <div>
+        <span class="why">免费开始 · 需要时再升级</span>
+        <h3>免费 100 次，Pro 解除上限。</h3>
+        <p>HangSpine 免费下载，自带 100 次自动检测。升级 HangSpine Pro 解除上限，并把 AI 教练额度从每天 5 问提高到 50 问（月付）或 100 问（买断）——可按月订阅或一次性买断。手动计时、历史记录、统计和 iCloud 同步始终免费。之前已经买过 HangSpine？你就是创始会员：终身 Pro，无需任何操作。</p>
+        <p>美国区 Pro 为每月 3.99 美元或一次性 19.99 美元，其他地区以 App Store 为准。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
   <div class="wrap">
     <p class="quote">"能坚持下来的训练，才是有效的训练。"</p>
-    <p class="quote-sub">所以 HangSpine 从第一天起就拒绝复杂：没有账号，没有社交，没有订阅——抬手就练，放下就停。</p>
-    <p class="center" style="margin-top:34px;"><a class="cta" href="https://apps.apple.com/app/id6817156558?ct=site_zh">下载 HangSpine<small>App Store · 一次性买断</small></a></p>
+    <p class="quote-sub">所以 HangSpine 从第一天起就拒绝复杂：没有账号，没有社交——抬手就练，放下就停。</p>
+    <p class="center" style="margin-top:34px;"><a class="cta" href="https://apps.apple.com/app/id6817156558?ct=site_zh">下载 HangSpine<small>App Store · 免费下载</small></a></p>
   </div>
 </section>
 
@@ -352,7 +409,7 @@
   <div class="wrap">
     <div>
       <div class="brand" style="color:#fff"><img class="footer-icon" src="../assets/app-icon.png" alt="">HangSpine 悬脊</div>
-      <p style="margin:10px 0 0;">抬手即开始的吊杠训练。<br>脊柱健康动作训练，即将推出。</p>
+      <p style="margin:10px 0 0;">抬手即开始的吊杠与指力板训练。</p>
     </div>
     <div>
       <p style="margin:0 0 6px;"><a href="../support/zh/">支持</a></p>

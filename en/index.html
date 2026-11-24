@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0a0a0a">
 <title>HangSpine — Dead hangs that start the moment you grab the bar</title>
-<meta name="description" content="An Apple Watch dead-hang counter that starts when you mount the bar and pauses when you let go. Zero-friction tracking, on-device trace learning, and spine-health movement training coming next.">
+<meta name="description" content="An Apple Watch dead-hang and hangboard timer that starts when you grab the bar and stops when you let go. Free to download; Pro is optional.">
 <script>
 // Theme bootstrap (pre-paint): saved choice > system preference.
 (function () {
@@ -24,10 +24,6 @@
     --card: #1c1c1e; --card-border: rgba(255,255,255,.05); --move: #161618;
     --hero-glow1: rgba(100,210,255,.16); --hero-glow2: rgba(191,90,242,.13);
     --icon-glow: rgba(94,92,230,.35); --cta-glow: rgba(94,92,230,.4);
-    /* 设备壳：黑底上用钛灰金属圈，让手表/手机外框清晰可辨 */
-    --ring-shell: #545456; --ring-shell-thin: #3a3a3c;
-    --ring-inset: rgba(255,255,255,.16);
-    --device-shadow: rgba(0,0,0,.6);
     --footer-bg: #000;
     --theme-btn-color: #d2d2d7;
   }
@@ -37,10 +33,6 @@
     --card: #ffffff; --card-border: rgba(0,0,0,.06); --move: #f0f0f2;
     --hero-glow1: rgba(100,210,255,.28); --hero-glow2: rgba(191,90,242,.18);
     --icon-glow: rgba(94,92,230,.28); --cta-glow: rgba(94,92,230,.3);
-    /* 白底上用浅铝壳 + 柔和投影 */
-    --ring-shell: #e3e3e8; --ring-shell-thin: #ecECf0;
-    --ring-inset: rgba(0,0,0,.12);
-    --device-shadow: rgba(0,0,0,.28);
     --footer-bg: #111;
     --theme-btn-color: #55555c;
   }
@@ -99,29 +91,21 @@
   .feature p { color: var(--ink2); margin: 8px 0; }
   .why { display: inline-block; font-size: .78rem; font-weight: 600; color: var(--accent);
          background: rgba(0,204,255,.1); border-radius: 999px; padding: 3px 12px; margin-bottom: 10px; }
-  .shot { display: flex; justify-content: center; }
-  .shot img { max-width: 100%; height: auto; }
-
-  /* 设备壳：外层金属壳 + 内层细描边 + 投影，黑底白底都清晰 */
-  .shot.phone img { width: min(300px, 78vw); border-radius: 44px;
-                    box-shadow: 0 0 0 2px var(--ring-inset), 0 0 0 12px var(--ring-shell),
-                                0 30px 60px var(--device-shadow); }
-  .shot.watch img { width: min(268px, 64vw); border-radius: 7%;
-                    box-shadow: 0 0 0 2px var(--ring-inset), 0 0 0 11px var(--ring-shell),
-                                0 26px 55px var(--device-shadow); }
+  /* Screenshots ship inside the device shell (transparent PNG), so no frame is
+     drawn in CSS any more; the width/height attributes reserve the space. A soft
+     halo keeps the dark shells readable on the dark theme. */
+  .shot { display: flex; justify-content: center; align-items: center; gap: 14px; flex-wrap: wrap;
+          background: radial-gradient(58% 58% at 50% 50%, var(--hero-glow1) 0%, transparent 100%); }
+  .shot img { display: block; max-width: 100%; height: auto; }
+  .shot.phone img { width: min(300px, 78vw); }
+  .shot.watch img { width: min(268px, 64vw); }
+  .shot.pair img { width: min(150px, 38vw); }
 
   .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 44px; }
   @media (max-width: 820px) { .grid3 { grid-template-columns: 1fr; } }
   .card { background: var(--card); border: 1px solid var(--card-border); border-radius: 20px; padding: 26px 22px; }
   .card h4 { margin: 0 0 6px; font-size: 1.02rem; }
   .card p { margin: 0; color: var(--ink2); font-size: .9rem; }
-  .card .shot { margin: 0 0 16px; padding-top: 8px; }
-  .card .shot.phone img { width: min(210px, 56vw); border-radius: 32px;
-                          box-shadow: 0 0 0 2px var(--ring-inset), 0 0 0 8px var(--ring-shell-thin),
-                                      0 18px 36px var(--device-shadow); }
-  .card .shot.watch img { width: 158px; border-radius: 7%;
-                          box-shadow: 0 0 0 2px var(--ring-inset), 0 0 0 8px var(--ring-shell-thin),
-                                      0 16px 28px var(--device-shadow); }
 
   .steps { counter-reset: s; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 30px; }
   @media (max-width: 820px) { .steps { grid-template-columns: 1fr; } }
@@ -136,13 +120,13 @@
            background: rgba(249,115,22,.12); border: 1px solid rgba(249,115,22,.4); border-radius: 999px; padding: 2px 10px; }
   :root[data-theme="dark"] .badge { color: #ffb340; }
 
-  .roadmap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin: 34px 0 10px; }
-  @media (max-width: 860px) { .roadmap { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 520px) { .roadmap { grid-template-columns: 1fr; } }
-  .move { background: var(--move); border: 1px solid var(--card-border); border-radius: 18px; padding: 20px; text-align: center; }
-  .move .emoji { font-size: 1.9rem; }
-  .move h4 { margin: 8px 0 4px; font-size: .98rem; }
-  .move p { margin: 0; font-size: .8rem; color: var(--ink2); }
+  .whatsnew { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin: 34px 0 10px; }
+  @media (max-width: 860px) { .whatsnew { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .whatsnew { grid-template-columns: 1fr; } }
+  .point { background: var(--move); border: 1px solid var(--card-border); border-radius: 18px; padding: 20px; text-align: center; }
+  .point .emoji { font-size: 1.9rem; }
+  .point h4 { margin: 8px 0 4px; font-size: .98rem; }
+  .point p { margin: 0; font-size: .8rem; color: var(--ink2); }
 
   .quote { font-size: clamp(1.15rem, 3vw, 1.5rem); font-weight: 700; text-align: center;
            max-width: 720px; margin: 0 auto 10px; }
@@ -180,17 +164,17 @@
 <link rel="alternate" hreflang="en" href="https://hangspine.com/en/">
 <link rel="alternate" hreflang="zh-Hans" href="https://hangspine.com/zh/">
 <link rel="alternate" hreflang="x-default" href="https://hangspine.com/en/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"HangSpine","operatingSystem":"watchOS","applicationCategory":"HealthApplication","description":"An Apple Watch dead-hang counter that starts when you grab the bar and stops when you let go.","url":"https://hangspine.com/en/","downloadUrl":"https://apps.apple.com/app/id6817156558?ct=site_en","offers":{"@type":"Offer","price":"5.99","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"HangSpine","url":"https://hangspine.com/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"HangSpine","operatingSystem":"iOS, watchOS","applicationCategory":"HealthApplication","description":"An Apple Watch dead-hang counter that starts when you grab the bar and stops when you let go.","url":"https://hangspine.com/en/","downloadUrl":"https://apps.apple.com/app/id6817156558?ct=site_en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"HangSpine","url":"https://hangspine.com/"}}</script>
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://hangspine.com/assets/og/app.png">
 <link rel="canonical" href="https://hangspine.com/en/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="HangSpine — Dead hangs that start the moment you grab the bar">
-<meta property="og:description" content="An Apple Watch dead-hang counter that starts when you mount the bar and pauses when you let go. Zero-friction tracking, on-device trace learning, and spine-health movement training coming next.">
+<meta property="og:description" content="An Apple Watch dead-hang and hangboard timer that starts when you grab the bar and stops when you let go. Free to download; Pro is optional.">
 <meta property="og:url" content="https://hangspine.com/en/">
 <meta property="og:image" content="https://hangspine.com/assets/og/app.png">
 <meta name="twitter:title" content="HangSpine — Dead hangs that start the moment you grab the bar">
-<meta name="twitter:description" content="An Apple Watch dead-hang counter that starts when you mount the bar and pauses when you let go. Zero-friction tracking, on-device trace learning, and spine-health movement training coming next.">
+<meta name="twitter:description" content="An Apple Watch dead-hang and hangboard timer that starts when you grab the bar and stops when you let go. Free to download; Pro is optional.">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "9e7d7b5f22f94ac59e86b715b9cada7c"}'></script><!-- End Cloudflare Web Analytics -->
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="48x48" href="/assets/app-icon-48.png">
@@ -206,10 +190,10 @@
     <div class="navlinks">
       <a href="#features">Features</a>
       <a href="#learning">Trace Learning</a>
-      <a href="#roadmap">Coming Next</a>
+      <a href="#pro">Free &amp; Pro</a>
       <a href="../tools/">Free Tools</a>
       <a href="../scoliosis/">Scoliosis Guide</a>
-      <a href="./105.html">1.0.5 preview</a>
+      <a href="./105.html">What's new in 1.0.5</a>
       <a class="lang" href="../zh/">中文</a>
       <button id="themeToggle" class="theme-toggle" aria-label="Switch theme">☀️</button>
     </div>
@@ -223,7 +207,7 @@
     <h1>Grab the bar —<br>it starts. Let go — it stops.</h1>
     <p class="sub">Dead hangs with zero friction. Your watch detects the hang itself: mount the bar and the count begins; drop down and it pauses automatically. Nothing to learn, nothing to tap — even with numb hands at the end of a set, you never touch a button.</p>
     <a class="cta" href="https://apps.apple.com/app/id6817156558?ct=site_en">Get HangSpine
-      <small>App Store · One-time purchase, no subscription</small></a>
+      <small>App Store · Free to download · Pro optional</small></a>
     <p class="cta-note">On the App Store now · iPhone + Apple Watch</p>
   </div>
 </header>
@@ -236,16 +220,19 @@
     </div>
 
     <div class="feature">
-      <figure class="shot watch"><img src="../assets/en/watch46en_idle.png" alt="Watch start screen"></figure>
+      <figure class="shot pair">
+        <img src="../assets/en/dev_watch_ready.png" width="581" height="638" decoding="async" alt="Apple Watch Ready screen with the target per hang and a Start button">
+        <img src="../assets/en/dev_watch_plans.png" width="581" height="638" loading="lazy" decoding="async" alt="The next Watch page, where you pick a plan: Hang freely, Repeaters or Max hang baseline">
+      </figure>
       <div>
         <span class="why">Design rationale · One screen, one button</span>
         <h3>Before you mount: one decision, nothing else</h3>
-        <p>The start screen shows today's progress and a single Start button. The last 3 seconds before a set shouldn't be spent hunting for features — tap Start, and after a 3-2-1 countdown you're on the bar.</p>
+        <p>The Ready screen shows your target per hang and a single Start button — turn the crown to change the target, or open the next page to pick a plan. The last 3 seconds before a set shouldn't be spent hunting for features — tap Start, and after a 3-2-1 countdown you're on the bar.</p>
       </div>
     </div>
 
     <div class="feature">
-      <figure class="shot watch"><img src="../assets/en/watch46en_holding.png" alt="Hang progress ring"></figure>
+      <figure class="shot watch"><img src="../assets/en/dev_watch_holding.png" width="581" height="638" loading="lazy" decoding="async" alt="Apple Watch during a hang: the seconds so far against the target, inside a progress ring"></figure>
       <div>
         <span class="why">Core concept · Fully automatic</span>
         <h3>Mount to start, let go to pause</h3>
@@ -254,38 +241,68 @@
     </div>
 
     <div class="feature">
-      <figure class="shot watch"><img src="../assets/en/watch46en_goal.png" alt="Goal reached ring"></figure>
+      <figure class="shot phone"><img src="../assets/en/dev_session_detail.png" width="888" height="1816" loading="lazy" decoding="async" alt="iPhone session details for a hangboard session: grip, edge and weight, completion, and one bar for every hang"></figure>
       <div>
         <span class="why">Instant feedback</span>
-        <h3>Every 10 seconds is a small win</h3>
-        <p>Hold for 10 seconds (adjustable 10/12/15 s) and it counts as one rep — confirmed by a gentle haptic as the ring fills and flashes green. Hanging is a fight against time, so we cut the long goal into 10-second victories. The psychological cost of one more rep drops to zero.</p>
+        <h3>One hang, one rep — at its real length</h3>
+        <p>One continuous hang is one rep, recorded at its true duration: a 60-second hang is a 60-second rep, never four 15-second ones. Set a per-hang goal from 5 to 180 seconds (up to 3 minutes); a gentle haptic marks the moment you reach it.</p>
       </div>
     </div>
 
     <div class="feature">
-      <figure class="shot watch"><img src="../assets/en/watch46en_summary.png" alt="Session summary"></figure>
+      <figure class="shot watch"><img src="../assets/en/dev_watch_summary.png" width="581" height="638" loading="lazy" decoding="async" alt="Apple Watch session summary: total hang time, a bar for each hang, average and best, with Again and Done buttons"></figure>
       <div>
         <span class="why">After the set</span>
         <h3>Hop down, and it's all there</h3>
-        <p>The summary appears the moment you finish: total reps, total time, and a per-set breakdown. Want another round? "Again" takes you straight back to the countdown. No bloated reports — glance at it, then get on with your day.</p>
+        <p>The summary appears the moment you finish: total hang time, a bar for every hang, your average and your best. Want another round? "Again" takes you straight back. No bloated reports — glance at it, then get on with your day.</p>
       </div>
     </div>
 
     <div class="feature">
-      <figure class="shot phone"><img src="../assets/en/iphone69_day.png" alt="iPhone daily stats"></figure>
+      <figure class="shot phone"><img src="../assets/en/dev_free_today.png" width="888" height="1816" loading="lazy" decoding="async" alt="iPhone Today tab with the free plan card showing how many auto-detected sessions are left"></figure>
       <div>
         <span class="why">Why stats matter · Make consistency visible</span>
         <h3>The streak you won't want to break</h3>
-        <p>The phone app is a single screen: today's goal ring, streak flame, week/month/year trends, and a six-month heatmap. Stats here aren't a dashboard to study — they turn "how long I've kept this up" into one glance of visible progress. For many people, it's the flame they can't bear to extinguish that gets them on the bar every day.</p>
+        <p>Today shows the day and week at a glance; Dashboard keeps the trends and a 26-week heatmap. Three tabs: Today, Dashboard, Profile. Stats here aren't a dashboard to study — they turn "how long I've kept this up" into one glance of visible progress. For many people, it's the flame they can't bear to extinguish that gets them on the bar every day.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="learning" class="alt">
+<section id="hangboard" class="alt">
   <div class="wrap">
     <div class="center">
-      <span class="badge">Experimental · Off by default</span>
+      <h2>Hangboard sessions, timed properly</h2>
+      <p class="lead">A pull-up bar is where most people start. When you move to a hangboard, the same watch runs the protocol for you — work, rest, reps and sets — and records what mattered.</p>
+    </div>
+
+    <div class="feature">
+      <figure class="shot pair">
+        <img src="../assets/en/dev_watch_guided.png" width="581" height="638" loading="lazy" decoding="async" alt="Apple Watch during a guided protocol: seconds of the current hang, plus which set and which rep you are on">
+        <img src="../assets/en/dev_watch_rest.png" width="581" height="638" loading="lazy" decoding="async" alt="Apple Watch counting down a rest between reps">
+      </figure>
+      <div>
+        <span class="why">Hangboard · Guided protocols</span>
+        <h3>Repeaters, max hangs, or your own sections — with rest cues</h3>
+        <p>Pick a protocol on the watch and the screen keeps score for you: which set, which rep, how long to hang, and a countdown for every rest. On the free plan, once your 100 auto-detected sessions are used up, the watch still offers a manual mode: you end each hang yourself, and it lands in the same history.</p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <figure class="shot phone"><img src="../assets/en/dev_history.png" width="888" height="1816" loading="lazy" decoding="async" alt="iPhone list of hangboard sessions from the last 30 days, each with its grip, edge and added weight"></figure>
+      <div>
+        <span class="why">Hangboard · The record</span>
+        <h3>Every session, with grip, edge and weight</h3>
+        <p>Each hangboard session records its grip, edge (mm) and added weight (kg or lb). Open one to see completion and a bar for every hang; the Hangboard sessions list keeps the last 30 days in one place.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="learning">
+  <div class="wrap">
+    <div class="center">
+      <span class="badge">Experimental · On by default</span>
       <h2>Trace learning: it knows you better every week <span aria-hidden="true">🧠</span></h2>
       <p class="lead">Height, arm length, bar setup — no two people hang the same way, and fixed thresholds can't fit everyone. HangSpine records the full motion trace of every session and keeps learning your personal mount-and-dismount signature, entirely on device. The more you train, the more precise it gets.</p>
     </div>
@@ -301,44 +318,85 @@
       </div>
       <div class="step">
         <h4>Adapt</h4>
-        <p>Detection parameters are re-computed on device at intervals, gradually conforming to your movement pattern. Nothing is ever uploaded for cloud training.</p>
+        <p>Detection parameters are re-computed on device at intervals, gradually conforming to your movement pattern. Nothing is ever uploaded for cloud training. The only thing the app sends us is what you type to the AI plan coach, plus your training profile, and only when you use it.</p>
       </div>
     </div>
 
     <div class="grid3">
       <div class="card">
-        <div class="shot phone inset"><img src="../assets/en/iphone69fb_angle.png" alt="Angle trace cloud"></div>
         <h4>Angle θ · Your typical motion</h4>
         <p>Every hang's trace overlays into a cloud — the darkest paths are the movements you repeat most; the dashed line is the current detection tolerance.</p>
       </div>
       <div class="card">
-        <div class="shot phone inset"><img src="../assets/en/iphone69fb_xyz.png" alt="XYZ gravity components"></div>
         <h4>X·Y·Z · The moment you mount</h4>
         <p>The three gravity components flipping in real time <em>is</em> the grab-the-bar motion itself. Physics doesn't lie.</p>
       </div>
       <div class="card">
-        <div class="shot phone inset"><img src="../assets/en/iphone69fb_grip.png" alt="Grip energy"></div>
         <h4>Grip · Real hang vs. empty hand</h4>
-        <p>Under real load, forearm physiological tremor (8–12 Hz) lifts the grip-energy curve — an empty-hand raise can't fake that signal.</p>
+        <p>Grip energy is the intensity of the watch's high-frequency vibration once gravity is removed. A hand that is truly gripping under load usually reads higher here than an empty-handed raise — one of several wrist-motion signals the detector uses.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="roadmap">
+<section id="coach" class="alt">
   <div class="wrap">
     <div class="center">
-      <h2>Next: training that watches your form <span aria-hidden="true">🧭</span></h2>
-      <p class="lead">Health apps today make you copy a video: whether you did it right, or deep enough, neither the app nor you ever knows. HangSpine is built the opposite way — using the Apple Watch's 3-axis gravity sensing to capture motion as it physically happens and judge, one-to-one, whether it's up to standard. Dead-hang counting is simply the first application of that capability.</p>
+      <h2>Plan first, then hang <span aria-hidden="true">✦</span></h2>
+      <p class="lead">A timer counts what you did. A plan decides what to do next. HangSpine keeps both in one place: a climber profile, a weekly training block, and an AI coach you brief in one sentence.</p>
     </div>
 
-    <div class="roadmap">
-      <div class="move"><div class="emoji">🐱</div><h4>Cat-Cow Breathing</h4><p>Spinal segmentation · Breath sync</p></div>
-      <div class="move"><div class="emoji">🐛</div><h4>Inchworm</h4><p>Core stability · Flexion control</p></div>
-      <div class="move"><div class="emoji">🦎</div><h4>Crawling</h4><p>Cross coordination · Shoulder girdle</p></div>
-      <div class="move"><div class="emoji">🐦</div><h4>Bird-Dog</h4><p>Contralateral reach · Lumbar stability</p></div>
+    <div class="feature">
+      <figure class="shot phone"><img src="../assets/en/dev_coach.png" width="888" height="1816" loading="lazy" decoding="async" alt="iPhone AI coach in local mode: the coach's answer and a recommended plan with editable hang and rest times"></figure>
+      <div>
+        <span class="why">AI coach · One sentence</span>
+        <h3>Describe your week in one sentence, get a plan back</h3>
+        <p>The coach answers with a plan you can apply as it is or tune in the editor — every number stays editable. It starts in local mode, answering with on-device rules: nothing is sent unless you switch cloud AI on.</p>
+      </div>
     </div>
-    <p class="center" style="color:var(--ink2); font-size:.92rem;">The first preset moves arrive in the next update. The library will keep growing, with support planned for recording your own favorite exercises — Pilates and spine-health routines included.</p>
+
+    <div class="feature">
+      <figure class="shot phone"><img src="../assets/en/dev_block.png" width="888" height="1816" loading="lazy" decoding="async" alt="iPhone Dashboard tab: this week's hangboard numbers and a five-week training block with the current week highlighted"></figure>
+      <div>
+        <span class="why">Climber profile · Weekly training block</span>
+        <h3>A block to follow, not just a number to chase</h3>
+        <p>Set up a climber profile — discipline, grades (Ewbank, YDS, V-scale or Font), board and training focus — and the Dashboard lays out a multi-week training block: which week you're in, which grip comes next, and what's already done.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="whats-new">
+  <div class="wrap">
+    <div class="center">
+      <h2>New in 1.0.5 <span aria-hidden="true">🧭</span></h2>
+      <p class="lead">Four things changed in this version. Details and more screenshots: <a href="./105.html">What's new in 1.0.5</a>.</p>
+    </div>
+
+    <div class="whatsnew">
+      <div class="point"><div class="emoji">🧗</div><h4>Hangboard training</h4><p>Repeaters, max hangs and custom sections, with grip, edge and added weight logged for every session.</p></div>
+      <div class="point"><div class="emoji">🗓️</div><h4>Profile, block and AI coach</h4><p>A climber profile, a weekly training block, and an AI coach you brief in one sentence.</p></div>
+      <div class="point"><div class="emoji">📊</div><h4>A clearer phone app</h4><p>A new Today screen with day and week charts, a 26-week heatmap on the Dashboard, and Ewbank grades.</p></div>
+      <div class="point"><div class="emoji">⏱️</div><h4>Honest counting</h4><p>One continuous hang counts as one rep, at its real length.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="pro" class="alt">
+  <div class="wrap">
+    <div class="center">
+      <h2>Free and Pro</h2>
+    </div>
+
+    <div class="feature">
+      <figure class="shot phone"><img src="../assets/en/dev_pro_today.png" width="888" height="1816" loading="lazy" decoding="async" alt="iPhone Today tab with the HangSpine Pro card: unlimited detection and the raised AI coach allowance"></figure>
+      <div>
+        <span class="why">Start free · Upgrade if you need it</span>
+        <h3>100 sessions free. Pro removes the limit.</h3>
+        <p>HangSpine is free to download and includes your first 100 auto-detected sessions. HangSpine Pro removes that limit and raises the AI coach allowance from 5 to 50 (monthly) or 100 (one-time) questions a day — a monthly subscription or a one-time purchase. Manual timing, your history, stats and iCloud sync are always free. Bought HangSpine before? You're a founding member: lifetime Pro, nothing to do.</p>
+        <p>In the US, Pro is US$3.99 a month or US$19.99 once; other regions see the App Store.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -371,8 +429,8 @@
 <section class="alt">
   <div class="wrap">
     <p class="quote">"The only workout that works is the one you keep doing."</p>
-    <p class="quote-sub">That's why HangSpine refuses complexity from day one: no account, no social feed, no subscription — mount the bar and train, let go and rest.</p>
-    <p class="center" style="margin-top:34px;"><a class="cta" href="https://apps.apple.com/app/id6817156558?ct=site_en">Get HangSpine<small>App Store · One-time purchase</small></a></p>
+    <p class="quote-sub">That's why HangSpine refuses complexity from day one: no account, no social feed — mount the bar and train, let go and rest.</p>
+    <p class="center" style="margin-top:34px;"><a class="cta" href="https://apps.apple.com/app/id6817156558?ct=site_en">Get HangSpine<small>App Store · Free to download</small></a></p>
   </div>
 </section>
 
@@ -380,7 +438,7 @@
   <div class="wrap">
     <div>
       <div class="brand" style="color:#fff"><img class="footer-icon" src="../assets/app-icon.png" alt="">HangSpine</div>
-      <p style="margin:10px 0 0;">Dead hangs that start themselves.<br>Spine-health movement training, coming next.</p>
+      <p style="margin:10px 0 0;">Dead hangs and hangboard sessions that start themselves.</p>
     </div>
     <div>
       <p style="margin:0 0 6px;"><a href="../tools/">Free Tools</a></p>
