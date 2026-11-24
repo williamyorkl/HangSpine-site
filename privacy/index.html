@@ -13,6 +13,9 @@
   h2 { font-size: 1.15em; margin-top: 1.8em; }
   .en { color: #6e6e73; font-size: 0.92em; }
   a { color: #0071e3; }
+  ul { padding-left: 22px; }
+  li { margin: 6px 0; }
+  code { font-size: 0.88em; }
   @media (prefers-color-scheme: dark) { body { color: #f5f5f7; } .en { color: #a1a1a6; } }
 </style>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "9e7d7b5f22f94ac59e86b715b9cada7c"}'></script><!-- End Cloudflare Web Analytics -->
@@ -26,68 +29,130 @@
 
 <h1>隐私政策</h1>
 <p class="en">Privacy Policy</p>
-<p>生效日期 / Effective date：2026-11-07（更新：新增第 6 节网站匿名统计）</p>
+<p>生效日期 / Effective date：2026-11-24（更新：按 1.0.5 实际的数据处理方式重写）</p>
 
-<p>「HangSpine（悬脊）」是一款 Apple Watch 悬垂训练计数与统计应用。
-<strong>我们不收集你的身份信息。</strong>训练记录留在你的设备上；只有计划服务会在你主动使用时处理你写的那句话（见第 4 节）。</p>
-<p class="en">HangSpine is an Apple Watch hang-training counter and statistics app.
-<strong>We do not collect identity information.</strong> Your training records stay on your devices;
-only the plan service processes the sentence you write, and only when you choose to use it (see section 4).</p>
+<h2>1. 概述</h2>
+<p class="en">1. Overview</p>
+<p>「HangSpine（悬脊）」是一款 Apple Watch 吊杠与指力板计时器，训练统计显示在 iPhone 上。它没有账号，不投放广告，不做跨 App 追踪，也不出售数据。训练记录默认只保存在你自己的设备上；登录了 iCloud 的话，会镜像到你自己的 iCloud。只有在你主动打开云端 AI 并向 AI 教练提问时，内容才会发送到开发者运营的服务器（见第 6 节）。</p>
+<p class="en">HangSpine is a dead-hang and hangboard timer for Apple Watch, with training stats on iPhone. It has no account, shows no ads, does no cross-app tracking and does not sell data. Your training records stay on your own devices, and are mirrored to your own iCloud if you are signed in. Content is sent to a server operated by the developer only when you turn on cloud AI yourself and ask the AI coach a question (see section 6).</p>
 
-<h2>1. 你的训练数据</h2>
-<p class="en">1. Your training data</p>
-<p>所有训练记录仅保存在你自己的 iPhone 与 Apple Watch 上（系统本地存储）。
-没有账户体系，也不做训练数据的云端同步；唯一的网络请求是计划服务（见第 4 节）。
-卸载 App 即删除本机数据。</p>
-<p class="en">All training records are stored only on your own iPhone and Apple Watch
-(system-local storage). There are no accounts and no sync of training data; the only
-network request is the plan service (section 4). Uninstalling the app deletes the local data.</p>
+<h2>2. 训练数据（设备上）</h2>
+<p class="en">2. Training data (on device)</p>
+<p>训练记录和设置保存在 iPhone 与 Apple Watch 上 App 自己的存储空间里。手表与手机之间通过 Apple 的 WatchConnectivity（本机蓝牙或 Wi-Fi）传输数据，不经过任何第三方服务器。你可以随时导出训练记录：设置 → 数据 → 导出训练记录（CSV）。</p>
+<p class="en">Sessions and settings are stored in the app's own container on your iPhone and Apple Watch. Watch and phone transfer data over Apple's WatchConnectivity (local Bluetooth or Wi-Fi); no third-party server is involved. You can export your sessions at any time: Settings → Data → Export sessions (CSV).</p>
 
-<h2>2. 健康（HealthKit）数据</h2>
-<p class="en">2. Health data</p>
-<p>仅在你明确授权后，App 会将完成的训练以「体能训练」形式写入 Apple 健康。
-App 不读取健康数据，健康数据不会离开你的设备，也绝不用于广告、出售或与任何第三方共享。</p>
-<p class="en">Only after your explicit permission, the app writes completed workouts to
-Apple Health. The app does not read health data. Health data never leaves your
-device and is never used for advertising, sale, or sharing with any third party.</p>
+<h2>3. 健康（HealthKit）</h2>
+<p class="en">3. Health (HealthKit)</p>
+<p>这项功能是可选的。App 只会向 Apple 健康「写入」，从不读取健康数据：在你授权后，手表会把完成的训练以「体能训练」的形式保存到「健康」。是否授权由你决定，拒绝不影响计时和统计；之后可以在 iPhone 的「设置」或「健康」App 中更改或撤回。健康数据不会发送给计划服务，也不会发送给任何第三方。</p>
+<p class="en">This is optional. The app only writes to Apple Health and never reads Health data: after you allow it, the watch saves completed workouts to Health as workouts. The permission is yours to give or decline; declining does not affect timing or statistics, and you can change or withdraw it later in iOS Settings or the Health app. Health data is never sent to the plan service or to any third party.</p>
 
-<h2>3. 设备间同步</h2>
-<p class="en">3. Device sync</p>
-<p>手表与手机之间的数据传输使用 Apple 系统提供的 WatchConnectivity（本机蓝牙/局域网），
-过程不经过任何第三方服务器；计划服务不参与手表与手机之间的同步。</p>
-<p class="en">Data transfer between watch and phone uses Apple's system-provided
-WatchConnectivity (local Bluetooth/Wi-Fi). No third-party servers are involved, and the
-plan service takes no part in watch-phone sync.</p>
-
-<h2>4. 计划服务</h2>
-<p class="en">4. Plan service</p>
-<p>只有你自己使用「计划助手」时，App 才会联网。</p>
-<p><strong>发出的内容</strong>：你写的那句话，加上你的训练档案（项目、等级、板型、惯用手；追问某份计划的细节时，
-还包括当前计划和身高体重，若你填过）。</p>
-<p><strong>发送之前</strong>：链接、邮箱、手机号会在你的设备上去掉，然后才发出。</p>
-<p><strong>到达之后</strong>：计划服务的 Cloudflare 日志会保留最多 7 天的脱敏请求文本、模型回复与请求编号，仅用于排错；不带账号标识、不带训练记录。
-计划的生成由第三方模型服务完成，传给它的只有上面这些脱敏后的内容，不带账号标识、不带训练记录。
-这些内容不用于广告，也不出售。</p>
-<p class="en">The app only goes online when you use the plan coach yourself.</p>
-<p class="en"><strong>What is sent:</strong> the sentence you type, plus your training profile
-(discipline, grades, board, dominant hand; when you ask about a plan, the current plan and your
-height/weight if you entered them).</p>
-<p class="en"><strong>Before sending:</strong> links, emails and phone numbers are removed on your
-device, before it is sent.</p>
-<p class="en"><strong>After that:</strong> the plan service's Cloudflare logs keep the redacted request
-text, the model reply and a request id for up to 7 days, for debugging only. They carry no
-account identifier and no training records. Plan generation is handled by a third-party
-model service, which receives only the redacted content above. It is never used for
-advertising and never sold.</p>
+<h2>4. iCloud</h2>
+<p class="en">4. iCloud</p>
+<p>登录了 iCloud 时，App 会自动把下面这些内容镜像到你的 iCloud 中这个 App 的私有数据库（CloudKit 私有数据库）：训练记录（HangSession）、「已清空」标记（HangMeta）、免费方案的自动检测计数（HangProQuota），以及你给反馈学习标注过的记录（HangFeedbackEvent——每场训练的次数、时长和一个角度摘要，不含完整的轨迹曲线）。这是你自己的 iCloud 空间，开发者无法读取。</p>
+<p>手表不直接连接 iCloud，同步由 iPhone 完成。卸载 App 只会删除本机上的副本，iCloud 里的记录会保留，重新安装后可以恢复。iCloud 同步需要网络。</p>
+<p>你可以在 iOS 的「设置」中关闭 HangSpine 的 iCloud 同步。App 内目前没有 iCloud 同步的开关。</p>
+<p class="en">When you are signed in to iCloud, the app automatically mirrors the following to the app's private database in your own iCloud (a CloudKit private database): your sessions (HangSession), the "cleared" marker (HangMeta), the free-plan auto-detection counter (HangProQuota), and the records you have labelled for Feedback Learning (HangFeedbackEvent: per-session counts, durations and an angle summary, not the full trace curves). This is your own iCloud storage; the developer cannot read it.</p>
+<p class="en">The watch does not connect to iCloud itself; the iPhone does the syncing. Uninstalling the app deletes only the local copy. The iCloud records stay, which is what lets a reinstall restore them. iCloud sync uses the network.</p>
+<p class="en">You can switch iCloud sync for HangSpine off in iOS Settings. There is currently no in-app toggle for iCloud sync.</p>
 
 <h2>5. 无追踪</h2>
 <p class="en">5. No tracking</p>
-<p>App 不包含任何分析统计 SDK、广告组件或追踪代码，不采集设备标识符，不追踪你的使用行为。</p>
-<p class="en">The app contains no analytics SDKs, advertising components, or tracking
-code; it collects no device identifiers and does not track your usage.</p>
+<p>App 不包含广告或营销 SDK，不做跨 App 追踪，也不会弹出系统的「允许跟踪」（ATT）请求；不读取广告标识符或硬件标识符，也不追踪你的使用行为。发送给计划服务的请求会带有一个随机生成的安装标识，见第 6 节。App Store 上的「App 隐私」标签请见 <a href="https://apps.apple.com/app/id6817156558" rel="noopener">HangSpine 的 App Store 页面</a>。</p>
+<p class="en">The app contains no advertising or marketing SDKs, does no cross-app tracking and never shows the system "Allow Tracking" (ATT) prompt. It reads no advertising identifier or hardware identifier and does not track your usage. Requests sent to the plan service carry a random per-install identifier; see section 6. The "App Privacy" label is on <a href="https://apps.apple.com/app/id6817156558" rel="noopener">HangSpine's App Store page</a>.</p>
 
-<h2>6. 本网站（hangspine.com）的匿名统计</h2>
-<p class="en">6. Aggregate web analytics for this website (hangspine.com)</p>
+<h2>6. AI 计划服务——只在你使用 AI 教练时</h2>
+<p class="en">6. AI plan service — only when you use the AI coach</p>
+<p>AI 教练默认是「本地模式」：回答由设备上的规则生成，不发送任何内容。只有你主动打开云端 AI 并提问时，App 才会访问计划服务。当天的额度用完时，教练会直接用本地规则回答，同样不发送任何内容。</p>
+<p class="en">The AI coach starts in local mode: answers come from on-device rules and nothing is sent. The app contacts the plan service only when you turn on cloud AI yourself and ask a question. Once the day's allowance is used up, the coach answers with local rules again and again sends nothing.</p>
+<p><strong>发送的内容：</strong></p>
+<ul>
+<li>你写的当前这句话，以及同一段对话里你之前写的消息（它们会作为上下文随请求重新发送）；</li>
+<li>训练档案：项目、难度体系、最高难度和常用难度、指力板、惯用手、训练重点、力量偏好、基线方式、训练目标、训练器械和训练模式；身高和体重只在你自己填写过时才包含；</li>
+<li>当前的计划和训练周期（名称、握法、边条、悬垂和休息秒数、次数、组数、各阶段）；你给计划和周期起的名称会原样发送；</li>
+<li>近期训练的摘要（仅新的请求格式）：最近 90 天的训练次数、最近一次的日期、平均 RPE，以及最近 8 场训练的日期、次数、总秒数、最长一次悬垂和 RPE；</li>
+<li>当前这段对话最近的几轮（最多 12 轮），以及你在教练表单里选的答案（每天几分钟、水平、排几周）；</li>
+<li>App 版本、语言，以及上一轮云端对话的请求编号和结果。</li>
+</ul>
+<p><strong>发送之前，在设备上去除的内容：</strong>下面这些会被替换成「[redacted]」——带 http:// 或 https:// 的网址；不带前缀、位于常见域名上的网址（例如 example.com/x，域名后缀包括 com、cn、net、org、io、co、app、dev、me、info、xyz、top、edu、gov）；电子邮箱地址；中国大陆手机号（以 1 开头、第二位是 3–9 的 11 位数字）。这一步会作用于当前这句话、随上下文重新发送的之前你写的消息，以及 App 从这些内容里整理后一并发送的简报文字。</p>
+<p><strong>不会被去除的：</strong>其他格式或其他国家的电话号码（例如带空格、带横线或带国家代码的号码），姓名、地址，以及你输入的其他任何内容。所以请不要在对话里写这些。攀岩难度（例如 5.10a）和计划里的数字不受影响。</p>
+<p><strong>线路：</strong>App → 计划服务（Cloudflare Worker：hangspine-ai-plan.p-1403303507.workers.dev）→ DeepSeek 的模型接口（api.deepseek.com）。计划服务在转发和记录之前，会对当前这句话再自行去除一次（带 http:// 或 https:// 的网址、电子邮箱地址、中国大陆手机号）。DeepSeek 是第三方的模型服务商，生成计划和回复的就是它的模型。DeepSeek 自己的隐私政策见 <a href="https://cdn.deepseek.com/policies/zh-CN/deepseek-privacy-policy.html" hreflang="zh" rel="noopener">DeepSeek 隐私政策</a>（<a href="https://cdn.deepseek.com/policies/en-US/deepseek-privacy-policy.html" hreflang="en" rel="noopener">English</a>）；需要说明的是，该政策写明它不覆盖使用其开放平台接口开发的下游应用的终端用户，因此你的数据如何被处理，以本页为准。</p>
+<p><strong>随每个请求发送的标识：</strong>请求头 <code>x-hangspine-device</code>（每次安装时随机生成的一个标识，用于每日 AI 额度；不是硬件 ID，不关联姓名）、<code>x-hangspine-tier</code>（free、monthly、lifetime 等，即你当前的方案）、<code>x-hangspine-ai-day</code> 和 <code>x-hangspine-ai-count</code>（当天的日期和当天已用的次数）、<code>x-hangspine-environment</code>（运行环境）。目前服务端代码只读取其中的运行环境一项，但它们都会被发送。</p>
+<p class="en"><strong>What is sent:</strong></p>
+<ul class="en">
+<li>the message you type now, and the messages you typed earlier in the same conversation (they are sent again as context);</li>
+<li>your training profile: discipline, grade system, highest and usual grade, hangboard, dominant hand, training focus, strength preference, baseline style, training goal, training equipment and training mode; your height and weight only if you entered them yourself;</li>
+<li>the current plan and training block (names, grip, edge, hang and rest seconds, reps, sets, phases); the names you gave to plans and blocks are sent as you wrote them;</li>
+<li>a summary of recent sessions (newer request format only): the number of sessions in the last 90 days, the date of the last one, your average RPE, and the 8 most recent sessions with date, reps, total seconds, best hang and RPE;</li>
+<li>the last few turns of the current conversation (at most 12), and the answers you pick in the coach's short form (minutes per day, level, how many weeks);</li>
+<li>the app version and language, and the request id and outcome of the previous cloud turn.</li>
+</ul>
+<p class="en"><strong>Removed on your device before anything is sent:</strong> the following are replaced with "[redacted]" — web addresses that include http:// or https://; web addresses without a scheme on common domains (for example example.com/x; com, cn, net, org, io, co, app, dev, me, info, xyz, top, edu, gov); email addresses; and mainland Chinese mobile numbers (11 digits starting with 1, the second digit 3–9). This applies to the current message, to your earlier messages that are sent again as context, and to the brief text the app assembles from them and sends along.</p>
+<p class="en"><strong>Not removed:</strong> phone numbers in other formats or countries (for example with spaces, dashes or a country code), names, addresses, and anything else you type. So please do not type those into the conversation. Climbing grades (such as 5.10a) and the numbers in a plan are left untouched.</p>
+<p class="en"><strong>Route:</strong> app → plan service (a Cloudflare Worker: hangspine-ai-plan.p-1403303507.workers.dev) → DeepSeek's model API (api.deepseek.com). Before forwarding or logging, the plan service runs its own removal once more on the current message (http:// or https:// addresses, email addresses, mainland Chinese mobile numbers). DeepSeek is a third-party model provider; its model is what generates the plan and the reply. DeepSeek's own privacy policy is here (<a href="https://cdn.deepseek.com/policies/en-US/deepseek-privacy-policy.html" hreflang="en" rel="noopener">English</a>, <a href="https://cdn.deepseek.com/policies/zh-CN/deepseek-privacy-policy.html" hreflang="zh" rel="noopener">中文</a>). Note that it states it does not cover end users of downstream apps built on its open platform, so for how your data is handled, this page is the reference.</p>
+<p class="en"><strong>Identifiers sent with every request:</strong> the request headers <code>x-hangspine-device</code> (a random identifier generated per install, for the daily AI allowance; not a hardware ID, not tied to a name), <code>x-hangspine-tier</code> (free, monthly, lifetime and so on — your current plan), <code>x-hangspine-ai-day</code> and <code>x-hangspine-ai-count</code> (today's date and the number of turns used today), and <code>x-hangspine-environment</code> (the runtime environment). The server code currently reads only the environment header, but all of them are sent.</p>
+
+<h2>7. 计划服务保留什么</h2>
+<p class="en">7. What the plan service keeps</p>
+<p><strong>请求日志（Cloudflare Workers Logs）：</strong>每个请求都会留下日志，内容包括去除后的请求内容（当前这句话、不含身高体重的训练档案、当前计划和训练周期、最近的对话轮次、表单里选的答案）、模型的回复和一个请求编号；每个请求还会记下请求所在的国家或地区，以及 Cloudflare 的机房代码。被限流（每小时有次数上限）的请求，日志里会包含 IP 地址。日志最多保留 7 天。</p>
+<p><strong>用量记录（一个数据库表，每次云端对话一行）：</strong>请求编号、意图、状态、各项耗时指标、语言、运行环境、一份去除后的当前这句话（最多 240 个字符；是否记录这句话可以通过配置关闭）、这句话的哈希值，以及一段简短的客户端状态字符串（最多 400 个字符）。每天有一个定时任务删除 90 天前的记录。开发者会读取这些记录，用来找出失败的对话、改进教练。</p>
+<p><strong>这些记录不关联设备标识、账号或姓名。</strong>同一段对话的前后几轮，只通过上一轮的请求编号相互引用。也正因为这样，我们无法根据你的要求找到并删除某个人的记录——它们会在 90 天内自动删除。</p>
+<p><strong>IP 地址</strong>只用于限流（每小时有次数上限），在计划服务自己的日志里，只出现在被限流请求的记录中。当然，请求需要经过 Cloudflare 的网络才能到达计划服务；Cloudflare 作为托管方对连接元数据的处理，由它自己的隐私政策说明。</p>
+<p class="en"><strong>Request logs (Cloudflare Workers Logs):</strong> every request is logged. An entry contains the redacted request content (the current message, the training profile without height and weight, the current plan and training block, the recent conversation turns, the answers picked in the short form), the model's reply and a request id; each request also records the country or region the request came from and the Cloudflare data center code. For rate-limited requests (there is an hourly cap) the log also contains the IP address. Logs are kept for at most 7 days.</p>
+<p class="en"><strong>Usage records (a database table with one row per cloud turn):</strong> request id, intent, status, timing metrics, language, environment, a redacted copy of the current message (at most 240 characters; logging the message can be switched off by configuration), a hash of the message, and a short client-state string (at most 400 characters). A daily job deletes rows older than 90 days. The developer reads them to find failed turns and to improve the coach.</p>
+<p class="en"><strong>These records are not tied to a device identifier, an account or a name.</strong> Consecutive turns of one conversation reference each other through the previous request id only. For the same reason, we cannot find and delete one person's rows on request — they are deleted automatically within 90 days.</p>
+<p class="en"><strong>The IP address</strong> is used only for rate limiting (an hourly cap), and in the plan service's own logs it appears only for rate-limited requests. Requests do pass through Cloudflare's network on their way to the plan service; how Cloudflare, as the hosting provider, handles connection metadata is described in its own privacy policy.</p>
+
+<h2>8. 结果标签</h2>
+<p class="en">8. Result labels</p>
+<p>一次云端对话结束后，App 可能会向计划服务发回一个很小的结果标签——例如这份计划是否被采用，或者 App 是否因为云端回复不可用而退回了本地规则——用来衡量教练的质量。它只包含请求编号和结果，不包含你写的任何内容，也不包含任何设备或账号标识；结果会写到上面那张用量表对应的那一行里。</p>
+<p class="en">After a cloud turn, the app may send back a small result label to the plan service — for example whether the plan was applied, or whether the app fell back to its local rules because the cloud reply was unusable — so that the quality of the coach can be measured. It contains only the request id and the outcome: nothing you wrote, and no device or account identifier. The outcome is written to the matching row of the usage table described above.</p>
+
+<h2>9. 购买</h2>
+<p class="en">9. Purchases</p>
+<p>付款、订阅和退款都由 Apple 通过 App Store 处理，App 看不到你的任何支付信息。App 只会在计划请求里带上你当前的方案标识（见第 6 节）。购买信息不用于广告，也不出售。月付订阅会自动续订，直到你在 App Store 的订阅设置中取消。</p>
+<p class="en">Payment, subscriptions and refunds are handled by Apple through the App Store; the app never sees your payment details. The only thing the app sends with plan requests is your current plan tier (see section 6). Purchase information is not used for advertising and is not sold. The monthly subscription renews automatically until you cancel it in your App Store subscription settings.</p>
+
+<h2>10. 第三方</h2>
+<p class="en">10. Third parties</p>
+<ul>
+<li><strong>Apple：</strong>iCloud（CloudKit 私有数据库）、App Store（购买、订阅、家人共享）和 HealthKit（写入体能训练）。</li>
+<li><strong>Cloudflare：</strong>托管计划服务，并保存请求日志（最多 7 天）。<a href="https://www.cloudflare.com/privacypolicy/" rel="noopener">Cloudflare 隐私政策</a></li>
+<li><strong>DeepSeek：</strong>模型推理，也就是生成计划和回复。<a href="https://cdn.deepseek.com/policies/zh-CN/deepseek-privacy-policy.html" hreflang="zh" rel="noopener">DeepSeek 隐私政策</a></li>
+</ul>
+<ul class="en">
+<li><strong>Apple:</strong> iCloud (CloudKit private database), the App Store (purchases, subscriptions, Family Sharing) and HealthKit (writing workouts).</li>
+<li><strong>Cloudflare:</strong> hosts the plan service and keeps the request logs (at most 7 days). <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener">Cloudflare privacy policy</a></li>
+<li><strong>DeepSeek:</strong> model inference — generating the plan and the reply. <a href="https://cdn.deepseek.com/policies/en-US/deepseek-privacy-policy.html" hreflang="en" rel="noopener">DeepSeek privacy policy</a></li>
+</ul>
+
+<h2>11. 你的选择</h2>
+<p class="en">11. Your choices</p>
+<ul>
+<li><strong>在 App 里清空数据</strong>（iPhone：看板 → 齿轮 → 数据）。「清空所有训练记录」会删除这台 iPhone 和你 iCloud 里的全部训练记录，不可撤销。「清空所有数据」还会清掉训练档案、计划、设置和反馈学习的本地记录，重置配对的 Apple Watch，并通过 iCloud 让同一账户下的其他设备删掉这些训练记录。注意：「清空所有数据」不会重置免费方案的自动检测计数（100 次免费额度不能靠清空重来），目前也不会删除 iCloud 里你标注过的反馈学习记录——这些记录暂时无法在 App 内删除，如需删除请联系我们。</li>
+<li><strong>卸载 App：</strong>删除本机上的数据；iCloud 里的记录会保留。</li>
+<li><strong>在 iOS「设置」里关闭 HangSpine 的 iCloud 同步。</strong></li>
+<li><strong>在 iOS「设置」或「健康」App 里撤回健康权限。</strong></li>
+<li><strong>让 AI 教练保持本地模式</strong>（不打开云端 AI）：这样不会有任何内容发送。</li>
+<li><strong>关闭反馈学习</strong>（看板 → 齿轮 → 反馈学习（实验功能））：之后 App 不再保存训练轨迹的摘要，也不再向 iCloud 写入新的标注。</li>
+<li><strong>联系开发者：</strong>见文末。</li>
+</ul>
+<ul class="en">
+<li><strong>Erase data in the app</strong> (iPhone: Dashboard → gear icon → Data). "Erase all sessions" removes every session from this iPhone and from your iCloud copy; it cannot be undone. "Erase all data" also clears your training profile, plans, settings and the local Feedback Learning records, resets the paired Apple Watch, and makes the other devices on the same iCloud account drop those sessions. Note: "Erase all data" does not reset the free-plan auto-detection counter (the 100 free sessions cannot be renewed by erasing), and it currently does not delete the Feedback Learning records you have labelled in iCloud — those records cannot be deleted from inside the app at the moment; contact us if you need them deleted.</li>
+<li><strong>Uninstall the app:</strong> deletes the data on the device; the iCloud records stay.</li>
+<li><strong>Switch iCloud sync for HangSpine off in iOS Settings.</strong></li>
+<li><strong>Withdraw the Health permission</strong> in iOS Settings or the Health app.</li>
+<li><strong>Keep the AI coach in local mode</strong> (leave cloud AI off): nothing is sent.</li>
+<li><strong>Turn Feedback Learning off</strong> (Dashboard → gear icon → Feedback Learning (Experimental)): the app then stops keeping trace summaries and stops writing new labels to iCloud.</li>
+<li><strong>Contact the developer:</strong> see the end of this page.</li>
+</ul>
+
+<h2>12. 变更</h2>
+<p class="en">12. Changes</p>
+<p>本页有更新时，会发布在这个地址，并更新生效日期。</p>
+<p class="en">New versions of this page are published here with a new effective date.</p>
+
+<h2>13. 本网站（hangspine.com）的匿名统计</h2>
+<p class="en">13. Aggregate web analytics for this website (hangspine.com)</p>
 <p>本网站使用 Cloudflare Web Analytics（无 Cookie、无跨站追踪）统计<strong>汇总层面</strong>的访问数据：
 页面浏览量、访问来源国家、推荐来源与设备类型。它<strong>不使用 Cookie、不存储个人标识符、
 不建立用户画像</strong>，也无法把任何访问行为关联到你个人。App 本身（第 5 节）仍然零统计。</p>
@@ -97,8 +162,8 @@ countries, referrers, and device types. It uses <strong>no cookies, stores no
 personal identifiers, and builds no profiles</strong>; nothing can be linked back
 to you as an individual. The app itself (section 5) remains fully analytics-free.</p>
 
-<h2>7. 联系我们</h2>
-<p class="en">6. Contact</p>
+<h2>14. 联系我们</h2>
+<p class="en">14. Contact</p>
 <p>对本政策有任何疑问，请联系：<a href="mailto:p.1403303507@qq.com">p.1403303507@qq.com</a></p>
 <p class="en">Questions about this policy: <a href="mailto:p.1403303507@qq.com">p.1403303507@qq.com</a></p>
 

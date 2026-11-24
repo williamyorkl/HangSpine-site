@@ -57,7 +57,7 @@
 
 <details>
 <summary>训练数据存在哪里？</summary>
-<p>训练记录只保存在你自己的 iPhone 与 Apple Watch 本地——无账号、无追踪。计划服务是唯一例外：它处理你写的那句话，不留存原话。iCloud 备份（可选）使用你自己的私有 iCloud 空间。详见<a href="../../privacy/">隐私政策</a>。</p>
+<p>训练记录保存在你的 iPhone 与 Apple Watch 上；登录了 iCloud 的话，还会自动镜像到你自己的 iCloud 私有数据库。无账号、无追踪、无广告。唯一例外：向 AI 教练要计划时，你写的那句话和训练档案会发送到计划服务（一个 Cloudflare Worker，再转给 DeepSeek）。网址、邮箱地址和中国大陆手机号会在设备上先行去除——当前这句话和随上下文重新发送的之前消息都一样。计划服务在转发和记录之前，会对当前这句话再自行去除一次。会保留一份脱敏后的当前原话，最多 90 天，用于改进教练。详见<a href="../../privacy/">隐私政策</a>。</p>
 </details>
 
 <details>
@@ -72,7 +72,7 @@
 
 <details>
 <summary>怎么清空数据？</summary>
-<p>iPhone App → 齿轮 → <strong>清空所有训练记录</strong>。操作不可撤销。</p>
+<p>iPhone App → <strong>看板</strong>标签页 → 齿轮 → <strong>数据</strong>分区。<strong>清空所有训练记录</strong>会删除这台 iPhone 上以及你 iCloud 私有数据库里的全部训练记录，操作不可撤销。<strong>清空所有数据</strong>还会清掉训练档案、计划和设置，并且会同步到你的其他设备：配对的 Apple Watch 会被重置，同一 iCloud 账户下的其他 iPhone 会在下次同步时删掉这些训练记录。</p>
 </details>
 
 <p><a href="../../">← 返回首页</a></p>
