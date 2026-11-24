@@ -42,7 +42,7 @@ strong{font-weight:650}
 
 <h2>一次悬垂，就是一次</h2>
 <blockquote>"If, for example, you're already happy doing a 60-second hang three times a day, you won't want to use an app that will only let you record this as 12 15-second hangs"——2026 年 10 月，一位 Reddit 用户</blockquote>
-<p>这是计数模型的问题，不是传感器看错了：旧版在一次悬垂跨过目标时就把它切开。1.0.5 把一次连续悬垂记为一次，按真实时长记录。自由悬垂时，4 秒内的换手仍算同一次；跨过目标只提示一次，不会把这一挂切成两段。单次悬垂目标可设 5–180 秒。60 秒，就是 60 秒。</p>
+<p>这是计数模型的问题，不是传感器看错了：旧版在一次悬垂跨过目标时就把它切开。1.0.5 不会再这样切：自由悬垂时，4 秒内的换手仍算同一次，跨过目标只提示一次。接下来怎么记由你决定。「目标达成后自动结束并休息」默认开启：到达目标就结束本组，并开始休息倒计时（30–180 秒）；关掉它，一次连续悬垂就按完整时长记为一次——60 秒，就是 60 秒。单次悬垂目标可设 5–180 秒。</p>
 <figure>
 <img src="../assets/zh/dev_session_detail.png" width="888" height="1816" loading="lazy" decoding="async" alt="iPhone 的一场间歇组指力板训练详情：握法、边条和配重，完成度，以及每一次悬垂一根柱子">
 <img class="watch" src="../assets/zh/dev_watch_summary.png" width="581" height="638" loading="lazy" decoding="async" alt="Apple Watch 训练总结页：总悬垂时长、每次一根柱子、平均和最长">
@@ -58,8 +58,8 @@ strong{font-weight:650}
 <figcaption>选方案，悬垂，休息。进度由手表来记：第 1/2 组 · 第 3/6 次。</figcaption>
 </figure>
 <figure>
-<img src="../assets/zh/dev_history.png" width="888" height="1816" loading="lazy" decoding="async" alt="iPhone 最近 30 天的指力板训练列表，每场都带握法、边条和配重">
-<figcaption>每场指力板训练都留着握法、边条和负荷。列表覆盖最近 30 天。</figcaption>
+<img src="../assets/zh/dev_history.png" width="888" height="1816" loading="lazy" decoding="async" alt="iPhone 的指力板训练页：近 30 天的图表和每一场训练的列表，每场都带握法、边条和配重">
+<figcaption>每场指力板训练都留着握法、边条和负荷。页面用图表汇总近 30 天，下面列出每一场。</figcaption>
 </figure>
 
 <h2>更清楚的准备页</h2>
@@ -80,7 +80,7 @@ strong{font-weight:650}
 </figure>
 
 <h2>老老实实地说"发送到手表"</h2>
-<p>「今天」页面的主按钮是<strong>发送到手表</strong>。它保存计划、发送计划，并告诉你真实的送达状态。它不会在手表上开始训练。没有配对手表，它会这么说；配对了但没装手表 App 或手表暂时连不上，它也会这么说。开始仍然发生在手腕上：抬腕，抓杠，松手。</p>
+<p>训练周期开始后，「今天」页面的主按钮是<strong>发送到手表</strong>。它保存计划、发送计划，并告诉你真实的送达状态。它不会在手表上开始训练。没有配对手表，它会这么说；配对了但没装手表 App 或手表暂时连不上，它也会这么说。开始仍然发生在手腕上：抬腕，抓杠，松手。</p>
 <figure>
 <img src="../assets/zh/dev_free_today.png" width="888" height="1816" loading="lazy" decoding="async" alt="免费方案下的 iPhone「今天」页面，卡片显示还剩多少次自动检测">
 <img src="../assets/zh/dev_pro_today.png" width="888" height="1816" loading="lazy" decoding="async" alt="Pro 用户的 iPhone「今天」页面：不限次自动检测，以及更高的 AI 教练额度">

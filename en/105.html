@@ -42,7 +42,7 @@ strong{font-weight:650}
 
 <h2>One hang is one rep</h2>
 <blockquote>&ldquo;If, for example, you're already happy doing a 60-second hang three times a day, you won't want to use an app that will only let you record this as 12 15-second hangs.&rdquo; — a Reddit user, October 2026</blockquote>
-<p>That was a counting-model problem, not a sensor problem: the old version split a hang whenever it crossed the target. 1.0.5 records one continuous hang as one rep, at its real duration. When you hang freely, a regrip within 4 seconds stays the same hang, and crossing the target triggers one celebration instead of cutting the hang in two. The per-hang goal can be set from 5 to 180 seconds. 60 seconds is 60 seconds.</p>
+<p>That was a counting-model problem, not a sensor problem: the old version split a hang whenever it crossed the target. 1.0.5 never splits a hang that way: when you hang freely, a regrip within 4 seconds stays the same hang, and crossing the target is marked once. What happens next is up to you. “End at goal and rest” is on by default: the set ends when you reach your goal and a rest countdown starts (30–180 s). Turn it off and one continuous hang is recorded as one rep at its full length — a 60-second hang is a 60-second rep. The per-hang goal can be set from 5 to 180 seconds.</p>
 <figure>
 <img src="../assets/en/dev_session_detail.png" width="888" height="1816" loading="lazy" decoding="async" alt="iPhone session details for a Repeaters hangboard session: grip, edge and weight, completion, and a bar for each hang">
 <img class="watch" src="../assets/en/dev_watch_summary.png" width="581" height="638" loading="lazy" decoding="async" alt="Apple Watch session summary with total hang time, a bar for each hang, average and best">
@@ -58,8 +58,8 @@ strong{font-weight:650}
 <figcaption>Pick a protocol, hang, rest. The watch keeps score: set 1 of 2, rep 3 of 6.</figcaption>
 </figure>
 <figure>
-<img src="../assets/en/dev_history.png" width="888" height="1816" loading="lazy" decoding="async" alt="iPhone list of hangboard sessions from the last 30 days, each with its grip, edge and added weight">
-<figcaption>Every hangboard session keeps its grip, edge and load. The list covers the last 30 days.</figcaption>
+<img src="../assets/en/dev_history.png" width="888" height="1816" loading="lazy" decoding="async" alt="iPhone hangboard sessions page: a chart of the last 30 days and the list of every session, each with its grip, edge and added weight">
+<figcaption>Every hangboard session keeps its grip, edge and load. The page charts the last 30 days and lists every session.</figcaption>
 </figure>
 
 <h2>A clearer Ready screen</h2>
@@ -80,7 +80,7 @@ strong{font-weight:650}
 </figure>
 
 <h2>Sending a plan to the watch, honestly</h2>
-<p>The primary button on Today is <strong>Send plan to watch</strong>. It saves the plan, sends it, and tells you the real delivery state. It does not start a workout on your wrist. If no watch is paired, it says so; if the watch is paired but the app is not installed or not reachable, it says that too. Starting still happens on the wrist: raise, grab, release.</p>
+<p>Once a training block is under way, the primary button on Today is <strong>Send plan to watch</strong>. It saves the plan, sends it, and tells you the real delivery state. It does not start a workout on your wrist. If no watch is paired, it says so; if the watch is paired but the app is not installed or not reachable, it says that too. Starting still happens on the wrist: raise, grab, release.</p>
 <figure>
 <img src="../assets/en/dev_free_today.png" width="888" height="1816" loading="lazy" decoding="async" alt="iPhone Today tab on the free plan, with a card showing how many auto-detected sessions are left">
 <img src="../assets/en/dev_pro_today.png" width="888" height="1816" loading="lazy" decoding="async" alt="iPhone Today tab with the HangSpine Pro card: unlimited detection and the raised AI coach allowance">
