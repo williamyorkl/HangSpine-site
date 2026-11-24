@@ -178,3 +178,7 @@ footer a { color: #d2d2d7; }
   th, td { white-space: nowrap; }
   .tldr { padding: 14px 16px; }
 }
+
+/* mobile table wrapper */
+.table-wrap { width: 100%; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+@media (max-width: 700px) { .table-wrap table { width: auto; min-width: 560px; display: table; } }

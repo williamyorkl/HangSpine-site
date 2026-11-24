@@ -264,5 +264,17 @@
 })();
 </script>
 
+
+<script>
+(function () {
+  document.querySelectorAll('main table').forEach(function (t) {
+    if (t.parentElement && t.parentElement.classList.contains('table-wrap')) return;
+    var w = document.createElement('div');
+    w.className = 'table-wrap';
+    t.parentNode.insertBefore(w, t);
+    w.appendChild(t);
+  });
+})();
+</script>
 </body>
 </html>
