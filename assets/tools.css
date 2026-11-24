@@ -1,0 +1,49 @@
+/* Shared styles for the new interactive tools (2026-11-24) */
+.tool-hero { padding-bottom: 8px; }
+.tool-form { margin: 22px 0 8px; }
+.tool-form .frow { margin: 0 0 14px; }
+.tool-form label { font-size: .9rem; }
+.tool-form input, .tool-form select { width: 100%; }
+.tool-form .hint { font-size: .8rem; color: var(--ink2); margin-top: 5px; }
+.tool-form .err { margin-top: 4px; }
+.tool-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 8px; }
+.tool-actions .btn { margin-top: 0; }
+.ghost-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px;
+  padding: 10px 18px; border-radius: 999px; border: 1px solid var(--card-border);
+  background: transparent; color: var(--ink); font: inherit; cursor: pointer; }
+.ghost-btn:hover { border-color: var(--accent); color: var(--accent2); }
+.result-card { background: var(--card); border: 1px solid var(--card-border); border-radius: 20px;
+  padding: 24px; margin: 22px 0; }
+.result-card[hidden] { display: none; }
+.score-row { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; }
+.score-num { font-size: clamp(2.8rem, 8vw, 4.4rem); line-height: 1; font-weight: 800;
+  background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.score-label { font-size: .78rem; text-transform: uppercase; letter-spacing: .12em; color: var(--ink2); }
+.stage { font-size: 1.35rem; font-weight: 800; margin: 2px 0 4px; }
+.weak { color: var(--accent2); font-weight: 700; }
+.plan { margin: 14px 0 0; padding-left: 20px; }
+.plan li { margin: 7px 0; }
+.metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 16px 0 0; }
+.metric { background: var(--move); border: 1px solid var(--card-border); border-radius: 14px; padding: 12px 14px; }
+.metric b { display: block; font-size: 1.25rem; }
+.metric span { font-size: .8rem; color: var(--ink2); }
+.share-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.mini-note { font-size: .82rem; color: var(--ink2); margin-top: 12px; }
+.mode-toggle { display: inline-flex; border: 1px solid var(--card-border); border-radius: 999px; padding: 4px; gap: 4px; margin: 0 0 18px; }
+.mode-toggle button { border: 0; background: transparent; color: var(--ink2); border-radius: 999px;
+  padding: 8px 16px; font: inherit; font-weight: 600; cursor: pointer; }
+.mode-toggle button[aria-pressed="true"] { background: var(--move); color: var(--accent2); }
+.timer-wrap { text-align: center; padding: 10px 0 4px; }
+.timer-display { font-variant-numeric: tabular-nums; font-size: clamp(4rem, 16vw, 7rem);
+  line-height: 1; font-weight: 800; letter-spacing: -.04em; }
+.timer-phase { font-size: 1.15rem; font-weight: 700; color: var(--accent2); margin: 8px 0 4px; }
+.timer-sub { color: var(--ink2); font-size: .95rem; min-height: 3em; }
+.timer-bar { height: 8px; background: var(--move); border-radius: 999px; overflow: hidden; margin: 18px 0 6px; }
+.timer-bar span { display: block; height: 100%; width: 0; background: var(--grad); transition: width .2s linear; }
+.timer-modes { justify-content: center; display: flex; }
+@media (max-width: 700px) {
+  .result-card { padding: 18px 16px; }
+  .score-row { gap: 14px; }
+  .tool-actions .btn, .tool-actions .ghost-btn { width: 100%; }
+  .share-row .btn, .share-row .ghost-btn { width: 100%; }
+}

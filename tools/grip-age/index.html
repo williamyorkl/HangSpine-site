@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a0a">
+<title>Grip Age Calculator: Grip Strength Percentile</title>
+<meta name="description" content="Free grip age and grip strength percentile calculator. Compare a dynamometer reading or dead hang with age and sex norms.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/app-icon-48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/app-icon-96.png">
+<link rel="icon" type="image/png" sizes="144x144" href="/assets/app-icon-144.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Grip Age Calculator: Grip Strength Percentile">
+<meta property="og:description" content="Free grip age and grip strength percentile calculator. Compare a dynamometer reading or dead hang with age and sex norms.">
+<meta property="og:url" content="https://hangspine.com/tools/grip-age/">
+<meta property="og:image" content="https://hangspine.com/assets/og/grip-age.png">
+<link rel="canonical" href="https://hangspine.com/tools/grip-age/">
+<script>
+(function () {
+  var saved = null;
+  try { saved = localStorage.getItem("hs-theme"); } catch (e) {}
+  var theme = saved || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+  document.documentElement.dataset.theme = theme;
+})();
+</script>
+<link rel="stylesheet" href="/assets/pages.css">
+<link rel="stylesheet" href="/assets/tools.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Grip Age Calculator","url":"https://hangspine.com/tools/grip-age/","applicationCategory":"HealthApplication","operatingSystem":"Any (web browser)","description":"Free grip age and grip strength percentile calculator. Compare a dynamometer reading or dead hang with age and sex norms.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"HangSpine","url":"https://hangspine.com/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is grip age real?","acceptedAnswer":{"@type":"Answer","text":"No. It is a population comparison, not a biological age. It is an approximation based on age- and sex-specific grip averages."}},{"@type":"Question","name":"Which hand should I test?","acceptedAnswer":{"@type":"Answer","text":"Test both and use a consistent choice; a sudden large asymmetry deserves a professional assessment."}},{"@type":"Question","name":"Can I use a dead hang instead of a dynamometer?","acceptedAnswer":{"@type":"Answer","text":"Yes, but it measures hang endurance, not peak grip force. The tool switches to an approximate hang percentile and level."}},{"@type":"Question","name":"Why does my percentile change between tests?","acceptedAnswer":{"@type":"Answer","text":"Grip is sensitive to sleep, fatigue, warm-up, hand position and effort. Test under the same conditions and track the trend."}},{"@type":"Question","name":"Does a high percentile mean I am healthy?","acceptedAnswer":{"@type":"Answer","text":"No. Grip is one marker among many and does not diagnose or rule out any condition."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://hangspine.com/"},{"@type":"ListItem","position":2,"name":"Free Tools","item":"https://hangspine.com/tools/"},{"@type":"ListItem","position":3,"name":"Grip Age Calculator","item":"https://hangspine.com/tools/grip-age/"}]}</script>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Grip Age Calculator: Grip Strength Percentile">
+<meta name="twitter:description" content="Free grip age and grip strength percentile calculator. Compare a dynamometer reading or dead hang with age and sex norms.">
+<meta name="twitter:image" content="https://hangspine.com/assets/og/grip-age.png">
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "9e7d7b5f22f94ac59e86b715b9cada7c"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="/en/"><img class="brand-icon" src="/assets/app-icon-64.png" alt="HangSpine">HangSpine</a>
+    <div class="navlinks">
+      <a href="/blog/">Blog</a>
+      <a href="/tools/" aria-current="page">Free Tools</a>
+      <a href="/scoliosis/">Scoliosis Guide</a>
+      <a href="/blog/dead-hangs-scoliosis-evidence/">Evidence</a>
+      <a href="/en/">App</a>
+      <a class="keep" href="/zh/">中文</a>
+      <button id="themeToggle" class="theme-toggle" aria-label="Switch theme">☀️</button>
+    </div>
+  </div>
+</nav>
+<header class="page-head tool-hero">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="/tools/">Free Tools</a> › Grip Age Calculator</div>
+    <div class="kicker">FREE TOOL · NO SIGNUP · NO ADS</div>
+    <h1>Grip Age Calculator</h1>
+    <p class="sub">Enter a grip strength reading or a dead hang. See an approximate percentile, a “grip age” comparison, and what to do next — with the caveats attached.</p>
+  </div>
+</header>
+<main>
+  <div class="wrap prose">
+
+    <div class="tldr">
+      <div class="t">TL;DR</div>
+      <p style="margin:8px 0 0;">Enter a dynamometer grip reading <em>or</em> a max dead hang. You get an <strong>approximate percentile</strong> and, for grip strength, an approximate “grip age” based on population averages. This is a context tool, not a biological age test or a diagnosis.</p>
+    </div>
+
+    <div class="cta-box">
+      <div><strong>HangSpine</strong> turns your Apple Watch into a dead-hang counter — it starts when you grab the bar and stops when you let go.</div>
+      <a class="btn" href="https://apps.apple.com/app/id6817156558?ct=tool_grip-age">See HangSpine →</a>
+    </div>
+
+    <div class="mode-toggle" role="group" aria-label="Measurement type">
+      <button type="button" data-mode="grip" aria-pressed="true">Grip strength (kg)</button>
+      <button type="button" data-mode="hang" aria-pressed="false">Dead hang (seconds)</button>
+    </div>
+
+    <form id="gform" class="tool-form tool-box" novalidate>
+      <div class="frow">
+        <label>Age
+          <input id="gage" type="number" min="18" max="90" inputmode="numeric" placeholder="e.g. 38" required>
+        </label>
+        <label>Sex
+          <select id="gsex">
+            <option value="m">Male</option>
+            <option value="f">Female</option>
+          </select>
+        </label>
+      </div>
+      <div class="frow">
+        <label id="gvalueLabel">Grip strength (kg, dynamometer)
+          <input id="gvalue" type="number" min="5" max="100" step="0.1" inputmode="decimal" placeholder="e.g. 45" required>
+        </label>
+      </div>
+      <p class="hint" id="ghint">Use the best of two attempts on a handheld dynamometer, same hand and same position. If you only have a hang time, switch to “Dead hang”.</p>
+      <div class="tool-actions">
+        <button class="btn" id="ggo" type="submit">Calculate my percentile</button>
+        <button class="ghost-btn" id="greset" type="reset">Reset</button>
+      </div>
+      <div class="err" id="gerr" hidden></div>
+    </form>
+
+    <div class="result-card" id="gout" hidden aria-live="polite">
+      <div class="score-row">
+        <div>
+          <div class="score-label" id="gbiglabel">Grip age</div>
+          <div class="score-num" id="gbig">—</div>
+          <div class="score-label" id="gbigsub">approximate</div>
+        </div>
+        <div style="flex:1 1 260px;">
+          <div class="stage" id="gstage"></div>
+          <p id="gsummary" style="margin:0;"></p>
+          <p class="mini-note" id="gnote"></p>
+        </div>
+      </div>
+      <div class="metric-grid" id="gmetrics"></div>
+      <div class="share-row">
+        <button class="btn" id="gshare" type="button">Share result</button>
+        <button class="ghost-btn" id="gcopy" type="button">Copy result</button>
+      </div>
+      <p class="mini-note">Population estimate only. A single reading is not a diagnosis; track the trend over months.</p>
+    </div>
+
+    <h2>What “grip age” means here</h2>
+    <p>“Grip age” is a communication device, not a biological measurement. We compare your reading with average dynamometer values for your sex and age group, then show the age band whose average is closest. A 45-year-old with a 50 kg reading lands near the average 20–29 male; that does <em>not</em> mean their body is 25. It means their grip is strong relative to their age group.</p>
+    <p>If you enter a dead hang instead, the tool cannot produce a grip age from a dynamometer table — it shows an approximate hang percentile and level instead. Those are different tests; see <a href="/blog/dead-hang-benchmarks/">dead hang benchmarks</a> for the full explanation.</p>
+
+    <h2>How the percentile is estimated</h2>
+    <ul>
+      <li><strong>Grip strength:</strong> age/sex averages from published dynamometer norms (rounded, Bohannon-style reference data). We model a normal distribution with a standard deviation of about 20% of the mean and report an approximate percentile.</li>
+      <li><strong>Dead hang:</strong> the same descriptive bands used in our <a href="/tools/hang-calculator/">hang calculator</a>; the percentile is interpolated within the beginner → elite bands.</li>
+      <li><strong>Not clinical:</strong> neither method is a diagnostic test. Grip strength is associated with health outcomes in cohort studies, but an individual reading needs context.</li>
+    </ul>
+
+    <h2>What to do with the number</h2>
+    <p>Use it as a baseline, then train and re-test in 8–12 weeks. For grip strength, a dynamometer is the better tracker; for hanging performance, use a consistent hang test. If you want to improve grip, our <a href="/blog/grip-strength-standards/">grip standards guide</a> and <a href="/tools/grip-strength-calculator/">grip calculator</a> go deeper. If the number is unexpectedly low or one side is much weaker, a clinician or physio is the right next step — not a web percentile.</p>
+
+    <h2>FAQ</h2>
+    <details open><summary>Is grip age real?</summary><p>No. It is a population comparison, not a biological age. We use it because “you’re around the average 40s” is easier to understand than a z-score, but it is still an approximation.</p></details>
+    <details><summary>Which hand should I test?</summary><p>Test both, then use the average or your dominant hand consistently. A sudden large asymmetry deserves a professional assessment.</p></details>
+    <details><summary>Can I use a dead hang instead of a dynamometer?</summary><p>Yes, but it answers a different question: hang endurance, not peak grip force. The tool switches to a hang percentile and level.</p></details>
+    <details><summary>Why does my percentile change between tests?</summary><p>Grip is sensitive to sleep, fatigue, warm-up, hand position and effort. Test under the same conditions and look at the trend, not one reading.</p></details>
+    <details><summary>Does a high percentile mean I’m healthy?</summary><p>No. Grip is one marker among many. It does not diagnose or rule out any condition.</p></details>
+
+    <h2>Sources</h2>
+    <ol class="refs">
+      <li>Bohannon RW, et al. Normative reference values for grip strength. <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Bohannon+grip+strength+normative+meta-analysis" target="_blank" rel="noopener">PubMed: normative meta-analysis</a></li>
+      <li>Leong DP, et al. Prognostic value of grip strength (PURE study). <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Leong+grip+strength+PURE+lancet" target="_blank" rel="noopener">PubMed: PURE study</a></li>
+      <li>HangSpine: <a href="/tools/hang-calculator/">dead hang calculator</a> · <a href="/blog/dead-hang-benchmarks/">benchmarks guide</a> · <a href="/blog/grip-strength-standards/">grip standards</a></li>
+    </ol>
+    <div class="note"><strong>Disclosure:</strong> we make HangSpine, a paid Apple Watch dead-hang app, and the free tools linked above. <strong>Medical disclaimer:</strong> educational content only; not medical advice, diagnosis, or treatment. A percentile is not a clinical result.</div>
+    <p class="note" style="margin-top:18px;"><a href="/tools/">← All free tools</a> · <a href="/blog/">Blog</a></p>
+
+  </div>
+</main>
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="brand" style="color:#fff"><img class="footer-icon" src="/assets/app-icon-64.png" alt="">HangSpine</div>
+      <p style="margin:10px 0 0;">Free tools &amp; evidence-based spine resources.</p>
+    </div>
+    <div>
+      <p style="margin:0 0 6px;"><a href="/en/">HangSpine App</a></p>
+      <p style="margin:0 0 6px;"><a href="/blog/">Blog</a></p>
+      <p style="margin:0 0 6px;"><a href="/tools/">Free Tools</a></p>
+      <p style="margin:0 0 6px;"><a href="/support/en/">Support</a></p>
+      <p style="margin:0;"><a href="/privacy/">Privacy Policy</a></p>
+    </div>
+    <div style="max-width:420px;">
+      <p style="margin:0;">© 2026 HangSpine. All rights reserved.</p>
+      <p class="disclaimer" style="max-width:none;">These tools are for general fitness education only; they are not medical advice, diagnosis, or treatment. For spine-related concerns, follow the guidance of a qualified clinician.</p>
+    </div>
+  </div>
+</footer>
+<script>
+(function () {
+  function apply(t) {
+    document.documentElement.dataset.theme = t;
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", t === "light" ? "#ffffff" : "#0a0a0a");
+    var btn = document.getElementById("themeToggle");
+    if (btn) btn.textContent = t === "light" ? "\u{1F319}" : "\u2600\uFE0F";
+    try { localStorage.setItem("hs-theme", t); } catch (e) {}
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    var btn = document.getElementById("themeToggle");
+    if (btn) btn.addEventListener("click", function () {
+      apply(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
+    });
+    apply(document.documentElement.dataset.theme);
+  });
+})();
+</script>
+<script>
+(function () {
+  var mode = 'grip';
+  var form = document.getElementById('gform');
+  var err = document.getElementById('gerr');
+  var out = document.getElementById('gout');
+  var lastText = '';
+  var MEANS = { m: [50, 50, 49, 46, 41, 35], f: [32, 33, 32, 30, 26, 22] };
+  var CENTERS = [24.5, 34.5, 44.5, 54.5, 64.5, 74.5];
+  var HANG = {
+    m: { y: [20, 45, 90, 180], m: [15, 35, 70, 140], s: [10, 25, 50, 100] },
+    f: { y: [15, 35, 70, 140], m: [12, 28, 55, 110], s: [8, 20, 40, 80] }
+  };
+  var LEVELS = ['Beginner', 'Novice', 'Intermediate', 'Advanced', 'Elite'];
+  function ageIdx(a) { return a < 30 ? 0 : a < 40 ? 1 : a < 50 ? 2 : a < 60 ? 3 : a < 70 ? 4 : 5; }
+  function ageBracket(a) { return a < 40 ? 'y' : a < 60 ? 'm' : 's'; }
+  function bandLabel(i) { return ['20–29', '30–39', '40–49', '50–59', '60–69', '70–79'][i]; }
+  function erf(x) {
+    var s = x < 0 ? -1 : 1; x = Math.abs(x);
+    var t = 1 / (1 + 0.3275911 * x);
+    var y = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - 0.284496736) * t + 0.254829592) * t * Math.exp(-x * x);
+    return s * y;
+  }
+  function normCdf(z) { return 0.5 * (1 + erf(z / Math.SQRT2)); }
+  function hangPct(v, th) {
+    if (v <= 0) return 0;
+    if (v < th[0]) return 25 * v / th[0];
+    if (v < th[1]) return 25 + 25 * (v - th[0]) / (th[1] - th[0]);
+    if (v < th[2]) return 50 + 25 * (v - th[1]) / (th[2] - th[1]);
+    if (v < th[3]) return 75 + 20 * (v - th[2]) / (th[3] - th[2]);
+    return Math.min(99, 95 + 4 * (v - th[3]) / th[3]);
+  }
+  function hangLevel(v, th) {
+    var i = 0; for (var j = 0; j < th.length; j++) if (v >= th[j]) i = j + 1;
+    return LEVELS[i];
+  }
+  function setMode(m) {
+    mode = m;
+    document.querySelectorAll('.mode-toggle button').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.mode === m));
+    });
+    var label = document.getElementById('gvalueLabel');
+    var input = document.getElementById('gvalue');
+    var hint = document.getElementById('ghint');
+    if (m === 'grip') {
+      label.childNodes[0].nodeValue = 'Grip strength (kg, dynamometer)';
+      input.min = 5; input.max = 100; input.placeholder = 'e.g. 45';
+      hint.textContent = 'Use the best of two attempts on a handheld dynamometer, same hand and position. If you only have a hang time, switch to “Dead hang”.';
+    } else {
+      label.childNodes[0].nodeValue = 'Max dead hang (seconds)';
+      input.min = 1; input.max = 300; input.placeholder = 'e.g. 35';
+      hint.textContent = 'Full grip, feet off the floor, relaxed shoulders. Stop when the grip opens. A chair-assisted hang is fine for a baseline.';
+    }
+    out.hidden = true; err.hidden = true; form.reset();
+  }
+  document.querySelectorAll('.mode-toggle button').forEach(function (b) {
+    b.addEventListener('click', function () { setMode(b.dataset.mode); });
+  });
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var age = parseFloat(document.getElementById('gage').value);
+    var sex = document.getElementById('gsex').value;
+    var val = parseFloat(document.getElementById('gvalue').value);
+    if (isNaN(age) || age < 18 || age > 90) { err.textContent = 'Enter an age between 18 and 90.'; err.hidden = false; out.hidden = true; return; }
+    if (isNaN(val)) { err.textContent = 'Enter a value.'; err.hidden = false; out.hidden = true; return; }
+    if (mode === 'grip' && (val < 5 || val > 100)) { err.textContent = 'Grip strength should be between 5 and 100 kg.'; err.hidden = false; out.hidden = true; return; }
+    if (mode === 'hang' && (val < 1 || val > 300)) { err.textContent = 'Hang time should be between 1 and 300 seconds.'; err.hidden = false; out.hidden = true; return; }
+    err.hidden = true;
+    var idx = ageIdx(age);
+    var means = MEANS[sex];
+    var mean = means[idx];
+    if (mode === 'grip') {
+      var pct = Math.max(1, Math.min(99, normCdf((val - mean) / (0.2 * mean)) * 100));
+      var ageEst = CENTERS[idx];
+      if (val <= means[0]) ageEst = 18 + (val / means[0]) * 6.5;
+      else if (val >= means[5]) ageEst = 76;
+      else for (var i = 0; i < 5; i++) {
+        if (val >= means[i] && val <= means[i + 1]) {
+          var t = (val - means[i]) / (means[i + 1] - means[i]);
+          ageEst = CENTERS[i] + t * (CENTERS[i + 1] - CENTERS[i]);
+          break;
+        }
+      }
+      var ageShow = Math.max(18, Math.min(80, Math.round(ageEst / 5) * 5));
+      var cat = pct < 25 ? 'Below average' : pct < 50 ? 'Average' : pct < 75 ? 'Above average' : pct < 90 ? 'Strong' : 'Excellent';
+      document.getElementById('gbiglabel').textContent = 'Grip age (approx.)';
+      document.getElementById('gbig').textContent = '≈ ' + ageShow;
+      document.getElementById('gbigsub').textContent = 'years · population estimate';
+      document.getElementById('gstage').textContent = cat;
+      document.getElementById('gsummary').textContent = 'Your ' + val + ' kg reading is around the ' + Math.round(pct) + 'th percentile for ' + (sex === 'm' ? 'men' : 'women') + ' aged ' + bandLabel(idx) + '.';
+      document.getElementById('gnote').textContent = 'Average for this group is about ' + mean + ' kg. The “grip age” is a comparison device, not a biological age.';
+      document.getElementById('gmetrics').innerHTML =
+        '<div class="metric"><b>~' + Math.round(pct) + 'th</b><span>percentile</span></div>' +
+        '<div class="metric"><b>' + mean + ' kg</b><span>group average</span></div>' +
+        '<div class="metric"><b>' + Math.round(mean * 1.2) + ' kg</b><span>above average ≈</span></div>';
+      lastText = 'Grip Age Calculator: ' + val + ' kg ≈ ' + ageShow + ' years (population estimate), ~' + Math.round(pct) + 'th percentile for ' + (sex === 'm' ? 'men' : 'women') + ' aged ' + bandLabel(idx) + '.';
+    } else {
+      var th = HANG[sex][ageBracket(age)];
+      var pct = hangPct(val, th);
+      var lvl = hangLevel(val, th);
+      document.getElementById('gbiglabel').textContent = 'Hang percentile';
+      document.getElementById('gbig').textContent = '≈ ' + Math.round(pct) + '%';
+      document.getElementById('gbigsub').textContent = 'approximate';
+      document.getElementById('gstage').textContent = lvl;
+      document.getElementById('gsummary').textContent = 'A ' + val + ' s max hang is about the ' + Math.round(pct) + 'th percentile for ' + (sex === 'm' ? 'men' : 'women') + ' aged ' + (ageBracket(age) === 'y' ? 'under 40' : ageBracket(age) === 'm' ? '40–59' : '60+') + '.';
+      document.getElementById('gnote').textContent = 'Hang bands are descriptive fitness benchmarks, not clinical norms. The percentile is interpolated within those bands.';
+      document.getElementById('gmetrics').innerHTML =
+        '<div class="metric"><b>' + val + ' s</b><span>max hang</span></div>' +
+        '<div class="metric"><b>' + lvl + '</b><span>benchmark level</span></div>' +
+        '<div class="metric"><b>' + Math.round(pct) + '%</b><span>approximate percentile</span></div>';
+      lastText = 'Grip Age Calculator: ' + val + ' s dead hang ≈ ' + Math.round(pct) + 'th percentile (' + lvl + ') for ' + (sex === 'm' ? 'men' : 'women') + ' aged ' + (ageBracket(age) === 'y' ? 'under 40' : ageBracket(age) === 'm' ? '40–59' : '60+') + '.';
+    }
+    out.hidden = false; out.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+  function copy() { if (lastText && navigator.clipboard) navigator.clipboard.writeText(lastText); }
+  document.getElementById('gcopy').addEventListener('click', copy);
+  document.getElementById('gshare').addEventListener('click', function () {
+    if (!lastText) return;
+    if (navigator.share) navigator.share({ title: 'My Grip Age result', text: lastText, url: location.href });
+    else copy();
+  });
+})();
+</script>
+</body>
+</html>
